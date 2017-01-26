@@ -12,7 +12,6 @@ DriveWithJoystick::DriveWithJoystick() :
 {
 	Requires(DriveTrainSubsystem.get());
 	// TODO Auto-generated constructor stub
-
 }
 
 DriveWithJoystick::~DriveWithJoystick()
