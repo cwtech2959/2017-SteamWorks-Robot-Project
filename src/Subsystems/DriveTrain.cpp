@@ -8,7 +8,8 @@
 #include <Subsystems/DriveTrain.h>
 #include "Commands/DriveWithJoystick.h"
 
-DriveTrain::DriveTrain() : frc::Subsystem("DriveTrain")
+DriveTrain::DriveTrain() :
+		frc::Subsystem("DriveTrain")
 {
 	// TODO Auto-generated constructor stub
 

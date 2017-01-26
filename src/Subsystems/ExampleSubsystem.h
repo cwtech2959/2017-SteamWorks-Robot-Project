@@ -3,7 +3,8 @@
 
 #include <Commands/Subsystem.h>
 
-class ExampleSubsystem: public frc::Subsystem {
+class ExampleSubsystem: public frc::Subsystem
+{
 public:
 	ExampleSubsystem();
 	void InitDefaultCommand() override;

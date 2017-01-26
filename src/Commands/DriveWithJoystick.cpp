@@ -7,8 +7,8 @@
 
 #include <Commands/DriveWithJoystick.h>
 
-
-DriveWithJoystick::DriveWithJoystick() : CommandBase("DriveWithJoystick")
+DriveWithJoystick::DriveWithJoystick() :
+		CommandBase("DriveWithJoystick")
 {
 	Requires(DriveTrainSubsystem.get());
 	// TODO Auto-generated constructor stub

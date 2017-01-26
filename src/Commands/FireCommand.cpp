@@ -7,18 +7,21 @@
 
 #include <Commands/FireCommand.h>
 
-FireCommand::FireCommand() : CommandBase("FireCommand"){
+FireCommand::FireCommand() :
+		CommandBase("FireCommand")
+{
 	// TODO Auto-generated constructor stub
-
+	Requires(ShooterAndLoaderSubsystem.get());
 }
 
-FireCommand::~FireCommand() {
+FireCommand::~FireCommand()
+{
 	// TODO Auto-generated destructor stub
 }
 
 void FireCommand::Execute()
 {
-
+	ShooterAndLoaderSubsystem->StartShooterConveyors();
 }
 
 bool FireCommand::IsFinished()

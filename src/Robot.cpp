@@ -10,9 +10,11 @@
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
 
-class Robot: public frc::IterativeRobot {
+class Robot: public frc::IterativeRobot
+{
 public:
-	void RobotInit() override {
+	void RobotInit() override
+	{
 		chooser.AddDefault("Default Auto", new ExampleCommand());
 		// chooser.AddObject("My Auto", new MyAutoCommand());
 		frc::SmartDashboard::PutData("Auto Modes", &chooser);
@@ -23,11 +25,13 @@ public:
 	 * You can use it to reset any subsystem information you want to clear when
 	 * the robot is disabled.
 	 */
-	void DisabledInit() override {
+	void DisabledInit() override
+	{
 
 	}
 
-	void DisabledPeriodic() override {
+	void DisabledPeriodic() override
+	{
 		frc::Scheduler::GetInstance()->Run();
 	}
 
@@ -42,41 +46,48 @@ public:
 	 * chooser code above (like the commented example) or additional comparisons
 	 * to the if-else structure below with additional strings & commands.
 	 */
-	void AutonomousInit() override {
+	void AutonomousInit() override
+	{
 		/* std::string autoSelected = frc::SmartDashboard::GetString("Auto Selector", "Default");
-		if (autoSelected == "My Auto") {
-			autonomousCommand.reset(new MyAutoCommand());
-		}
-		else {
-			autonomousCommand.reset(new ExampleCommand());
-		} */
+		 if (autoSelected == "My Auto") {
+		 autonomousCommand.reset(new MyAutoCommand());
+		 }
+		 else {
+		 autonomousCommand.reset(new ExampleCommand());
+		 } */
 
 		autonomousCommand.reset(chooser.GetSelected());
 
-		if (autonomousCommand.get() != nullptr) {
+		if (autonomousCommand.get() != nullptr)
+		{
 			autonomousCommand->Start();
 		}
 	}
 
-	void AutonomousPeriodic() override {
+	void AutonomousPeriodic() override
+	{
 		frc::Scheduler::GetInstance()->Run();
 	}
 
-	void TeleopInit() override {
+	void TeleopInit() override
+	{
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (autonomousCommand != nullptr) {
+		if (autonomousCommand != nullptr)
+		{
 			autonomousCommand->Cancel();
 		}
 	}
 
-	void TeleopPeriodic() override {
+	void TeleopPeriodic() override
+	{
 		frc::Scheduler::GetInstance()->Run();
 	}
 
-	void TestPeriodic() override {
+	void TestPeriodic() override
+	{
 		frc::LiveWindow::GetInstance()->Run();
 	}
 

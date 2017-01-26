@@ -9,6 +9,7 @@
 #include "OI.h"
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/DriveTrain.h"
+#include "Subsystems/ShooterAndLoader.h"
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -16,7 +17,8 @@
  * subsystem elsewhere in your code in your code use
  * CommandBase::exampleSubsystem
  */
-class CommandBase: public frc::Command {
+class CommandBase: public frc::Command
+{
 public:
 	CommandBase(const std::string& name);
 	CommandBase() = default;
@@ -25,6 +27,7 @@ public:
 	static std::unique_ptr<ExampleSubsystem> exampleSubsystem;
 	static std::unique_ptr<OI> oi;
 	static std::unique_ptr<DriveTrain> DriveTrainSubsystem;
+	static std::unique_ptr<ShooterAndLoader> ShooterAndLoaderSubsystem;
 };
 
 #endif  // COMMAND_BASE_H

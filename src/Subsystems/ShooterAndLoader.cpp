@@ -7,12 +7,15 @@
 
 #include <Subsystems/ShooterAndLoader.h>
 
-ShooterAndLoader::ShooterAndLoader()  : frc::Subsystem("ShooterAndLoader"){
+ShooterAndLoader::ShooterAndLoader() :
+		frc::Subsystem("ShooterAndLoader")
+{
 	// TODO Auto-generated constructor stub
 
 }
 
-ShooterAndLoader::~ShooterAndLoader() {
+ShooterAndLoader::~ShooterAndLoader()
+{
 	// TODO Auto-generated destructor stub
 }
 

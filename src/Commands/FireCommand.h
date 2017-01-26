@@ -10,7 +10,8 @@
 
 #include <CommandBase.h>
 
-class FireCommand: public CommandBase {
+class FireCommand: public CommandBase
+{
 public:
 	FireCommand();
 	virtual ~FireCommand();

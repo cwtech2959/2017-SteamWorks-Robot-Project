@@ -10,10 +10,13 @@ std::unique_ptr<ExampleSubsystem> CommandBase::exampleSubsystem =
 		std::make_unique<ExampleSubsystem>();
 std::unique_ptr<DriveTrain> CommandBase::DriveTrainSubsystem =
 		std::make_unique<DriveTrain>();
+std::unique_ptr<ShooterAndLoader> CommandBase::ShooterAndLoaderSubsystem =
+		std::make_unique<ShooterAndLoader>();
 
 std::unique_ptr<OI> CommandBase::oi = std::make_unique<OI>();
 
 CommandBase::CommandBase(const std::string &name) :
-		frc::Command(name) {
+		frc::Command(name)
+{
 
 }
