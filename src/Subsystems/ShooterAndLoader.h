@@ -22,12 +22,18 @@ private:
 	frc::Spark LoaderConveyor
 	{ 6 };
 
+	bool ShooterConveyorState;
+	bool LoaderConveyorState;
+
 public:
 	ShooterAndLoader();
 	virtual ~ShooterAndLoader();
 
 	void StopAllConveyors();
-	void StartLoaderConveyor();
-	void StartShooterConveyors();
+	void ToggleLoaderConveyor();
+	void ToggleShooterConveyors();
+
+private:
+	void SetShooterConveyorSpeed(double speed);
 };
 #endif /* SRC_SUBSYSTEMS_SHOOTERANDLOADER_H_ */
