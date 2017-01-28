@@ -1,3 +1,4 @@
+#include <Commands/PhotonCannonCommand.h>
 #include <Commands/ToggleFireCommand.h>
 #include <Commands/ToggleLoadCommand.h>
 #include "OI.h"
@@ -10,4 +11,5 @@ OI::OI()
 	// Process operator interface input here.
 	FireButton.WhenPressed(new ToggleFireCommand());
 	LoadButton.WhenPressed(new ToggleLoadCommand());
+	PhotonCannonButton.WhileHeld(new PhotonCannonCommand());
 }

@@ -10,6 +10,7 @@
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/ShooterAndLoader.h"
+#include "Subsystems/PhotonCannonSubsystem.h"
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -28,6 +29,7 @@ public:
 	static std::unique_ptr<OI> oi;
 	static std::unique_ptr<DriveTrain> DriveTrainSubsystem;
 	static std::unique_ptr<ShooterAndLoader> ShooterAndLoaderSubsystem;
+	static std::unique_ptr<PhotonCannonSubsystem> myPhotonCannonSubsystem;
 };
 
 #endif  // COMMAND_BASE_H

@@ -15,6 +15,8 @@ public:
 	{ &DriverJoystick, 0 };
 	frc::JoystickButton LoadButton
 	{ &DriverJoystick, 1 };
+	frc::JoystickButton PhotonCannonButton
+	{ &DriverJoystick, 4 };
 };
 
 #endif  // OI_H
