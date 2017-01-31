@@ -12,6 +12,7 @@
 #include "Joystick.h"
 #include "RobotDrive.h"
 #include "VictorSP.h"
+#include "RobotMap.h"
 
 class DriveTrain: public frc::Subsystem
 {
@@ -19,13 +20,13 @@ class DriveTrain: public frc::Subsystem
 	//Jarod, Cole, and JC contributed in this!
 private:
 	frc::VictorSP m_LeftMotor1
-	{ 0 };
+	{ LEFT_MOTOR1_PWM };
 	frc::VictorSP m_LeftMotor2
-	{ 1 };
+	{ LEFT_MOTOR2_PWM };
 	frc::VictorSP m_RightMotor1
-	{ 2 };
+	{ RIGHT_MOTOR1_PWM };
 	frc::VictorSP m_RightMotor2
-	{ 3 };
+	{ RIGHT_MOTOR2_PWM };
 
 	frc::RobotDrive m_TankDrive
 	{ m_LeftMotor1, m_LeftMotor2, m_RightMotor1, m_RightMotor2 };

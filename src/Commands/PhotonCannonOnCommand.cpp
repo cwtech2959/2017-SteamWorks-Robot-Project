@@ -5,31 +5,25 @@
  *      Author: jlsch
  */
 
-#include <Commands/PhotonCannonCommand.h>
+#include <Commands/PhotonCannonOnCommand.h>
 
-PhotonCannonCommand::PhotonCannonCommand() :
+PhotonCannonOnCommand::PhotonCannonOnCommand() :
 	CommandBase("PhotonCannonCommand")
 {
 	// TODO Auto-generated constructor stub
 	Requires(myPhotonCannonSubsystem.get());
-
 }
 
-PhotonCannonCommand::~PhotonCannonCommand() {
+PhotonCannonOnCommand::~PhotonCannonOnCommand() {
 	// TODO Auto-generated destructor stub
 }
 
-void PhotonCannonCommand::Execute()
+void PhotonCannonOnCommand::Execute()
 {
 	myPhotonCannonSubsystem->LightOn();
 }
 
-bool PhotonCannonCommand::IsFinished()
+bool PhotonCannonOnCommand::IsFinished()
 {
-	return false;
-}
-
-void PhotonCannonCommand::End()
-{
-	myPhotonCannonSubsystem->LightOff();
+	return true;
 }

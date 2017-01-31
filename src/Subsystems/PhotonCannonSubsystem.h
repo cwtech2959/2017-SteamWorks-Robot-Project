@@ -10,11 +10,12 @@
 
 #include <Spark.h>
 #include <Commands/Subsystem.h>
+#include "RobotMap.h"
 
 class PhotonCannonSubsystem: public frc::Subsystem
 {
 private:
-	frc::Spark LightController {7};
+	frc::Spark LightController { PHOTON_CANNON_PWM };
 
 public:
 	PhotonCannonSubsystem();

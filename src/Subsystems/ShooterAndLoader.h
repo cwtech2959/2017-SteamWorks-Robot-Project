@@ -10,17 +10,18 @@
 
 #include <Commands/Subsystem.h>
 #include "Spark.h"
+#include "RobotMap.h"
 
 class ShooterAndLoader: public frc::Subsystem
 {
 	// private members
 private:
 	frc::Spark ShooterConveyorRight
-	{ 4 };
+	{ SHOOTER_CONVEYOR_RIGHT_PWM };
 	frc::Spark ShooterConveyorLeft
-	{ 5 };
+	{ SHOOTER_CONVEYOR_LEFT_PWM };
 	frc::Spark LoaderConveyor
-	{ 6 };
+	{ LOADER_CONVEYOR_PWM };
 
 	bool ShooterConveyorState;
 	bool LoaderConveyorState;

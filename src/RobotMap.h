@@ -8,10 +8,16 @@
  * floating around.
  */
 
-// For example to map the left and right motors, you could define the
-// following variables to use with your drivetrain subsystem.
-// constexpr int LEFTMOTOR = 1;
-// constexpr int RIGHTMOTOR = 2;
+// PWM channel mapping
+constexpr int LEFT_MOTOR1_PWM = 0;
+constexpr int LEFT_MOTOR2_PWM = 1;
+constexpr int RIGHT_MOTOR1_PWM = 2;
+constexpr int RIGHT_MOTOR2_PWM = 3;
+constexpr int SHOOTER_CONVEYOR_RIGHT_PWM = 4;
+constexpr int SHOOTER_CONVEYOR_LEFT_PWM = 5;
+constexpr int LOADER_CONVEYOR_PWM = 6;
+constexpr int PHOTON_CANNON_PWM = 7;
+
 
 // If you are using multiple modules, make sure to define both the port
 // number and the module. For example you with a rangefinder:
