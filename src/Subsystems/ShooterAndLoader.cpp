@@ -13,6 +13,12 @@ ShooterAndLoader::ShooterAndLoader() :
 	// TODO Auto-generated constructor stub
 	ShooterConveyorState = false;
 	LoaderConveyorState = false;
+
+	StartOffSetRight = 0;
+	StartOffSetLeft = 0;
+
+	OnTime = 0;
+	OffTime = 0;
 }
 
 ShooterAndLoader::~ShooterAndLoader()
@@ -59,3 +65,5 @@ void ShooterAndLoader::SetShooterConveyorSpeed(double speed)
 	ShooterConveyorRight.Set(speed);
 	ShooterConveyorLeft.Set(speed);
 }
+
+void ShooterAndLoader::

@@ -26,6 +26,11 @@ private:
 	bool ShooterConveyorState;
 	bool LoaderConveyorState;
 
+	int StartOffSetRight;
+	int StartOffSetLeft;
+	int OnTime;
+	int OffTime;
+
 public:
 	ShooterAndLoader();
 	virtual ~ShooterAndLoader();
@@ -33,6 +38,8 @@ public:
 	void StopAllConveyors();
 	void ToggleLoaderConveyor();
 	void ToggleShooterConveyors();
+
+
 
 private:
 	void SetShooterConveyorSpeed(double speed);
