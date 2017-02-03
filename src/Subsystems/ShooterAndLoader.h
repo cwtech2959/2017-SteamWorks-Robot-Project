@@ -39,9 +39,14 @@ public:
 	void ToggleLoaderConveyor();
 	void ToggleShooterConveyors();
 
-
+	// member access
+	void SetOffSetRight(int offsetTime);
+	void SetOffSetLeft(int offsetTime);
+	void SetOnTime(int time);
+	void SetOffTime(int time);
 
 private:
 	void SetShooterConveyorSpeed(double speed);
+	int LimitOffsetTime(int time);
 };
 #endif /* SRC_SUBSYSTEMS_SHOOTERANDLOADER_H_ */

@@ -7,10 +7,12 @@
 
 #include <Subsystems/ShooterAndLoader.h>
 
+const int MinTimeLimit = 0;
+const int MaxTimeLimit = 5000;
+
 ShooterAndLoader::ShooterAndLoader() :
 		frc::Subsystem("ShooterAndLoader")
 {
-	// TODO Auto-generated constructor stub
 	ShooterConveyorState = false;
 	LoaderConveyorState = false;
 
@@ -23,7 +25,6 @@ ShooterAndLoader::ShooterAndLoader() :
 
 ShooterAndLoader::~ShooterAndLoader()
 {
-	// TODO Auto-generated destructor stub
 }
 
 void ShooterAndLoader::StopAllConveyors()
@@ -66,4 +67,36 @@ void ShooterAndLoader::SetShooterConveyorSpeed(double speed)
 	ShooterConveyorLeft.Set(speed);
 }
 
-void ShooterAndLoader::
+void ShooterAndLoader::SetOffSetRight(int offsetTime)
+{
+	StartOffSetRight = LimitOffsetTime(offsetTime);
+}
+
+void ShooterAndLoader::SetOffSetLeft(int offsetTime)
+{
+	StartOffSetLeft = LimitOffsetTime(offsetTime);
+}
+
+void ShooterAndLoader::SetOnTime(int time)
+{
+	OnTime = LimitOffsetTime(time);
+}
+
+void ShooterAndLoader::SetOffTime(int time)
+{
+	OffTime = LimitOffsetTime(time);
+}
+
+int ShooterAndLoader::LimitOffsetTime(int time)
+{
+	if (time < MinTimeLimit)
+	{
+		time = MinTimeLimit;
+	}
+	else if (time > MaxTimeLimit)
+	{
+		time = MaxTimeLimit;
+	}
+
+	return time;
+}
