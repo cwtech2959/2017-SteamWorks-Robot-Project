@@ -7,7 +7,6 @@
 #include <Commands/Command.h>
 
 #include "OI.h"
-#include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/ShooterAndLoader.h"
 #include "Subsystems/PhotonCannonSubsystem.h"
@@ -25,7 +24,6 @@ public:
 	CommandBase() = default;
 
 	// Create a single static instance of all of your subsystems
-	static std::unique_ptr<ExampleSubsystem> exampleSubsystem;
 	static std::unique_ptr<OI> oi;
 	static std::unique_ptr<DriveTrain> DriveTrainSubsystem;
 	static std::unique_ptr<ShooterAndLoader> ShooterAndLoaderSubsystem;

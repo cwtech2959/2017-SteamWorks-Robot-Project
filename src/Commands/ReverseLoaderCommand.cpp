@@ -17,7 +17,7 @@ ReverseLoaderCommand::~ReverseLoaderCommand()
 {
 }
 
-void ReverseLoaderCommand::Execute()
+void ReverseLoaderCommand::Initialize()
 {
 	ShooterAndLoaderSubsystem->ReverseLoaderConveyor();
 }

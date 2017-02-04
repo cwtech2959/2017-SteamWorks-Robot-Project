@@ -16,7 +16,7 @@ public:
 	ReverseLoaderCommand();
 	virtual ~ReverseLoaderCommand();
 
-	void Execute() override;
+	void Initialize() override;
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;

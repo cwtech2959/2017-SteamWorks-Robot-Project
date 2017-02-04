@@ -13,6 +13,8 @@ public:
 	{ 0 };
 	frc::JoystickButton FireButton
 	{ &DriverJoystick, 0 };
+	frc::JoystickButton ReverseFireButton
+		{ &DriverJoystick, 3 };
 	frc::JoystickButton ReverseLoadButton
 	{ &DriverJoystick, 1 };
 	frc::JoystickButton PhotonCannonButton

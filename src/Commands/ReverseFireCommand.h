@@ -20,6 +20,8 @@ public:
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
+
+
 };
 
 #endif /* SRC_COMMANDS_REVERSEFIRECOMMAND_H_ */

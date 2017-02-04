@@ -18,6 +18,8 @@ ShooterAndLoader::ShooterAndLoader() :
 
 	OnTime = 0;
 	OffTime = 0;
+
+	Shooting = false;
 }
 
 ShooterAndLoader::~ShooterAndLoader()
@@ -26,10 +28,11 @@ ShooterAndLoader::~ShooterAndLoader()
 
 void ShooterAndLoader::StopAllConveyors()
 {
-	SetShooterConveyorSpeed(0);
+	SetShooterConveyorsSpeed(0);
 	LoaderConveyor.Set(0);
 }
 
+// Loader Conveyor manipulation
 void ShooterAndLoader::ReverseLoaderConveyor()
 {
 	LoaderConveyor.Set(-1);
@@ -40,11 +43,33 @@ void ShooterAndLoader::LoaderConveyorForward()
 	LoaderConveyor.Set(1);
 }
 
-void ShooterAndLoader::SetShooterConveyorSpeed(double speed)
+// Shooter feeder manipulation
+void ShooterAndLoader::StartShooterConveyors()
 {
-	ShooterConveyorRight.Set(speed);
-	ShooterConveyorLeft.Set(speed);
+	// Need to add the shooting feeder sequencing!!!
 }
+
+void ShooterAndLoader::ShooterConveyorsOff()
+{
+	SetShooterConveyorsSpeed(0);
+}
+
+void ShooterAndLoader::ReverseShooterConveyors()
+{
+	SetShooterConveyorsSpeed(-1);
+}
+
+void ShooterAndLoader::ShooterConveyorOff(ShooterSide side)
+{
+	SetShooterConveyorSpeed(side, 0);
+}
+
+void ShooterAndLoader::ShooterConveyorOn(ShooterSide side)
+{
+	SetShooterConveyorSpeed(side, 1);
+}
+
+// Member Access
 
 void ShooterAndLoader::SetOffSetRight(int offsetTime)
 {
@@ -66,6 +91,40 @@ void ShooterAndLoader::SetOffTime(int time)
 	OffTime = LimitOffsetTime(time);
 }
 
+int ShooterAndLoader::GetOnTime()
+{
+	return OnTime;
+}
+
+int ShooterAndLoader::GetOffTime()
+{
+	return OffTime;
+}
+
+int ShooterAndLoader::GetOffsetTime(ShooterSide side)
+{
+	if (side == leftShooter)
+	{
+		return StartOffSetLeft;
+	}
+	else
+	{
+		return StartOffSetRight;
+	}
+}
+
+void ShooterAndLoader::SetShooting(bool state)
+{
+	Shooting = state;
+}
+
+bool ShooterAndLoader::GetShooting()
+{
+	return Shooting;
+}
+
+// Private Methods
+
 int ShooterAndLoader::LimitOffsetTime(int time)
 {
 	if (time < MinTimeLimit)
@@ -80,17 +139,21 @@ int ShooterAndLoader::LimitOffsetTime(int time)
 	return time;
 }
 
-void ShooterAndLoader::ReverseShooterConveyors()
+void ShooterAndLoader::SetShooterConveyorsSpeed(double speed)
 {
-	SetShooterConveyorSpeed(-1);
+	SetShooterConveyorSpeed(leftShooter, speed);
+
+	SetShooterConveyorSpeed(rightShooter, speed);
 }
 
-void ShooterAndLoader::ShooterConveyorsOff()
+void ShooterAndLoader::SetShooterConveyorSpeed(ShooterSide side, double speed)
 {
-	SetShooterConveyorSpeed(0);
-}
-
-void ShooterAndLoader::StartShooterConveyors()
-{
-	// Need to add the shooting feeder sequencing!!!
+	if (side == leftShooter)
+	{
+		ShooterConveyorLeft.Set(speed);
+	}
+	else
+	{
+		ShooterConveyorRight.Set(speed);
+	}
 }

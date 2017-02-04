@@ -12,7 +12,7 @@
 #include "Spark.h"
 #include "RobotMap.h"
 
-class ShooterAndLoader: public frc::Subsystem
+class ShooterAndLoader : public frc::Subsystem
 {
 	// private members
 private:
@@ -28,6 +28,15 @@ private:
 	int OnTime;
 	int OffTime;
 
+	bool Shooting;
+
+public:
+	enum ShooterSide
+	{
+		leftShooter,
+		rightShooter
+	};
+
 public:
 	ShooterAndLoader();
 	virtual ~ShooterAndLoader();
@@ -42,6 +51,8 @@ public:
 	void StartShooterConveyors();
 	void ShooterConveyorsOff();
 	void ReverseShooterConveyors();
+	void ShooterConveyorOff(ShooterSide side);
+	void ShooterConveyorOn(ShooterSide side);
 
 	// member access
 
@@ -51,8 +62,16 @@ public:
 	void SetOnTime(int time);
 	void SetOffTime(int time);
 
+	int GetOnTime();
+	int GetOffTime();
+	int GetOffsetTime(ShooterSide side);
+
+	void SetShooting(bool state);
+	bool GetShooting();
+
 private:
-	void SetShooterConveyorSpeed(double speed);
 	int LimitOffsetTime(int time);
+	void SetShooterConveyorsSpeed(double speed);
+	void SetShooterConveyorSpeed(ShooterSide side, double speed);
 };
 #endif /* SRC_SUBSYSTEMS_SHOOTERANDLOADER_H_ */
