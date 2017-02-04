@@ -23,9 +23,6 @@ private:
 	frc::Spark LoaderConveyor
 	{ LOADER_CONVEYOR_PWM };
 
-	bool ShooterConveyorState;
-	bool LoaderConveyorState;
-
 	int StartOffSetRight;
 	int StartOffSetLeft;
 	int OnTime;
@@ -36,10 +33,19 @@ public:
 	virtual ~ShooterAndLoader();
 
 	void StopAllConveyors();
-	void ToggleLoaderConveyor();
-	void ToggleShooterConveyors();
+
+	// Loader conveyor manipulation
+	void ReverseLoaderConveyor();
+	void LoaderConveyorForward();
+
+	// Shooter feeder manipulation
+	void StartShooterConveyors();
+	void ShooterConveyorsOff();
+	void ReverseShooterConveyors();
 
 	// member access
+
+	// Shooter timing control
 	void SetOffSetRight(int offsetTime);
 	void SetOffSetLeft(int offsetTime);
 	void SetOnTime(int time);

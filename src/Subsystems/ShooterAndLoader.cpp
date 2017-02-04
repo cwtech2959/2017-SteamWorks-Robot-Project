@@ -13,9 +13,6 @@ const int MaxTimeLimit = 5000;
 ShooterAndLoader::ShooterAndLoader() :
 		frc::Subsystem("ShooterAndLoader")
 {
-	ShooterConveyorState = false;
-	LoaderConveyorState = false;
-
 	StartOffSetRight = 0;
 	StartOffSetLeft = 0;
 
@@ -33,32 +30,14 @@ void ShooterAndLoader::StopAllConveyors()
 	LoaderConveyor.Set(0);
 }
 
-void ShooterAndLoader::ToggleLoaderConveyor()
+void ShooterAndLoader::ReverseLoaderConveyor()
 {
-	if (LoaderConveyorState == true)
-	{
-		LoaderConveyorState = false;
-		LoaderConveyor.Set(0);
-	}
-	else
-	{
-		LoaderConveyorState = true;
-		LoaderConveyor.Set(1);
-	}
+	LoaderConveyor.Set(-1);
 }
 
-void ShooterAndLoader::ToggleShooterConveyors()
+void ShooterAndLoader::LoaderConveyorForward()
 {
-	if (ShooterConveyorState == true)
-	{
-		ShooterConveyorState = false;
-		SetShooterConveyorSpeed(0);
-	}
-	else
-	{
-		ShooterConveyorState = true;
-		SetShooterConveyorSpeed(1);
-	}
+	LoaderConveyor.Set(1);
 }
 
 void ShooterAndLoader::SetShooterConveyorSpeed(double speed)
@@ -99,4 +78,19 @@ int ShooterAndLoader::LimitOffsetTime(int time)
 	}
 
 	return time;
+}
+
+void ShooterAndLoader::ReverseShooterConveyors()
+{
+	SetShooterConveyorSpeed(-1);
+}
+
+void ShooterAndLoader::ShooterConveyorsOff()
+{
+	SetShooterConveyorSpeed(0);
+}
+
+void ShooterAndLoader::StartShooterConveyors()
+{
+	// Need to add the shooting feeder sequencing!!!
 }
