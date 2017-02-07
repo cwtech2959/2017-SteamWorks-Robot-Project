@@ -10,15 +10,17 @@ public:
 	OI();
 
 	frc::Joystick DriverJoystick
-	{ 0 };
+		{ 0 };
 	frc::JoystickButton FireButton
-	{ &DriverJoystick, 0 };
+		{ &DriverJoystick, 0 };
 	frc::JoystickButton ReverseFireButton
 		{ &DriverJoystick, 3 };
 	frc::JoystickButton ReverseLoadButton
-	{ &DriverJoystick, 1 };
+		{ &DriverJoystick, 1 };
 	frc::JoystickButton PhotonCannonButton
-	{ &DriverJoystick, 4 };
+		{ &DriverJoystick, 4 };
+	frc::JoystickButton GearDropOffButton
+	    { &DriverJoystick, 5 };
 };
 
 #endif  // OI_H

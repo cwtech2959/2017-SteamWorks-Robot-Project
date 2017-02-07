@@ -4,6 +4,7 @@
 #include <Commands/ParallelShootingCommandGroup.h>
 #include <Commands/PhotonCannonOnCommand.h>
 #include <Commands/ReverseFireCommand.h>
+#include <Commands/GearDropOffCommand.h>
 #include <WPILib.h>
 
 
@@ -15,4 +16,5 @@ OI::OI()
 	ReverseLoadButton.WhileHeld(new ReverseLoaderCommand());
 	PhotonCannonButton.WhenPressed(new PhotonCannonOnCommand());
 	PhotonCannonButton.WhenReleased(new PhotonCannonOffCommand());
+	GearDropOffButton.WhileHeld(new GearDropOffCommand());
 }

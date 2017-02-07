@@ -8,15 +8,30 @@
  * floating around.
  */
 
-// PWM channel mapping
+// PWM channel mapping( Missing- Climb )
 constexpr int LEFT_MOTOR1_PWM = 0;
 constexpr int LEFT_MOTOR2_PWM = 1;
 constexpr int RIGHT_MOTOR1_PWM = 2;
 constexpr int RIGHT_MOTOR2_PWM = 3;
-constexpr int SHOOTER_CONVEYOR_RIGHT_PWM = 4;
-constexpr int SHOOTER_CONVEYOR_LEFT_PWM = 5;
-constexpr int LOADER_CONVEYOR_PWM = 6;
-constexpr int PHOTON_CANNON_PWM = 7;
+
+constexpr int SHOOTER_CONVEYOR_RIGHT_PWM = 3;
+constexpr int SHOOTER_CONVEYOR_LEFT_PWM = 2;
+
+constexpr int GEAR_DROP_OFF_MOTORS_PWM = 1;
+constexpr int FRYING_PAN_MOTOR_PWM = 6;
+
+constexpr int LOADER_CONVEYOR_PWM = 0;
+
+constexpr int PHOTON_CANNON_PWM = 5;
+
+// DIO Mapping
+constexpr int FRYING_PAN_UP_DIO = 0;
+constexpr int FRYING_PAN_DOWN_DIO = 1;
+constexpr int GEAR_ON_FRYING_PAN_DIO = 2;
+constexpr int GEAR_LOAD_READY_DIO = 3;
+
+// CAN Mapping( Missing- Drive and Ball Shooter's)
+
 
 
 // If you are using multiple modules, make sure to define both the port
