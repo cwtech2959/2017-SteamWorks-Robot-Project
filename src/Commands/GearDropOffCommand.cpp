@@ -7,16 +7,34 @@
 
 #include <Commands/GearDropOffCommand.h>
 
-GearDropOffCommand::GearDropOffCommand()
+GearDropOffCommand::GearDropOffCommand() :
+		CommandBase("GearDropOffCommand")
 {
+	Requires(GearManagementSubsystem.get());
 
 }
 GearDropOffCommand::~GearDropOffCommand()
 {
-	// TODO Auto-generated destructor stub
+}
+
+void GearDropOffCommand::Initialize()
+{
+	GearManagementSubsystem->StartGearDropOffMotors(true);
+
+	SetTimeout(.5);
 }
 
 bool GearDropOffCommand::IsFinished()
 {
-	return true;
+	return IsTimedOut();
+}
+
+void GearDropOffCommand::End()
+{
+	GearManagementSubsystem->StopGearDropOffMotors();
+}
+
+void GearDropOffCommand::Interrupted()
+{
+	End();
 }

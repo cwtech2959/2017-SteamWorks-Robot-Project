@@ -5,15 +5,15 @@
  *      Author: CW
  */
 
-#ifndef SRC_SUBSYSTEMS_GEARMANAGMENT_H_
-#define SRC_SUBSYSTEMS_GEARMANAGMENT_H_
+#ifndef SRC_SUBSYSTEMS_GEARMANAGEMENT_H_
+#define SRC_SUBSYSTEMS_GEARMANAGEMENT_H_
 
 #include <Commands/Subsystem.h>
 #include <DigitalInput.h>
 #include "RobotMap.h"
 #include "Spark.h"
 
-class GearManagment: public frc::Subsystem
+class GearManagement : public frc::Subsystem
 {
 private:
 	frc::DigitalInput FryingPanUpSwitch
@@ -30,9 +30,17 @@ private:
 	frc::Spark GearDropOffMotors
 	{ GEAR_DROP_OFF_MOTORS_PWM };
 
+	int GearGateTime;
+
 public:
-	GearManagment();
-	virtual ~GearManagment();
+	GearManagement();
+	virtual ~GearManagement();
+
+	void StartGearDropOffMotors(bool open);
+	void StopGearDropOffMotors();
+
+	void SetGearGateTime(int time);
+	int GetGearGateTime();
 };
 
-#endif /* SRC_SUBSYSTEMS_GEARMANAGMENT_H_ */
+#endif /* SRC_SUBSYSTEMS_GEARMANAGEMENT_H_ */

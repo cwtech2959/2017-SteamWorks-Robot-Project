@@ -11,6 +11,8 @@ std::unique_ptr<ShooterAndLoader> CommandBase::ShooterAndLoaderSubsystem =
 		std::make_unique<ShooterAndLoader>();
 std::unique_ptr<PhotonCannonSubsystem> CommandBase::myPhotonCannonSubsystem =
 		std::make_unique<PhotonCannonSubsystem>();
+std::unique_ptr<GearManagement> CommandBase::GearManagementSubsystem =
+		std::make_unique<GearManagement>();
 
 std::unique_ptr<OI> CommandBase::oi = std::make_unique<OI>();
 

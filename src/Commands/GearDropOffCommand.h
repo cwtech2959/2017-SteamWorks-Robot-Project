@@ -16,7 +16,10 @@ public:
 	GearDropOffCommand();
 	virtual ~GearDropOffCommand();
 
+	void Initialize() override;
 	bool IsFinished() override;
+	void End() override;
+	void Interrupted() override;
 };
 
 #endif /* SRC_COMMANDS_GEARDROPOFFCOMMAND_H_ */
