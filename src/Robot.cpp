@@ -21,11 +21,11 @@ public:
 
 		frc::SmartDashboard::SetDefaultNumber("Shooter Speed", DefaultShooterSpeed);
 		frc::SmartDashboard::SetDefaultNumber("Gear Gate Time", DefaultGearGateTime);
+		frc::SmartDashboard::SetDefaultNumber("Frying Pan Stall Time", DefaultFryingPanStallTime);
 		frc::SmartDashboard::SetDefaultNumber("Start OffSet Right", StartOffSetRightTime);
 		frc::SmartDashboard::SetDefaultNumber("Start OffSet Left", StartOffSetLeftTime);
 		frc::SmartDashboard::SetDefaultNumber("On Time", DefaultOnTime);
 		frc::SmartDashboard::SetDefaultNumber("Off Time", DefaultOffTime);
-
 	}
 
 	/**

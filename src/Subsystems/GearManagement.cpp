@@ -11,7 +11,7 @@ GearManagement::GearManagement() :
 		frc::Subsystem("GearManagement")
 {
 	GearGateTime = DefaultGearGateTime;
-	FryingPanStallTime = 2000;
+	FryingPanStallTime = DefaultFryingPanStallTime;
 }
 
 GearManagement::~GearManagement()

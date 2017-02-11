@@ -14,6 +14,8 @@
 #include "Spark.h"
 
 constexpr int DefaultGearGateTime = 500;
+constexpr int DefaultFryingPanStallTime = 500;
+
 
 class GearManagement : public frc::Subsystem
 {
