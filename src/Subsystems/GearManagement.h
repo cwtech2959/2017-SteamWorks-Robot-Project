@@ -13,6 +13,8 @@
 #include "RobotMap.h"
 #include "Spark.h"
 
+constexpr int DefaultGearGateTime = 500;
+
 class GearManagement : public frc::Subsystem
 {
 private:

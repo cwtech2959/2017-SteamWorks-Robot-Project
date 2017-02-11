@@ -10,7 +10,7 @@
 GearManagement::GearManagement() :
 		frc::Subsystem("GearManagement")
 {
-	GearGateTime = 500;
+	GearGateTime = DefaultGearGateTime;
 }
 
 GearManagement::~GearManagement()

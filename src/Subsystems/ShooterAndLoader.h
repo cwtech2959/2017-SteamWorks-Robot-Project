@@ -11,6 +11,13 @@
 #include <Commands/Subsystem.h>
 #include "Spark.h"
 #include "RobotMap.h"
+#include <CanTalonSRX.h>
+
+constexpr int StartOffSetRightTime = 100;
+constexpr int StartOffSetLeftTime = 100;
+constexpr int DefaultOnTime = 10;
+constexpr int DefaultOffTime = 10;
+constexpr double DefaultShooterSpeed = 0.65;
 
 class ShooterAndLoader : public frc::Subsystem
 {
@@ -22,6 +29,11 @@ private:
 	{ SHOOTER_CONVEYOR_LEFT_PWM };
 	frc::Spark LoaderConveyor
 	{ LOADER_CONVEYOR_PWM };
+
+	CanTalonSRX BallShooterLeft
+	{BALL_SHOOTER_LEFT_CAN};
+	CanTalonSRX BallShooterRight
+	{BALL_SHOOTER_RIGHT_CAN};
 
 	int StartOffSetRight;
 	int StartOffSetLeft;
@@ -42,6 +54,8 @@ public:
 	virtual ~ShooterAndLoader();
 
 	void StopAllConveyors();
+
+	void SetBallShootersSpeed(double speed);
 
 	// Loader conveyor manipulation
 	void ReverseLoaderConveyor();

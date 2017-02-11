@@ -5,6 +5,8 @@
 #include <Commands/PhotonCannonOnCommand.h>
 #include <Commands/ReverseFireCommand.h>
 #include <Commands/GearDropOffCommand.h>
+#include <Commands/UpdateShooterAndGearTimes.h>
+#include <Commands/UpdateShooterSpeed.h>
 #include <WPILib.h>
 
 
@@ -17,4 +19,7 @@ OI::OI()
 	PhotonCannonButton.WhenPressed(new PhotonCannonOnCommand());
 	PhotonCannonButton.WhenReleased(new PhotonCannonOffCommand());
 	GearDropOffButton.WhileHeld(new GearDropOffCommand());
+
+	frc::SmartDashboard::PutData("Update Shooter Speed", new UpdateShooterSpeed());
+	frc::SmartDashboard::PutData("Update Shooter And Gear Times", new UpdateShooterAndGearTimes());
 }

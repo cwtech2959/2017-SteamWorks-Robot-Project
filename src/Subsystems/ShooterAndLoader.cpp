@@ -13,11 +13,11 @@ const int MaxTimeLimit = 5000;
 ShooterAndLoader::ShooterAndLoader() :
 		frc::Subsystem("ShooterAndLoader")
 {
-	StartOffSetRight = 0;
-	StartOffSetLeft = 0;
+	StartOffSetRight = StartOffSetRightTime;
+	StartOffSetLeft = StartOffSetLeftTime;
 
-	OnTime = 0;
-	OffTime = 0;
+	OnTime = DefaultOnTime;
+	OffTime = DefaultOffTime;
 
 	Shooting = false;
 }
@@ -156,4 +156,11 @@ void ShooterAndLoader::SetShooterConveyorSpeed(ShooterSide side, double speed)
 	{
 		ShooterConveyorRight.Set(speed);
 	}
+}
+
+void ShooterAndLoader::SetBallShootersSpeed(double speed)
+{
+	BallShooterLeft.Set(speed);
+	BallShooterRight.Set(speed);
+
 }

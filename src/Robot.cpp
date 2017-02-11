@@ -8,6 +8,7 @@
 #include <SmartDashboard/SmartDashboard.h>
 
 #include "CommandBase.h"
+#include <Subsystems/ShooterAndLoader.h>
 
 class Robot: public frc::IterativeRobot
 {
@@ -17,6 +18,14 @@ public:
 		// chooser.AddDefault("Default Auto", new ExampleCommand());
 		// chooser.AddObject("My Auto", new MyAutoCommand());
 		frc::SmartDashboard::PutData("Auto Modes", &chooser);
+
+		frc::SmartDashboard::SetDefaultNumber("Shooter Speed", DefaultShooterSpeed);
+		frc::SmartDashboard::SetDefaultNumber("Gear Gate Time", DefaultGearGateTime);
+		frc::SmartDashboard::SetDefaultNumber("Start OffSet Right", StartOffSetRightTime);
+		frc::SmartDashboard::SetDefaultNumber("Start OffSet Left", StartOffSetLeftTime);
+		frc::SmartDashboard::SetDefaultNumber("On Time", DefaultOnTime);
+		frc::SmartDashboard::SetDefaultNumber("Off Time", DefaultOffTime);
+
 	}
 
 	/**
@@ -61,6 +70,10 @@ public:
 		{
 			autonomousCommand->Start();
 		}
+
+		double speed = frc::SmartDashboard::GetNumber("Shooter Speed", DefaultShooterSpeed);
+		CommandBase::ShooterAndLoaderSubsystem->SetBallShootersSpeed(speed);
+
 	}
 
 	void AutonomousPeriodic() override
@@ -78,6 +91,9 @@ public:
 		{
 			autonomousCommand->Cancel();
 		}
+
+		double speed = frc::SmartDashboard::GetNumber("Shooter Speed", DefaultShooterSpeed);
+		CommandBase::ShooterAndLoaderSubsystem->SetBallShootersSpeed(speed);
 	}
 
 	void TeleopPeriodic() override
