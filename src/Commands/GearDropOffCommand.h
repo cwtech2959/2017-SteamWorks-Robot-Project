@@ -13,13 +13,17 @@
 class GearDropOffCommand: public CommandBase
 {
 public:
-	GearDropOffCommand();
+	GearDropOffCommand(bool open);
 	virtual ~GearDropOffCommand();
 
 	void Initialize() override;
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
+
+private:
+
+	bool m_open;
 };
 
 #endif /* SRC_COMMANDS_GEARDROPOFFCOMMAND_H_ */

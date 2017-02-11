@@ -11,6 +11,7 @@ GearManagement::GearManagement() :
 		frc::Subsystem("GearManagement")
 {
 	GearGateTime = DefaultGearGateTime;
+	FryingPanStallTime = 2000;
 }
 
 GearManagement::~GearManagement()
@@ -37,6 +38,23 @@ void GearManagement::StopGearDropOffMotors()
 	GearDropOffMotors.Set(0);
 }
 
+void GearManagement::StartFryingPanMotor(bool up)
+{
+	if (up == true)
+		{
+			FryingPanMotor.Set(1);
+		}
+		else
+		{
+			FryingPanMotor.Set(-1);
+		}
+}
+
+void GearManagement::StopFryingPanMotor()
+{
+	FryingPanMotor.Set(0);
+}
+
 void GearManagement::SetGearGateTime(int time)
 {
 	GearGateTime = time;
@@ -45,4 +63,24 @@ void GearManagement::SetGearGateTime(int time)
 int GearManagement::GetGearGateTime()
 {
 	return GearGateTime;
+}
+
+void GearManagement::SetFryingPanStallTime(int time)
+{
+	FryingPanStallTime = time;
+}
+int GearManagement::GetFryingPanStallTime()
+{
+	return FryingPanStallTime;
+}
+
+bool GearManagement::GetFryingPanUpSwitch()
+{
+	return FryingPanUpSwitch.Get();
+}
+
+bool GearManagement::GetFryingPanDownSwitch()
+{
+	return FryingPanDownSwitch.Get();
+
 }

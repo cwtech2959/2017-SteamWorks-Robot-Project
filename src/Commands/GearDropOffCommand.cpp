@@ -7,21 +7,23 @@
 
 #include <Commands/GearDropOffCommand.h>
 
-GearDropOffCommand::GearDropOffCommand() :
+GearDropOffCommand::GearDropOffCommand(bool open) :
 		CommandBase("GearDropOffCommand")
 {
 	Requires(GearManagementSubsystem.get());
-
+	m_open = open;
 }
+
 GearDropOffCommand::~GearDropOffCommand()
 {
 }
 
 void GearDropOffCommand::Initialize()
 {
-	GearManagementSubsystem->StartGearDropOffMotors(true);
+	GearManagementSubsystem->StartGearDropOffMotors(m_open);
+	int time = GearManagementSubsystem->GetGearGateTime();
 
-	SetTimeout(.5);
+	SetTimeout(time * 0.001);
 }
 
 bool GearDropOffCommand::IsFinished()
