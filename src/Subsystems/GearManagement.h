@@ -31,6 +31,7 @@ private:
 	{ GEAR_DROP_OFF_MOTORS_PWM };
 
 	int GearGateTime;
+	int FryingPanStallTime;
 
 public:
 	GearManagement();
@@ -39,8 +40,17 @@ public:
 	void StartGearDropOffMotors(bool open);
 	void StopGearDropOffMotors();
 
+	void StartFryingPanMotor(bool up);
+	void StopFryingPanMotor();
+
 	void SetGearGateTime(int time);
 	int GetGearGateTime();
+
+	void SetFryingPanStallTime(int time);
+	int GetFryingPanStallTime();
+
+	bool GetFryingPanUpSwitch();
+	bool GetFryingPanDownSwitch();
 };
 
 #endif /* SRC_SUBSYSTEMS_GEARMANAGEMENT_H_ */

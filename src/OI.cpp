@@ -5,6 +5,8 @@
 #include <Commands/PhotonCannonOnCommand.h>
 #include <Commands/ReverseFireCommand.h>
 #include <Commands/GearDropOffCommand.h>
+#include <Commands/FryingPanUpCommand.h>
+
 #include <WPILib.h>
 
 
@@ -16,5 +18,8 @@ OI::OI()
 	ReverseLoadButton.WhileHeld(new ReverseLoaderCommand());
 	PhotonCannonButton.WhenPressed(new PhotonCannonOnCommand());
 	PhotonCannonButton.WhenReleased(new PhotonCannonOffCommand());
-	GearDropOffButton.WhileHeld(new GearDropOffCommand());
+	GearDropOffButton.WhenPressed(new GearDropOffCommand(true));
+	GearDropOffButton.WhenReleased(new GearDropOffCommand(false));
+	FryingPanUpButton.WhenPressed(new FryingPanUpCommand(true));
+	FryingPanDownButton.WhenPressed(new FryingPanUpCommand(false));
 }
