@@ -1,8 +1,8 @@
 /*
  * DriveTrain.h
  *
- *  Created on: Jan 21, 2017
- *      Author: Kevin
+ *  Created on: Jan 28, 2017
+ *      Author: mriri
  */
 
 #ifndef SRC_SUBSYSTEMS_DRIVETRAIN_H_
@@ -10,26 +10,30 @@
 
 #include <Commands/Subsystem.h>
 #include "Joystick.h"
-#include "RobotDrive.h"
-#include "VictorSP.h"
-#include "RobotMap.h"
+#include "CanTalonSRX.h"
+#include <CanRobotDrive.h>
+#include <RobotMap.h>
 
 class DriveTrain: public frc::Subsystem
 {
-	// Put members here!
-	//Jarod, Cole, and JC contributed in this!
 private:
-	frc::VictorSP m_LeftMotor1
-	{ LEFT_MOTOR1_PWM };
-	frc::VictorSP m_LeftMotor2
-	{ LEFT_MOTOR2_PWM };
-	frc::VictorSP m_RightMotor1
-	{ RIGHT_MOTOR1_PWM };
-	frc::VictorSP m_RightMotor2
-	{ RIGHT_MOTOR2_PWM };
 
-	frc::RobotDrive m_TankDrive
-	{ m_LeftMotor1, m_LeftMotor2, m_RightMotor1, m_RightMotor2 };
+	CanTalonSRX Left1MotorController
+	{ LEFT_DRIVE_MOTOR_1_CAN };
+	CanTalonSRX Left2MotorController
+	{ LEFT_DRIVE_MOTOR_2_CAN };
+	CanTalonSRX Right1MotorController
+	{ RIGHT_DRIVE_MOTOR_1_CAN };
+	CanTalonSRX Right2MotorController
+	{ RIGHT_DRIVE_MOTOR_2_CAN };
+
+	CanRobotDrive DriveTank
+	{
+		&Left1MotorController,
+		&Left2MotorController,
+		&Right1MotorController,
+		&Right2MotorController,
+		false, true };
 
 public:
 	DriveTrain();
@@ -37,7 +41,6 @@ public:
 
 	void InitDefaultCommand() override;
 
-	// put public methods here!
 	void TankDrive(double leftSide, double rightSide);
 	void TankDrive(frc::Joystick * pJoyStick);
 	void Stop();
