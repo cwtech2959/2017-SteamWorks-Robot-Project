@@ -11,6 +11,10 @@
 DriveTrain::DriveTrain() :
 		frc::Subsystem("DriveTrain")
 {
+	DriveTank.SetInvertedMotor(frc::RobotDrive::kFrontLeftMotor, false);
+	DriveTank.SetInvertedMotor(frc::RobotDrive::kRearLeftMotor, false);
+	DriveTank.SetInvertedMotor(frc::RobotDrive::kFrontRightMotor, true);
+	DriveTank.SetInvertedMotor(frc::RobotDrive::kRearRightMotor, true);
 }
 
 DriveTrain::~DriveTrain()
@@ -34,5 +38,5 @@ void DriveTrain::Stop()
 
 void DriveTrain::TankDrive(double leftSide, double rightSide)
 {
-	DriveTank.TankDrive(leftSide, rightSide);
+	DriveTank.TankDrive(leftSide, rightSide, false);
 }

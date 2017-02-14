@@ -9,31 +9,29 @@
 #define SRC_SUBSYSTEMS_DRIVETRAIN_H_
 
 #include <Commands/Subsystem.h>
-#include "Joystick.h"
-#include "CanTalonSRX.h"
-#include <CanRobotDrive.h>
-#include <RobotMap.h>
+#include <Joystick.h>
+#include <CANTalon.h>
+#include <RobotDrive.h>
 
 class DriveTrain: public frc::Subsystem
 {
 private:
+	CANTalon Left1MotorController
+	{ 5 };
+	CANTalon Left2MotorController
+	{ 6 };
+	CANTalon Right1MotorController
+	{ 1 };
+	CANTalon Right2MotorController
+	{ 2 };
 
-	CanTalonSRX Left1MotorController
-	{ LEFT_DRIVE_MOTOR_1_CAN };
-	CanTalonSRX Left2MotorController
-	{ LEFT_DRIVE_MOTOR_2_CAN };
-	CanTalonSRX Right1MotorController
-	{ RIGHT_DRIVE_MOTOR_1_CAN };
-	CanTalonSRX Right2MotorController
-	{ RIGHT_DRIVE_MOTOR_2_CAN };
-
-	CanRobotDrive DriveTank
+	frc::RobotDrive DriveTank
 	{
 		&Left1MotorController,
 		&Left2MotorController,
 		&Right1MotorController,
-		&Right2MotorController,
-		false, true };
+		&Right2MotorController
+	};
 
 public:
 	DriveTrain();
