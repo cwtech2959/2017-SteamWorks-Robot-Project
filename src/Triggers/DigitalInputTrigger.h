@@ -14,13 +14,13 @@
 class DigitalInputTrigger: public frc::Trigger
 {
 public:
-	DigitalInputTrigger(frc::DigitalInput digitalInput);
+	DigitalInputTrigger(frc::DigitalInput * digitalInput);
 	virtual ~DigitalInputTrigger();
 
 	bool Get() override;
 
 private:
-	frc::DigitalInput m_digitalInput;
+	frc::DigitalInput * m_digitalInput;
 };
 
 #endif /* SRC_DIGITALINPUTTRIGGER_H_ */

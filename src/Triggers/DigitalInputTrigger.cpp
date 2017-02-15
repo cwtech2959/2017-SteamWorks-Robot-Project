@@ -5,17 +5,18 @@
  *      Author: CW
  */
 
-#include <DigitalInputTrigger.h>
+#include <Triggers/DigitalInputTrigger.h>
 
-DigitalInputTrigger::DigitalInputTrigger(frc::DigitalInput digitalInput)
+DigitalInputTrigger::DigitalInputTrigger(frc::DigitalInput * digitalInput)
 {
 	m_digitalInput = digitalInput;
 }
 
-DigitalInputTrigger::~DigitalInputTrigger() {
+DigitalInputTrigger::~DigitalInputTrigger()
+{
 }
 
 bool DigitalInputTrigger::Get()
 {
-	return m_digitalInput;
+	return m_digitalInput->Get();
 }
