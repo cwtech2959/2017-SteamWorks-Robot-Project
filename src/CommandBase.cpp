@@ -7,8 +7,8 @@
 
 std::unique_ptr<DriveTrain> CommandBase::DriveTrainSubsystem =
 		std::make_unique<DriveTrain>();
-std::unique_ptr<ShooterAndLoader> CommandBase::ShooterAndLoaderSubsystem =
-		std::make_unique<ShooterAndLoader>();
+std::unique_ptr<Shooter> CommandBase::ShooterSubsystem =
+		std::make_unique<Shooter>();
 std::unique_ptr<PhotonCannonSubsystem> CommandBase::myPhotonCannonSubsystem =
 		std::make_unique<PhotonCannonSubsystem>();
 std::unique_ptr<GearManagement> CommandBase::GearManagementSubsystem =

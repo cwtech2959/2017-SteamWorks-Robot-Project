@@ -8,7 +8,9 @@
 #include <SmartDashboard/SmartDashboard.h>
 
 #include "CommandBase.h"
-#include <Subsystems/ShooterAndLoader.h>
+#include <Subsystems/Shooter.h>
+#include <Subsystems/Loader.h>
+
 
 class Robot: public frc::IterativeRobot
 {
@@ -72,7 +74,7 @@ public:
 		}
 
 		double speed = frc::SmartDashboard::GetNumber("Shooter Speed", DefaultShooterSpeed);
-		CommandBase::ShooterAndLoaderSubsystem->SetBallShootersSpeed(speed);
+		CommandBase::ShooterSubsystem->SetBallShootersSpeed(speed);
 
 	}
 
@@ -93,7 +95,7 @@ public:
 		}
 
 		double speed = frc::SmartDashboard::GetNumber("Shooter Speed", DefaultShooterSpeed);
-		CommandBase::ShooterAndLoaderSubsystem->SetBallShootersSpeed(speed);
+		CommandBase::ShooterSubsystem->SetBallShootersSpeed(speed);
 	}
 
 	void TeleopPeriodic() override

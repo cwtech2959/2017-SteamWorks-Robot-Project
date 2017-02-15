@@ -11,7 +11,7 @@
 UpdateShooterSpeed::UpdateShooterSpeed() :
 	CommandBase("UpdateShooterSpeedCommand")
 {
-	Requires(ShooterAndLoaderSubsystem.get());
+	Requires(ShooterSubsystem.get());
 }
 
 UpdateShooterSpeed::~UpdateShooterSpeed()
@@ -21,7 +21,7 @@ UpdateShooterSpeed::~UpdateShooterSpeed()
 void UpdateShooterSpeed::Initialize()
 {
 	double speed = frc::SmartDashboard::GetNumber("Shooter Speed", DefaultShooterSpeed);
-	ShooterAndLoaderSubsystem->SetBallShootersSpeed(speed);
+	ShooterSubsystem->SetBallShootersSpeed(speed);
 }
 
 bool UpdateShooterSpeed::IsFinished()

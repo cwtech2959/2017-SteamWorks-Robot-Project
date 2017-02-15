@@ -10,7 +10,7 @@
 ReverseLoaderCommand::ReverseLoaderCommand() :
 		CommandBase("ReverseLoaderCommand")
 {
-	Requires(ShooterAndLoaderSubsystem.get());
+	Requires(LoaderSubsystem.get());
 }
 
 ReverseLoaderCommand::~ReverseLoaderCommand()
@@ -19,7 +19,7 @@ ReverseLoaderCommand::~ReverseLoaderCommand()
 
 void ReverseLoaderCommand::Initialize()
 {
-	ShooterAndLoaderSubsystem->ReverseLoaderConveyor();
+	LoaderSubsystem->ReverseLoaderConveyor();
 }
 
 bool ReverseLoaderCommand::IsFinished()
@@ -29,7 +29,7 @@ bool ReverseLoaderCommand::IsFinished()
 
 void ReverseLoaderCommand::End()
 {
-	ShooterAndLoaderSubsystem->LoaderConveyorForward();
+	LoaderSubsystem->LoaderConveyorForward();
 }
 
 void ReverseLoaderCommand::Interrupted()

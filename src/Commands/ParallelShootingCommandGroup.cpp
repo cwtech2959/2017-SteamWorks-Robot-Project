@@ -7,13 +7,13 @@
 
 #include <Commands/ParallelShootingCommandGroup.h>
 #include <Commands/ShootingSequenceCommandGroup.h>
-#include <Subsystems/ShooterAndLoader.h>
 #include <CommandBase.h>
+#include <Subsystems/Shooter.h>
 
 ParallelShootingCommandGroup::ParallelShootingCommandGroup()
 {
-	AddParallel(new ShootingSequenceCommandGroup(ShooterAndLoader::leftShooter));
-	AddParallel(new ShootingSequenceCommandGroup(ShooterAndLoader::rightShooter));
+	AddParallel(new ShootingSequenceCommandGroup(Shooter::leftShooter));
+	AddParallel(new ShootingSequenceCommandGroup(Shooter::rightShooter));
 }
 
 ParallelShootingCommandGroup::~ParallelShootingCommandGroup()
@@ -22,12 +22,12 @@ ParallelShootingCommandGroup::~ParallelShootingCommandGroup()
 
 void ParallelShootingCommandGroup::Initialize()
 {
-	CommandBase::ShooterAndLoaderSubsystem->SetShooting(true);
+	CommandBase::ShooterSubsystem->SetShooting(true);
 }
 
 void ParallelShootingCommandGroup::End()
 {
-	CommandBase::ShooterAndLoaderSubsystem->SetShooting(false);
+	CommandBase::ShooterSubsystem->SetShooting(false);
 }
 
 void ParallelShootingCommandGroup::Interrupted()

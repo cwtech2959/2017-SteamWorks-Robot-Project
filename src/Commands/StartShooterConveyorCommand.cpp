@@ -7,10 +7,10 @@
 
 #include <Commands/StartShooterConveyorCommand.h>
 
-StartShooterConveyorCommand::StartShooterConveyorCommand(ShooterAndLoader::ShooterSide side) :
+StartShooterConveyorCommand::StartShooterConveyorCommand(Shooter::ShooterSide side) :
 		CommandBase("StartShootConveyorCommand")
 {
-	Requires(ShooterAndLoaderSubsystem.get());
+	Requires(ShooterSubsystem.get());
 
 	m_shooterSide = side;
 }
@@ -21,8 +21,8 @@ StartShooterConveyorCommand::~StartShooterConveyorCommand()
 
 void StartShooterConveyorCommand::Initialize()
 {
-	SetTimeout(ShooterAndLoaderSubsystem->GetOnTime() * 0.001);
-	ShooterAndLoaderSubsystem->ShooterConveyorOn(m_shooterSide);
+	SetTimeout(ShooterSubsystem->GetOnTime() * 0.001);
+	ShooterSubsystem->ShooterConveyorOn(m_shooterSide);
 }
 
 bool StartShooterConveyorCommand::IsFinished()
@@ -32,7 +32,7 @@ bool StartShooterConveyorCommand::IsFinished()
 
 void StartShooterConveyorCommand::End()
 {
-	ShooterAndLoaderSubsystem->ShooterConveyorOff(m_shooterSide);
+	ShooterSubsystem->ShooterConveyorOff(m_shooterSide);
 }
 
 void StartShooterConveyorCommand::Interrupted()

@@ -5,12 +5,12 @@
  *      Author: CW
  */
 
-#include <Subsystems/ShooterAndLoader.h>
+#include <Subsystems/Shooter.h>
 
 const int MinTimeLimit = 0;
 const int MaxTimeLimit = 5000;
 
-ShooterAndLoader::ShooterAndLoader() :
+Shooter::Shooter() :
 		frc::Subsystem("ShooterAndLoader")
 {
 	StartOffSetRight = StartOffSetRightTime;
@@ -22,86 +22,77 @@ ShooterAndLoader::ShooterAndLoader() :
 	Shooting = false;
 }
 
-ShooterAndLoader::~ShooterAndLoader()
+Shooter::~Shooter()
 {
 }
 
-void ShooterAndLoader::StopAllConveyors()
+void Shooter::StopAllConveyors()
 {
 	SetShooterConveyorsSpeed(0);
-	LoaderConveyor.Set(0);
 }
 
 // Loader Conveyor manipulation
-void ShooterAndLoader::ReverseLoaderConveyor()
-{
-	LoaderConveyor.Set(-1);
-}
 
-void ShooterAndLoader::LoaderConveyorForward()
-{
-	LoaderConveyor.Set(1);
-}
 
 // Shooter feeder manipulation
-void ShooterAndLoader::StartShooterConveyors()
+void Shooter::StartShooterConveyors()
 {
 	// Need to add the shooting feeder sequencing!!!
 }
 
-void ShooterAndLoader::ShooterConveyorsOff()
+void Shooter::ShooterConveyorsOff()
 {
 	SetShooterConveyorsSpeed(0);
 }
 
-void ShooterAndLoader::ReverseShooterConveyors()
+void Shooter::ReverseShooterConveyors()
 {
 	SetShooterConveyorsSpeed(-1);
 }
 
-void ShooterAndLoader::ShooterConveyorOff(ShooterSide side)
+void Shooter::ShooterConveyorOff(ShooterSide side)
 {
 	SetShooterConveyorSpeed(side, 0);
 }
 
-void ShooterAndLoader::ShooterConveyorOn(ShooterSide side)
+void Shooter::ShooterConveyorOn(ShooterSide side)
 {
 	SetShooterConveyorSpeed(side, 1);
 }
 
 // Member Access
 
-void ShooterAndLoader::SetOffSetRight(int offsetTime)
+void Shooter::SetOffSetRight(int offsetTime)
 {
 	StartOffSetRight = LimitOffsetTime(offsetTime);
 }
 
-void ShooterAndLoader::SetOffSetLeft(int offsetTime)
+void Shooter::SetOffSetLeft(int offsetTime)
 {
 	StartOffSetLeft = LimitOffsetTime(offsetTime);
 }
 
-void ShooterAndLoader::SetOnTime(int time)
+void Shooter::SetOnTime(int time)
 {
 	OnTime = LimitOffsetTime(time);
 }
 
-void ShooterAndLoader::SetOffTime(int time)
+void Shooter::SetOffTime(int time)
 {
 	OffTime = LimitOffsetTime(time);
 }
 
-int ShooterAndLoader::GetOnTime()
+int Shooter::GetOnTime()
 {
 	return OnTime;
 }
 
-int ShooterAndLoader::GetOffTime()
+int Shooter::GetOffTime()
 {
 	return OffTime;
 }
 
-int ShooterAndLoader::GetOffsetTime(ShooterSide side)
+int Shooter::GetOffsetTime(ShooterSide side)
 {
 	if (side == leftShooter)
 	{
@@ -113,19 +104,19 @@ int ShooterAndLoader::GetOffsetTime(ShooterSide side)
 	}
 }
 
-void ShooterAndLoader::SetShooting(bool state)
+void Shooter::SetShooting(bool state)
 {
 	Shooting = state;
 }
 
-bool ShooterAndLoader::GetShooting()
+bool Shooter::GetShooting()
 {
 	return Shooting;
 }
 
 // Private Methods
 
-int ShooterAndLoader::LimitOffsetTime(int time)
+int Shooter::LimitOffsetTime(int time)
 {
 	if (time < MinTimeLimit)
 	{
@@ -139,14 +130,14 @@ int ShooterAndLoader::LimitOffsetTime(int time)
 	return time;
 }
 
-void ShooterAndLoader::SetShooterConveyorsSpeed(double speed)
+void Shooter::SetShooterConveyorsSpeed(double speed)
 {
 	SetShooterConveyorSpeed(leftShooter, speed);
 
 	SetShooterConveyorSpeed(rightShooter, speed);
 }
 
-void ShooterAndLoader::SetShooterConveyorSpeed(ShooterSide side, double speed)
+void Shooter::SetShooterConveyorSpeed(ShooterSide side, double speed)
 {
 	if (side == leftShooter)
 	{
@@ -158,7 +149,7 @@ void ShooterAndLoader::SetShooterConveyorSpeed(ShooterSide side, double speed)
 	}
 }
 
-void ShooterAndLoader::SetBallShootersSpeed(double speed)
+void Shooter::SetBallShootersSpeed(double speed)
 {
 	BallShooterLeft.Set(speed);
 	BallShooterRight.Set(speed);

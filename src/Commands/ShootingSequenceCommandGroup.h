@@ -9,12 +9,12 @@
 #define SRC_COMMANDS_SHOOTINGSEQUENCECOMMANDGROUP_H_
 
 #include <Commands/CommandGroup.h>
-#include <Subsystems/ShooterAndLoader.h>
+#include <Subsystems/Shooter.h>
 
 class ShootingSequenceCommandGroup: public frc::CommandGroup
 {
 public:
-	ShootingSequenceCommandGroup(ShooterAndLoader::ShooterSide side);
+	ShootingSequenceCommandGroup(Shooter::ShooterSide side);
 	virtual ~ShootingSequenceCommandGroup();
 };
 

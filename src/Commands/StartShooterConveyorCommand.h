@@ -14,7 +14,7 @@ class StartShooterConveyorCommand: public CommandBase
 {
 public:
 
-	StartShooterConveyorCommand(ShooterAndLoader::ShooterSide side);
+	StartShooterConveyorCommand(Shooter::ShooterSide side);
 	virtual ~StartShooterConveyorCommand();
 
 	void Initialize() override;
@@ -23,7 +23,7 @@ public:
 	bool IsFinished() override;
 
 private:
-	ShooterAndLoader::ShooterSide m_shooterSide;
+	Shooter::ShooterSide m_shooterSide;
 };
 
 #endif /* SRC_COMMANDS_STARTSHOOTERCONVEYORCOMMAND_H_ */

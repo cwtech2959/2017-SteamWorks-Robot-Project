@@ -6,12 +6,12 @@
  */
 
 #include <Commands/ReverseFireCommand.h>
-#include <Subsystems/ShooterAndLoader.h>
+#include <Subsystems/Shooter.h>
 
 ReverseFireCommand::ReverseFireCommand() :
 		CommandBase("ReverseFireCommand")
 {
-	Requires(ShooterAndLoaderSubsystem.get());
+	Requires(ShooterSubsystem.get());
 }
 
 ReverseFireCommand::~ReverseFireCommand()
@@ -20,9 +20,9 @@ ReverseFireCommand::~ReverseFireCommand()
 
 void ReverseFireCommand::Execute()
 {
-	if (ShooterAndLoaderSubsystem->GetShooting() == false)
+	if (ShooterSubsystem->GetShooting() == false)
 	{
-		ShooterAndLoaderSubsystem->ReverseShooterConveyors();
+		ShooterSubsystem->ReverseShooterConveyors();
 	}
 }
 
@@ -33,9 +33,9 @@ bool ReverseFireCommand::IsFinished()
 
 void ReverseFireCommand::End()
 {
-	if (ShooterAndLoaderSubsystem->GetShooting() == false)
+	if (ShooterSubsystem->GetShooting() == false)
 	{
-		ShooterAndLoaderSubsystem->ShooterConveyorsOff();
+		ShooterSubsystem->ShooterConveyorsOff();
 	}
 }
 

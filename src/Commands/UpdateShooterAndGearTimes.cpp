@@ -11,7 +11,7 @@
 UpdateShooterAndGearTimes::UpdateShooterAndGearTimes() :
 CommandBase("UpdateShooterAndGearTimes")
 {
-	Requires(ShooterAndLoaderSubsystem.get());
+	Requires(ShooterSubsystem.get());
 	Requires(GearManagementSubsystem.get());
 }
 
@@ -24,13 +24,13 @@ void UpdateShooterAndGearTimes::Initialize()
 	double gearGateTime = frc::SmartDashboard::GetNumber("Gear Gate Time", DefaultGearGateTime);
 	GearManagementSubsystem->SetGearGateTime(gearGateTime);
 	double startOffSetRightTime = frc::SmartDashboard::GetNumber("Start OffSet Right", StartOffSetRightTime);
-	ShooterAndLoaderSubsystem->SetOffSetRight(startOffSetRightTime);
+	ShooterSubsystem->SetOffSetRight(startOffSetRightTime);
 	double startOffSetLeft = frc::SmartDashboard::GetNumber("Start OffSet Left", StartOffSetLeftTime);
-	ShooterAndLoaderSubsystem->SetOffSetLeft(startOffSetLeft);
+	ShooterSubsystem->SetOffSetLeft(startOffSetLeft);
 	double onTime = frc::SmartDashboard::GetNumber("On Time", DefaultOnTime);
-	ShooterAndLoaderSubsystem->SetOnTime(onTime);
+	ShooterSubsystem->SetOnTime(onTime);
 	double offTime = frc::SmartDashboard::GetNumber("Off Time", DefaultOffTime);
-	ShooterAndLoaderSubsystem->SetOffTime(offTime);
+	ShooterSubsystem->SetOffTime(offTime);
 }
 
 bool UpdateShooterAndGearTimes::IsFinished()

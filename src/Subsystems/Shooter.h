@@ -5,8 +5,8 @@
  *      Author: CW
  */
 
-#ifndef SRC_SUBSYSTEMS_SHOOTERANDLOADER_H_
-#define SRC_SUBSYSTEMS_SHOOTERANDLOADER_H_
+#ifndef SRC_SUBSYSTEMS_SHOOTER_H_
+#define SRC_SUBSYSTEMS_SHOOTER_H_
 
 #include <Commands/Subsystem.h>
 #include "Spark.h"
@@ -19,7 +19,7 @@ constexpr int DefaultOnTime = 10;
 constexpr int DefaultOffTime = 10;
 constexpr double DefaultShooterSpeed = 0.65;
 
-class ShooterAndLoader : public frc::Subsystem
+class Shooter : public frc::Subsystem
 {
 	// private members
 private:
@@ -27,8 +27,6 @@ private:
 	{ SHOOTER_CONVEYOR_RIGHT_PWM };
 	frc::Spark ShooterConveyorLeft
 	{ SHOOTER_CONVEYOR_LEFT_PWM };
-	frc::Spark LoaderConveyor
-	{ LOADER_CONVEYOR_PWM };
 
 	CanTalonSRX BallShooterLeft
 	{BALL_SHOOTER_LEFT_CAN};
@@ -50,16 +48,15 @@ public:
 	};
 
 public:
-	ShooterAndLoader();
-	virtual ~ShooterAndLoader();
+	Shooter();
+	virtual ~Shooter();
 
 	void StopAllConveyors();
 
 	void SetBallShootersSpeed(double speed);
 
 	// Loader conveyor manipulation
-	void ReverseLoaderConveyor();
-	void LoaderConveyorForward();
+
 
 	// Shooter feeder manipulation
 	void StartShooterConveyors();
@@ -88,4 +85,4 @@ private:
 	void SetShooterConveyorsSpeed(double speed);
 	void SetShooterConveyorSpeed(ShooterSide side, double speed);
 };
-#endif /* SRC_SUBSYSTEMS_SHOOTERANDLOADER_H_ */
+#endif /* SRC_SUBSYSTEMS_SHOOTER_H_ */
