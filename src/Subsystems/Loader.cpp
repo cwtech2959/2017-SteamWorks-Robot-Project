@@ -10,7 +10,6 @@
 Loader::Loader() :
 	frc::Subsystem("Loader")
 {
-
 }
 
 Loader::~Loader()
@@ -24,10 +23,12 @@ void Loader::StopLoaderConveyor()
 
 void Loader::ReverseLoaderConveyor()
 {
+	StopLoaderConveyor();
 	LoaderConveyor.Set(-1);
 }
 
 void Loader::LoaderConveyorForward()
 {
+	StopLoaderConveyor();
 	LoaderConveyor.Set(1);
 }

@@ -15,6 +15,15 @@ class ClearGearCommand: public CommandBase
 public:
 	ClearGearCommand();
 	virtual ~ClearGearCommand();
+
+	void Initialize() override;
+	void Execute() override;
+	bool IsFinished() override;
+	void End() override;
+	void Interrupted() override;
+
+private:
+	bool m_gearGone;
 };
 
 #endif /* SRC_COMMANDS_CLEARGEARCOMMAND_H_ */

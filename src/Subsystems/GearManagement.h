@@ -38,6 +38,10 @@ private:
 	int FryingPanStallTime;
 
 public:
+	frc::DigitalInput GearLoadReady
+	{ GEAR_LOAD_READY_DIO };
+
+public:
 	GearManagement();
 	virtual ~GearManagement();
 

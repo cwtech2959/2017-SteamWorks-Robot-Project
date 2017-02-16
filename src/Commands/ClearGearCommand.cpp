@@ -7,14 +7,42 @@
 
 #include <Commands/ClearGearCommand.h>
 
-ClearGearCommand::ClearGearCommand()
+ClearGearCommand::ClearGearCommand() :
+	CommandBase("ClearGearCommand")
 {
-	// TODO Auto-generated constructor stub
-
+	Requires(LoaderSubsystem.get());
+	m_gearGone = false;
 }
 
 ClearGearCommand::~ClearGearCommand()
 {
-	// TODO Auto-generated destructor stub
 }
 
+void ClearGearCommand::Initialize()
+{
+	LoaderSubsystem->ReverseLoaderConveyor();
+}
+
+void ClearGearCommand::Execute()
+{
+	if (m_gearGone == false && GearManagementSubsystem->GearLoadReady.Get() == false)
+	{
+		SetTimeout(0.5);
+		m_gearGone = true;
+	}
+}
+
+bool ClearGearCommand::IsFinished()
+{
+	return GearManagementSubsystem->GearLoadReady.Get() == false IsTimedOut();
+}
+
+void ClearGearCommand::End()
+{
+	LoaderSubsystem->LoaderConveyorForward();
+}
+
+void ClearGearCommand::Interrupted()
+{
+	End();
+}

@@ -13,24 +13,19 @@
 #include "Spark.h"
 #include "RobotMap.h"
 
-
-class Loader: public frc::Subsystem {
+class Loader: public frc::Subsystem
+{
 private:
-	frc::Spark LoaderConveyor
-		{ LOADER_CONVEYOR_PWM };
-
+	frc::Spark LoaderConveyor { LOADER_CONVEYOR_PWM };
 
 public:
 	Loader();
 	virtual ~Loader();
 
-void StopLoaderConveyor();
+	void StopLoaderConveyor();
 
-void ReverseLoaderConveyor();
-void LoaderConveyorForward();
-
-
-
+	void ReverseLoaderConveyor();
+	void LoaderConveyorForward();
 };
 
 #endif /* SRC_SUBSYSTEMS_LOADER_H_ */
