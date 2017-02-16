@@ -34,7 +34,7 @@ void ClearGearCommand::Execute()
 
 bool ClearGearCommand::IsFinished()
 {
-	return GearManagementSubsystem->GearLoadReady.Get() == false IsTimedOut();
+	return m_gearGone && IsTimedOut();
 }
 
 void ClearGearCommand::End()
