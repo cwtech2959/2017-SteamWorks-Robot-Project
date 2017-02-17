@@ -13,6 +13,7 @@
 #include <Subsystems/GearManagement.h>
 #include <Subsystems/Shooter.h>
 #include <Subsystems/Loader.h>
+#include <Subsystems/Climb.h>
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -33,6 +34,7 @@ public:
 	static std::unique_ptr<PhotonCannonSubsystem> myPhotonCannonSubsystem;
 	static std::unique_ptr<GearManagement> GearManagementSubsystem;
 	static std::unique_ptr<Loader> LoaderSubsystem;
+	static std::unique_ptr<Climb> ClimbSubsystem;
 
 };
 

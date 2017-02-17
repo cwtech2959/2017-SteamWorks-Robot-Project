@@ -15,19 +15,16 @@
 
 constexpr int DefaultGearGateTime = 500;
 constexpr int DefaultFryingPanStallTime = 500;
+constexpr int DefaultClearTime = 500;
 
 
 class GearManagement : public frc::Subsystem
 {
 private:
-	frc::DigitalInput FryingPanUpSwitch
-	{ FRYING_PAN_UP_DIO };
+
 	frc::DigitalInput FryingPanDownSwitch
 	{ FRYING_PAN_DOWN_DIO };
-	frc::DigitalInput GearLoadReady
-	{ GEAR_LOAD_READY_DIO };
-	frc::DigitalInput GearOnFryingPan
-	{ GEAR_ON_FRYING_PAN_DIO };
+
 
 	frc::Spark FryingPanMotor
 	{ FRYING_PAN_MOTOR_PWM };
@@ -40,6 +37,12 @@ private:
 public:
 	frc::DigitalInput GearLoadReady
 	{ GEAR_LOAD_READY_DIO };
+	frc::DigitalInput FryingPanUpSwitch
+		{ FRYING_PAN_UP_DIO };
+	frc::DigitalInput GearOnFryingPan
+	{ GEAR_ON_FRYING_PAN_DIO };
+
+	int GearClearTime;
 
 public:
 	GearManagement();
@@ -59,6 +62,8 @@ public:
 
 	bool GetFryingPanUpSwitch();
 	bool GetFryingPanDownSwitch();
+
+	void SetGearClearTime(int time);
 };
 
 #endif /* SRC_SUBSYSTEMS_GEARMANAGEMENT_H_ */

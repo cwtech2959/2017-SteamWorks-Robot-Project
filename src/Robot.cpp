@@ -10,7 +10,7 @@
 #include "CommandBase.h"
 #include <Subsystems/Shooter.h>
 #include <Subsystems/Loader.h>
-
+#include <Subsystems/GearManagement.h>
 
 class Robot: public frc::IterativeRobot
 {
@@ -28,6 +28,7 @@ public:
 		frc::SmartDashboard::SetDefaultNumber("Start OffSet Left", StartOffSetLeftTime);
 		frc::SmartDashboard::SetDefaultNumber("On Time", DefaultOnTime);
 		frc::SmartDashboard::SetDefaultNumber("Off Time", DefaultOffTime);
+		frc::SmartDashboard::SetDefaultNumber("Gear Clear Time", DefaultClearTime);
 	}
 
 	/**

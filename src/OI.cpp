@@ -9,7 +9,7 @@
 #include <Commands/UpdateShooterAndGearTimes.h>
 #include <Commands/UpdateShooterSpeed.h>
 #include <WPILib.h>
-
+#include <Commands/ClearGearCommand.h>
 
 OI::OI()
 {
@@ -23,6 +23,7 @@ OI::OI()
 	GearDropOffButton.WhenReleased(new GearDropOffCommand(false));
 	FryingPanUpButton.WhenPressed(new FryingPanUpCommand(true));
 	FryingPanDownButton.WhenPressed(new FryingPanUpCommand(false));
+	m_clearGearTrigger.WhenActive(new ClearGearCommand());
 
 	frc::SmartDashboard::PutData("Update Shooter Speed", new UpdateShooterSpeed());
 	frc::SmartDashboard::PutData("Update Shooter And Gear Times", new UpdateShooterAndGearTimes());

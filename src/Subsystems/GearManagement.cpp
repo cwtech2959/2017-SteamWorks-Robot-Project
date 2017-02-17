@@ -12,6 +12,7 @@ GearManagement::GearManagement() :
 {
 	GearGateTime = DefaultGearGateTime;
 	FryingPanStallTime = DefaultFryingPanStallTime;
+	GearClearTime = DefaultClearTime;
 }
 
 GearManagement::~GearManagement()
@@ -83,4 +84,9 @@ bool GearManagement::GetFryingPanDownSwitch()
 {
 	return FryingPanDownSwitch.Get();
 
+}
+
+void GearManagement::SetGearClearTime(int time)
+{
+	GearClearTime = time;
 }
