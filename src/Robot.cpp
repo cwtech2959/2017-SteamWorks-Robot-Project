@@ -29,6 +29,8 @@ public:
 		frc::SmartDashboard::SetDefaultNumber("On Time", DefaultOnTime);
 		frc::SmartDashboard::SetDefaultNumber("Off Time", DefaultOffTime);
 		frc::SmartDashboard::SetDefaultNumber("Gear Clear Time", DefaultClearTime);
+		frc::SmartDashboard::SetDefaultNumber("Frying Pan Up Delay Time", DefaultFryingPanUpDelayTime);
+
 	}
 
 	/**

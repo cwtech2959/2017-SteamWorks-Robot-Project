@@ -13,6 +13,7 @@ GearManagement::GearManagement() :
 	GearGateTime = DefaultGearGateTime;
 	FryingPanStallTime = DefaultFryingPanStallTime;
 	GearClearTime = DefaultClearTime;
+	FryingPanUpDelay = DefaultFryingPanUpDelayTime;
 }
 
 GearManagement::~GearManagement()

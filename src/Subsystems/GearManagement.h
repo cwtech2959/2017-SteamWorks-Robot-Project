@@ -16,7 +16,7 @@
 constexpr int DefaultGearGateTime = 500;
 constexpr int DefaultFryingPanStallTime = 500;
 constexpr int DefaultClearTime = 500;
-
+constexpr int DefaultFryingPanUpDelayTime = 500;
 
 class GearManagement : public frc::Subsystem
 {
@@ -33,6 +33,7 @@ private:
 
 	int GearGateTime;
 	int FryingPanStallTime;
+	int FryingPanUpDelay;
 
 public:
 	frc::DigitalInput GearLoadReady
