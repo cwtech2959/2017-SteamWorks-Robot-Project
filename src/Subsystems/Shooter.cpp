@@ -11,7 +11,7 @@
 const int MinTimeLimit = 0;
 const int MaxTimeLimit = 5000;
 
-Shooter::Shooter() : Subsystem("ShooterAndLoader")
+Shooter::Shooter() : Subsystem("Shooter")
 {
 	StartOffSetRight = StartOffSetRightTime;
 	StartOffSetLeft = StartOffSetLeftTime;
@@ -23,8 +23,6 @@ Shooter::Shooter() : Subsystem("ShooterAndLoader")
 
 	ShooterConveyorRight.reset(new Spark(SHOOTER_CONVEYOR_RIGHT_PWM));
 	ShooterConveyorLeft.reset(new Spark(SHOOTER_CONVEYOR_LEFT_PWM));
-	BallShooterLeft.reset(new CANTalon(BALL_SHOOTER_LEFT_CAN));
-	BallShooterRight.reset(new CANTalon(BALL_SHOOTER_RIGHT_CAN));
 }
 
 Shooter::~Shooter()
@@ -153,8 +151,4 @@ void Shooter::SetShooterConveyorSpeed(ShooterSide side, double speed)
 	}
 }
 
-void Shooter::SetBallShootersSpeed(double speed)
-{
-	BallShooterLeft->Set(speed);
-	BallShooterRight->Set(speed);
-}
+
