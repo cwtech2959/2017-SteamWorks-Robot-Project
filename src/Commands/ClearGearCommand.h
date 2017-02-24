@@ -8,9 +8,9 @@
 #ifndef SRC_COMMANDS_CLEARGEARCOMMAND_H_
 #define SRC_COMMANDS_CLEARGEARCOMMAND_H_
 
-#include <CommandBase.h>
+#include "WPILib.h"
 
-class ClearGearCommand: public CommandBase
+class ClearGearCommand: public Command
 {
 public:
 	ClearGearCommand();

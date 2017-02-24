@@ -8,15 +8,16 @@
 #ifndef SRC_COMMANDS_UPDATEFRYINGPANUPDELAYTIME_H_
 #define SRC_COMMANDS_UPDATEFRYINGPANUPDELAYTIME_H_
 
-#include <CommandBase.h>
+#include "WPILib.h"
 
-class UpdateFryingPanUpDelayTime: public CommandBase {
+class UpdateFryingPanUpDelayTime: public Command
+{
 public:
 	UpdateFryingPanUpDelayTime();
 	virtual ~UpdateFryingPanUpDelayTime();
 
 	void Initialize() override;
-		bool IsFinished () override;
+	bool IsFinished () override;
 };
 
 #endif /* SRC_COMMANDS_UPDATEFRYINGPANUPDELAYTIME_H_ */

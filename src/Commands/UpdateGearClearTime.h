@@ -8,9 +8,10 @@
 #ifndef SRC_COMMANDS_UPDATEGEARCLEARTIME_H_
 #define SRC_COMMANDS_UPDATEGEARCLEARTIME_H_
 
-#include <CommandBase.h>
+#include "WPILib.h"
 
-class UpdateGearClearTime: public CommandBase {
+class UpdateGearClearTime: public Command
+{
 public:
 	UpdateGearClearTime();
 	virtual ~UpdateGearClearTime();

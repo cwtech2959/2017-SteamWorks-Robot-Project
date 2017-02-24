@@ -6,11 +6,12 @@
  */
 
 #include <Commands/StartShooterConveyorCommand.h>
+#include <Robot.h>
 
 StartShooterConveyorCommand::StartShooterConveyorCommand(Shooter::ShooterSide side) :
-		CommandBase("StartShootConveyorCommand")
+		Command("StartShootConveyorCommand")
 {
-	Requires(ShooterSubsystem.get());
+	Requires(Robot::ShooterSubsystem.get());
 
 	m_shooterSide = side;
 }
@@ -21,8 +22,8 @@ StartShooterConveyorCommand::~StartShooterConveyorCommand()
 
 void StartShooterConveyorCommand::Initialize()
 {
-	SetTimeout(ShooterSubsystem->GetOnTime() * 0.001);
-	ShooterSubsystem->ShooterConveyorOn(m_shooterSide);
+	SetTimeout(Robot::ShooterSubsystem->GetOnTime() * 0.001);
+	Robot::ShooterSubsystem->ShooterConveyorOn(m_shooterSide);
 }
 
 bool StartShooterConveyorCommand::IsFinished()
@@ -32,7 +33,7 @@ bool StartShooterConveyorCommand::IsFinished()
 
 void StartShooterConveyorCommand::End()
 {
-	ShooterSubsystem->ShooterConveyorOff(m_shooterSide);
+	Robot::ShooterSubsystem->ShooterConveyorOff(m_shooterSide);
 }
 
 void StartShooterConveyorCommand::Interrupted()

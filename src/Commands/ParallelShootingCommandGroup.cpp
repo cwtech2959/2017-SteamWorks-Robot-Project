@@ -7,8 +7,8 @@
 
 #include <Commands/ParallelShootingCommandGroup.h>
 #include <Commands/ShootingSequenceCommandGroup.h>
-#include <CommandBase.h>
 #include <Subsystems/Shooter.h>
+#include <Robot.h>
 
 ParallelShootingCommandGroup::ParallelShootingCommandGroup()
 {
@@ -22,12 +22,12 @@ ParallelShootingCommandGroup::~ParallelShootingCommandGroup()
 
 void ParallelShootingCommandGroup::Initialize()
 {
-	CommandBase::ShooterSubsystem->SetShooting(true);
+	Robot::ShooterSubsystem->SetShooting(true);
 }
 
 void ParallelShootingCommandGroup::End()
 {
-	CommandBase::ShooterSubsystem->SetShooting(false);
+	Robot::ShooterSubsystem->SetShooting(false);
 }
 
 void ParallelShootingCommandGroup::Interrupted()

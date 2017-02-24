@@ -8,9 +8,10 @@
 #ifndef SRC_COMMANDS_UPDATESHOOTERSPEED_H_
 #define SRC_COMMANDS_UPDATESHOOTERSPEED_H_
 
-#include <CommandBase.h>
+#include "WPILib.h"
 
-class UpdateShooterSpeed: public CommandBase {
+class UpdateShooterSpeed: public Command
+{
 public:
 	UpdateShooterSpeed();
 	virtual ~UpdateShooterSpeed();

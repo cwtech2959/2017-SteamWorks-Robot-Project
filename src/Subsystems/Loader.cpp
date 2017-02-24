@@ -6,10 +6,11 @@
  */
 
 #include <Subsystems/Loader.h>
+#include "RobotMap.h"
 
-Loader::Loader() :
-	frc::Subsystem("Loader")
+Loader::Loader() : Subsystem("Loader")
 {
+	LoaderConveyor.reset(new Spark(LOADER_CONVEYOR_PWM));
 }
 
 Loader::~Loader()
@@ -18,17 +19,17 @@ Loader::~Loader()
 
 void Loader::StopLoaderConveyor()
 {
-	LoaderConveyor.Set(0);
+	LoaderConveyor->Set(0);
 }
 
 void Loader::ReverseLoaderConveyor()
 {
 	StopLoaderConveyor();
-	LoaderConveyor.Set(-1);
+	LoaderConveyor->Set(-1);
 }
 
 void Loader::LoaderConveyorForward()
 {
 	StopLoaderConveyor();
-	LoaderConveyor.Set(1);
+	LoaderConveyor->Set(1);
 }

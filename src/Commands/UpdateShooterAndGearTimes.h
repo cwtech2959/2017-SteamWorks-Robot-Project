@@ -8,9 +8,10 @@
 #ifndef SRC_COMMANDS_UPDATESHOOTERANDGEARTIMES_H_
 #define SRC_COMMANDS_UPDATESHOOTERANDGEARTIMES_H_
 
-#include <CommandBase.h>
+#include "WPILib.h"
 
-class UpdateShooterAndGearTimes: public CommandBase {
+class UpdateShooterAndGearTimes: public Command
+{
 public:
 	UpdateShooterAndGearTimes();
 	virtual ~UpdateShooterAndGearTimes();

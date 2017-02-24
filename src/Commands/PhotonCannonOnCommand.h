@@ -8,9 +8,9 @@
 #ifndef SRC_COMMANDS_PHOTONCANNONONCOMMAND_H_
 #define SRC_COMMANDS_PHOTONCANNONONCOMMAND_H_
 
-#include <CommandBase.h>
+#include "WPILib.h"
 
-class PhotonCannonOnCommand: public CommandBase
+class PhotonCannonOnCommand: public Command
 {
 public:
 	PhotonCannonOnCommand();

@@ -8,9 +8,9 @@
 #ifndef SRC_COMMANDS_PARALLELSHOOTINGCOMMANDGROUP_H_
 #define SRC_COMMANDS_PARALLELSHOOTINGCOMMANDGROUP_H_
 
-#include <Commands/CommandGroup.h>
+#include "WPILib.h"
 
-class ParallelShootingCommandGroup: public frc::CommandGroup
+class ParallelShootingCommandGroup: public CommandGroup
 {
 public:
 	ParallelShootingCommandGroup();

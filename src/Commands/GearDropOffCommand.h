@@ -8,9 +8,9 @@
 #ifndef SRC_COMMANDS_GEARDROPOFFCOMMAND_H_
 #define SRC_COMMANDS_GEARDROPOFFCOMMAND_H_
 
-#include <CommandBase.h>
+#include "WPILib.h"
 
-class GearDropOffCommand: public CommandBase
+class GearDropOffCommand: public Command
 {
 public:
 	GearDropOffCommand(bool open);
@@ -22,7 +22,6 @@ public:
 	void Interrupted() override;
 
 private:
-
 	bool m_open;
 };
 

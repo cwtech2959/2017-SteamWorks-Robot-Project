@@ -8,9 +8,10 @@
 #ifndef SRC_COMMANDS_FRYINGPANUPCOMMAND_H_
 #define SRC_COMMANDS_FRYINGPANUPCOMMAND_H_
 
-#include <CommandBase.h>
+#include "WPILib.h"
 
-class FryingPanUpCommand: public CommandBase {
+class FryingPanUpCommand: public Command
+{
 public:
 	FryingPanUpCommand(bool up);
 	virtual ~FryingPanUpCommand();

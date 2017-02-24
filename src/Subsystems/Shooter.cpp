@@ -6,12 +6,12 @@
  */
 
 #include <Subsystems/Shooter.h>
+#include "RobotMap.h"
 
 const int MinTimeLimit = 0;
 const int MaxTimeLimit = 5000;
 
-Shooter::Shooter() :
-		frc::Subsystem("ShooterAndLoader")
+Shooter::Shooter() : Subsystem("ShooterAndLoader")
 {
 	StartOffSetRight = StartOffSetRightTime;
 	StartOffSetLeft = StartOffSetLeftTime;
@@ -20,6 +20,11 @@ Shooter::Shooter() :
 	OffTime = DefaultOffTime;
 
 	Shooting = false;
+
+	ShooterConveyorRight.reset(new Spark(SHOOTER_CONVEYOR_RIGHT_PWM));
+	ShooterConveyorLeft.reset(new Spark(SHOOTER_CONVEYOR_LEFT_PWM));
+	BallShooterLeft.reset(new CANTalon(BALL_SHOOTER_LEFT_CAN));
+	BallShooterRight.reset(new CANTalon(BALL_SHOOTER_RIGHT_CAN));
 }
 
 Shooter::~Shooter()
@@ -133,7 +138,6 @@ int Shooter::LimitOffsetTime(int time)
 void Shooter::SetShooterConveyorsSpeed(double speed)
 {
 	SetShooterConveyorSpeed(leftShooter, speed);
-
 	SetShooterConveyorSpeed(rightShooter, speed);
 }
 
@@ -141,17 +145,16 @@ void Shooter::SetShooterConveyorSpeed(ShooterSide side, double speed)
 {
 	if (side == leftShooter)
 	{
-		ShooterConveyorLeft.Set(speed);
+		ShooterConveyorLeft->Set(speed);
 	}
 	else
 	{
-		ShooterConveyorRight.Set(speed);
+		ShooterConveyorRight->Set(speed);
 	}
 }
 
 void Shooter::SetBallShootersSpeed(double speed)
 {
-	BallShooterLeft.Set(speed);
-	BallShooterRight.Set(speed);
-
+	BallShooterLeft->Set(speed);
+	BallShooterRight->Set(speed);
 }

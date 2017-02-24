@@ -8,12 +8,12 @@
 #ifndef SRC_COMMANDS_STARTSHOOTERCONVEYORCOMMAND_H_
 #define SRC_COMMANDS_STARTSHOOTERCONVEYORCOMMAND_H_
 
-#include <CommandBase.h>
+#include "WPILib.h"
+#include <Subsystems/Shooter.h>
 
-class StartShooterConveyorCommand: public CommandBase
+class StartShooterConveyorCommand: public Command
 {
 public:
-
 	StartShooterConveyorCommand(Shooter::ShooterSide side);
 	virtual ~StartShooterConveyorCommand();
 

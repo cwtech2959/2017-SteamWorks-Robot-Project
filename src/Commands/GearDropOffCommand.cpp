@@ -6,11 +6,12 @@
  */
 
 #include <Commands/GearDropOffCommand.h>
+#include <Robot.h>
 
 GearDropOffCommand::GearDropOffCommand(bool open) :
-		CommandBase("GearDropOffCommand")
+		Command("GearDropOffCommand")
 {
-	Requires(GearManagementSubsystem.get());
+	Requires(Robot::GearManagementSubsystem.get());
 	m_open = open;
 }
 
@@ -20,8 +21,8 @@ GearDropOffCommand::~GearDropOffCommand()
 
 void GearDropOffCommand::Initialize()
 {
-	GearManagementSubsystem->StartGearDropOffMotors(m_open);
-	int time = GearManagementSubsystem->GetGearGateTime();
+	Robot::GearManagementSubsystem->StartGearDropOffMotors(m_open);
+	int time = Robot::GearManagementSubsystem->GetGearGateTime();
 
 	SetTimeout(time * 0.001);
 }
@@ -33,7 +34,7 @@ bool GearDropOffCommand::IsFinished()
 
 void GearDropOffCommand::End()
 {
-	GearManagementSubsystem->StopGearDropOffMotors();
+	Robot::GearManagementSubsystem->StopGearDropOffMotors();
 }
 
 void GearDropOffCommand::Interrupted()

@@ -6,21 +6,21 @@
  */
 
 #include <Commands/PhotonCannonOnCommand.h>
+#include <Robot.h>
 
 PhotonCannonOnCommand::PhotonCannonOnCommand() :
-	CommandBase("PhotonCannonCommand")
+	Command("PhotonCannonCommand")
 {
-	// TODO Auto-generated constructor stub
-	Requires(myPhotonCannonSubsystem.get());
+	Requires(Robot::PhotonCannonSubsystem.get());
 }
 
-PhotonCannonOnCommand::~PhotonCannonOnCommand() {
-	// TODO Auto-generated destructor stub
+PhotonCannonOnCommand::~PhotonCannonOnCommand()
+{
 }
 
 void PhotonCannonOnCommand::Execute()
 {
-	myPhotonCannonSubsystem->LightOn();
+	Robot::PhotonCannonSubsystem->LightOn();
 }
 
 bool PhotonCannonOnCommand::IsFinished()

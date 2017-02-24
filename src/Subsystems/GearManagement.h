@@ -9,40 +9,29 @@
 #define SRC_SUBSYSTEMS_GEARMANAGEMENT_H_
 
 #include <Commands/Subsystem.h>
-#include <DigitalInput.h>
-#include "RobotMap.h"
-#include "Spark.h"
+#include "WPILib.h"
 
 constexpr int DefaultGearGateTime = 500;
 constexpr int DefaultFryingPanStallTime = 500;
 constexpr int DefaultClearTime = 500;
 constexpr int DefaultFryingPanUpDelayTime = 500;
 
-class GearManagement : public frc::Subsystem
+class GearManagement : public Subsystem
 {
 private:
+	std::shared_ptr<DigitalInput> FryingPanDownSwitch;
+	std::shared_ptr<DigitalInput> FryingPanUpSwitch;
+	std::shared_ptr<DigitalInput> GearLoadReady;
+	std::shared_ptr<DigitalInput> GearOnFryingPan;
 
-	frc::DigitalInput FryingPanDownSwitch
-	{ FRYING_PAN_DOWN_DIO };
-
-
-	frc::Spark FryingPanMotor
-	{ FRYING_PAN_MOTOR_PWM };
-	frc::Spark GearDropOffMotors
-	{ GEAR_DROP_OFF_MOTORS_PWM };
+	std::shared_ptr<Spark> FryingPanMotor;
+	std::shared_ptr<Spark> GearDropOffMotors;
 
 	int GearGateTime;
 	int FryingPanStallTime;
 	int FryingPanUpDelay;
 
 public:
-	frc::DigitalInput GearLoadReady
-	{ GEAR_LOAD_READY_DIO };
-	frc::DigitalInput FryingPanUpSwitch
-		{ FRYING_PAN_UP_DIO };
-	frc::DigitalInput GearOnFryingPan
-	{ GEAR_ON_FRYING_PAN_DIO };
-
 	int GearClearTime;
 
 public:
@@ -63,6 +52,8 @@ public:
 
 	bool GetFryingPanUpSwitch();
 	bool GetFryingPanDownSwitch();
+	bool GetGearLoadReady();
+	bool GetGearOnFryingPan();
 
 	void SetGearClearTime(int time);
 };

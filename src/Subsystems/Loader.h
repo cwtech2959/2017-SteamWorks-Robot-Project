@@ -8,15 +8,13 @@
 #ifndef SRC_SUBSYSTEMS_LOADER_H_
 #define SRC_SUBSYSTEMS_LOADER_H_
 
+#include "WPILib.h"
 #include <Commands/Subsystem.h>
 
-#include "Spark.h"
-#include "RobotMap.h"
-
-class Loader: public frc::Subsystem
+class Loader: public Subsystem
 {
 private:
-	frc::Spark LoaderConveyor { LOADER_CONVEYOR_PWM };
+	std::shared_ptr<Spark> LoaderConveyor;
 
 public:
 	Loader();

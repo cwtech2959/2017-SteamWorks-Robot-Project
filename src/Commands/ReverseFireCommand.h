@@ -8,9 +8,9 @@
 #ifndef SRC_COMMANDS_REVERSEFIRECOMMAND_H_
 #define SRC_COMMANDS_REVERSEFIRECOMMAND_H_
 
-#include <CommandBase.h>
+#include "WPILib.h"
 
-class ReverseFireCommand: public CommandBase
+class ReverseFireCommand: public Command
 {
 public:
 	ReverseFireCommand();

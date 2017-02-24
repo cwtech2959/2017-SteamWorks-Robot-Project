@@ -8,10 +8,10 @@
 #ifndef SRC_COMMANDS_SHOOTINGSEQUENCECOMMANDGROUP_H_
 #define SRC_COMMANDS_SHOOTINGSEQUENCECOMMANDGROUP_H_
 
-#include <Commands/CommandGroup.h>
+#include "WPILib.h"
 #include <Subsystems/Shooter.h>
 
-class ShootingSequenceCommandGroup: public frc::CommandGroup
+class ShootingSequenceCommandGroup: public CommandGroup
 {
 public:
 	ShootingSequenceCommandGroup(Shooter::ShooterSide side);

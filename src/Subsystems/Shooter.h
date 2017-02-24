@@ -8,10 +8,9 @@
 #ifndef SRC_SUBSYSTEMS_SHOOTER_H_
 #define SRC_SUBSYSTEMS_SHOOTER_H_
 
+#include "WPILib.h"
 #include <Commands/Subsystem.h>
-#include "Spark.h"
-#include "RobotMap.h"
-#include <CanTalonSRX.h>
+#include <CanTalon.h>
 
 constexpr int StartOffSetRightTime = 100;
 constexpr int StartOffSetLeftTime = 100;
@@ -19,19 +18,15 @@ constexpr int DefaultOnTime = 10;
 constexpr int DefaultOffTime = 10;
 constexpr double DefaultShooterSpeed = 0.65;
 
-class Shooter : public frc::Subsystem
+class Shooter : public Subsystem
 {
 	// private members
 private:
-	frc::Spark ShooterConveyorRight
-	{ SHOOTER_CONVEYOR_RIGHT_PWM };
-	frc::Spark ShooterConveyorLeft
-	{ SHOOTER_CONVEYOR_LEFT_PWM };
+	std::shared_ptr<Spark> ShooterConveyorRight;
+	std::shared_ptr<Spark> ShooterConveyorLeft;
 
-	CanTalonSRX BallShooterLeft
-	{BALL_SHOOTER_LEFT_CAN};
-	CanTalonSRX BallShooterRight
-	{BALL_SHOOTER_RIGHT_CAN};
+	std::shared_ptr<CANTalon> BallShooterLeft;
+	std::shared_ptr<CANTalon> BallShooterRight;
 
 	int StartOffSetRight;
 	int StartOffSetLeft;

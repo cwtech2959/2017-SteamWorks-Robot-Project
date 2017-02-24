@@ -1,27 +1,25 @@
 /*
  * DriveWithJoystick.cpp
  *
- *  Created on: Jan 21, 2017
- *      Author: Kevin
+ *  Created on: Jan 28, 2017
+ *      Author: mriri
  */
 
 #include <Commands/DriveWithJoystick.h>
+#include <Robot.h>
 
-DriveWithJoystick::DriveWithJoystick() :
-		CommandBase("DriveWithJoystick")
+DriveWithJoystick::DriveWithJoystick() : Command("DriveWithJoystick")
 {
-	Requires(DriveTrainSubsystem.get());
-	// TODO Auto-generated constructor stub
+	Requires(Robot::DriveTrainSubsystem.get());
 }
 
 DriveWithJoystick::~DriveWithJoystick()
 {
-	// TODO Auto-generated destructor stub
 }
 
 void DriveWithJoystick::Execute()
 {
-	DriveTrainSubsystem->TankDrive(&oi->DriverJoystick);
+	Robot::DriveTrainSubsystem->TankDrive(Robot::oi->GetDriverJoystick());
 }
 
 bool DriveWithJoystick::IsFinished()

@@ -6,12 +6,12 @@
  */
 
 #include <Commands/UpdateShooterSpeed.h>
-#include <SmartDashboard/SmartDashboard.h>
+#include <Robot.h>
 
 UpdateShooterSpeed::UpdateShooterSpeed() :
-	CommandBase("UpdateShooterSpeedCommand")
+	Command("UpdateShooterSpeedCommand")
 {
-	Requires(ShooterSubsystem.get());
+	Requires(Robot::ShooterSubsystem.get());
 }
 
 UpdateShooterSpeed::~UpdateShooterSpeed()
@@ -20,8 +20,8 @@ UpdateShooterSpeed::~UpdateShooterSpeed()
 
 void UpdateShooterSpeed::Initialize()
 {
-	double speed = frc::SmartDashboard::GetNumber("Shooter Speed", DefaultShooterSpeed);
-	ShooterSubsystem->SetBallShootersSpeed(speed);
+	double speed = SmartDashboard::GetNumber("Shooter Speed", DefaultShooterSpeed);
+	Robot::ShooterSubsystem->SetBallShootersSpeed(speed);
 }
 
 bool UpdateShooterSpeed::IsFinished()

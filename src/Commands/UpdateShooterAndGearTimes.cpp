@@ -6,31 +6,31 @@
  */
 
 #include <Commands/UpdateShooterAndGearTimes.h>
-#include <SmartDashboard/SmartDashboard.h>
+#include <Robot.h>
 
 UpdateShooterAndGearTimes::UpdateShooterAndGearTimes() :
-CommandBase("UpdateShooterAndGearTimes")
+	Command("UpdateShooterAndGearTimes")
 {
-	Requires(ShooterSubsystem.get());
-	Requires(GearManagementSubsystem.get());
+	Requires(Robot::ShooterSubsystem.get());
+	Requires(Robot::GearManagementSubsystem.get());
 }
 
-UpdateShooterAndGearTimes::~UpdateShooterAndGearTimes() {
-	// TODO Auto-generated destructor stub
+UpdateShooterAndGearTimes::~UpdateShooterAndGearTimes()
+{
 }
 
 void UpdateShooterAndGearTimes::Initialize()
 {
-	double gearGateTime = frc::SmartDashboard::GetNumber("Gear Gate Time", DefaultGearGateTime);
-	GearManagementSubsystem->SetGearGateTime(gearGateTime);
-	double startOffSetRightTime = frc::SmartDashboard::GetNumber("Start OffSet Right", StartOffSetRightTime);
-	ShooterSubsystem->SetOffSetRight(startOffSetRightTime);
-	double startOffSetLeft = frc::SmartDashboard::GetNumber("Start OffSet Left", StartOffSetLeftTime);
-	ShooterSubsystem->SetOffSetLeft(startOffSetLeft);
-	double onTime = frc::SmartDashboard::GetNumber("On Time", DefaultOnTime);
-	ShooterSubsystem->SetOnTime(onTime);
-	double offTime = frc::SmartDashboard::GetNumber("Off Time", DefaultOffTime);
-	ShooterSubsystem->SetOffTime(offTime);
+	double gearGateTime = SmartDashboard::GetNumber("Gear Gate Time", DefaultGearGateTime);
+	Robot::GearManagementSubsystem->SetGearGateTime(gearGateTime);
+	double startOffSetRightTime = SmartDashboard::GetNumber("Start OffSet Right", StartOffSetRightTime);
+	Robot::ShooterSubsystem->SetOffSetRight(startOffSetRightTime);
+	double startOffSetLeft = SmartDashboard::GetNumber("Start OffSet Left", StartOffSetLeftTime);
+	Robot::ShooterSubsystem->SetOffSetLeft(startOffSetLeft);
+	double onTime = SmartDashboard::GetNumber("On Time", DefaultOnTime);
+	Robot::ShooterSubsystem->SetOnTime(onTime);
+	double offTime = SmartDashboard::GetNumber("Off Time", DefaultOffTime);
+	Robot::ShooterSubsystem->SetOffTime(offTime);
 }
 
 bool UpdateShooterAndGearTimes::IsFinished()

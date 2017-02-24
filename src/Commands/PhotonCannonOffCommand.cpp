@@ -6,21 +6,19 @@
  */
 
 #include <Commands/PhotonCannonOffCommand.h>
+#include <Robot.h>
 
 PhotonCannonOffCommand::PhotonCannonOffCommand()
 {
-	// TODO Auto-generated constructor stub
-
 }
 
 PhotonCannonOffCommand::~PhotonCannonOffCommand()
 {
-	// TODO Auto-generated destructor stub
 }
 
 void PhotonCannonOffCommand::Execute()
 {
-	myPhotonCannonSubsystem->LightOff();
+	Robot::PhotonCannonSubsystem->LightOff();
 }
 
 bool PhotonCannonOffCommand::IsFinished()

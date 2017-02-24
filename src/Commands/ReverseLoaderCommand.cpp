@@ -6,11 +6,12 @@
  */
 
 #include <Commands/ReverseLoaderCommand.h>
+#include <Robot.h>
 
 ReverseLoaderCommand::ReverseLoaderCommand() :
-		CommandBase("ReverseLoaderCommand")
+		Command("ReverseLoaderCommand")
 {
-	Requires(LoaderSubsystem.get());
+	Requires(Robot::LoaderSubsystem.get());
 }
 
 ReverseLoaderCommand::~ReverseLoaderCommand()
@@ -19,7 +20,7 @@ ReverseLoaderCommand::~ReverseLoaderCommand()
 
 void ReverseLoaderCommand::Initialize()
 {
-	LoaderSubsystem->ReverseLoaderConveyor();
+	Robot::LoaderSubsystem->ReverseLoaderConveyor();
 }
 
 bool ReverseLoaderCommand::IsFinished()
@@ -29,7 +30,7 @@ bool ReverseLoaderCommand::IsFinished()
 
 void ReverseLoaderCommand::End()
 {
-	LoaderSubsystem->LoaderConveyorForward();
+	Robot::LoaderSubsystem->LoaderConveyorForward();
 }
 
 void ReverseLoaderCommand::Interrupted()

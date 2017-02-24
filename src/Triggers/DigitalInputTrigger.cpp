@@ -7,7 +7,7 @@
 
 #include <Triggers/DigitalInputTrigger.h>
 
-DigitalInputTrigger::DigitalInputTrigger(frc::DigitalInput * digitalInput)
+DigitalInputTrigger::DigitalInputTrigger(std::shared_ptr<DigitalInput> digitalInput)
 {
 	m_digitalInput = digitalInput;
 }

@@ -6,23 +6,21 @@
  */
 
 #include <Commands/UpdateGearClearTime.h>
-#include <SmartDashboard/SmartDashboard.h>
+#include <Robot.h>
 
-UpdateGearClearTime::UpdateGearClearTime() : CommandBase("UpdateGearClearTime")
+UpdateGearClearTime::UpdateGearClearTime() : Command("UpdateGearClearTime")
 {
-	Requires(GearManagementSubsystem.get());
-
+	Requires(Robot::GearManagementSubsystem.get());
 }
 
 UpdateGearClearTime::~UpdateGearClearTime()
 {
-
 }
 
 void UpdateGearClearTime::Initialize()
 {
-	double gearClearTime = frc::SmartDashboard::GetNumber("Gear Clear Time", DefaultClearTime);
-		GearManagementSubsystem->SetGearGateTime(gearClearTime);
+	double gearClearTime = SmartDashboard::GetNumber("Gear Clear Time", DefaultClearTime);
+	Robot::GearManagementSubsystem->SetGearGateTime(gearClearTime);
 }
 
 bool UpdateGearClearTime::IsFinished()

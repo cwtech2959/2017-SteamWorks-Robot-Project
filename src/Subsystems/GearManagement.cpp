@@ -6,19 +6,25 @@
  */
 
 #include <Subsystems/GearManagement.h>
+#include "RobotMap.h"
 
-GearManagement::GearManagement() :
-		frc::Subsystem("GearManagement")
+GearManagement::GearManagement() : Subsystem("GearManagement")
 {
 	GearGateTime = DefaultGearGateTime;
 	FryingPanStallTime = DefaultFryingPanStallTime;
 	GearClearTime = DefaultClearTime;
 	FryingPanUpDelay = DefaultFryingPanUpDelayTime;
+
+	FryingPanDownSwitch.reset(new DigitalInput(FRYING_PAN_DOWN_DIO));
+	FryingPanUpSwitch.reset(new DigitalInput(FRYING_PAN_UP_DIO));
+	GearLoadReady.reset(new DigitalInput(GEAR_LOAD_READY_DIO));
+	GearOnFryingPan.reset(new DigitalInput(GEAR_ON_FRYING_PAN_DIO));
+	FryingPanMotor.reset(new Spark(FRYING_PAN_MOTOR_PWM));
+	GearDropOffMotors.reset(new Spark(GEAR_DROP_OFF_MOTORS_PWM));
 }
 
 GearManagement::~GearManagement()
 {
-	// TODO Auto-generated destructor stub
 }
 
 // Public Methods Here
@@ -27,34 +33,34 @@ void GearManagement::StartGearDropOffMotors(bool open)
 {
 	if (open == true)
 	{
-		GearDropOffMotors.Set(1);
+		GearDropOffMotors->Set(1);
 	}
 	else
 	{
-		GearDropOffMotors.Set(-1);
+		GearDropOffMotors->Set(-1);
 	}
 }
 
 void GearManagement::StopGearDropOffMotors()
 {
-	GearDropOffMotors.Set(0);
+	GearDropOffMotors->Set(0);
 }
 
 void GearManagement::StartFryingPanMotor(bool up)
 {
 	if (up == true)
-		{
-			FryingPanMotor.Set(1);
-		}
-		else
-		{
-			FryingPanMotor.Set(-1);
-		}
+	{
+		FryingPanMotor->Set(1);
+	}
+	else
+	{
+		FryingPanMotor->Set(-1);
+	}
 }
 
 void GearManagement::StopFryingPanMotor()
 {
-	FryingPanMotor.Set(0);
+	FryingPanMotor->Set(0);
 }
 
 void GearManagement::SetGearGateTime(int time)
@@ -71,6 +77,7 @@ void GearManagement::SetFryingPanStallTime(int time)
 {
 	FryingPanStallTime = time;
 }
+
 int GearManagement::GetFryingPanStallTime()
 {
 	return FryingPanStallTime;
@@ -78,13 +85,22 @@ int GearManagement::GetFryingPanStallTime()
 
 bool GearManagement::GetFryingPanUpSwitch()
 {
-	return FryingPanUpSwitch.Get();
+	return FryingPanUpSwitch->Get();
 }
 
 bool GearManagement::GetFryingPanDownSwitch()
 {
-	return FryingPanDownSwitch.Get();
+	return FryingPanDownSwitch->Get();
+}
 
+bool GearManagement::GetGearLoadReady()
+{
+	return GearLoadReady->Get();
+}
+
+bool GearManagement::GetGearOnFryingPan()
+{
+	return GearOnFryingPan->Get();
 }
 
 void GearManagement::SetGearClearTime(int time)

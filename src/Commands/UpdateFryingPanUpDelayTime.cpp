@@ -6,23 +6,21 @@
  */
 
 #include <Commands/UpdateFryingPanUpDelayTime.h>
-#include <SmartDashboard/SmartDashboard.h>
+#include <Robot.h>
 
-UpdateFryingPanUpDelayTime::UpdateFryingPanUpDelayTime() :CommandBase("UpdateFryingPanUpDelayTime")
+UpdateFryingPanUpDelayTime::UpdateFryingPanUpDelayTime() : Command("UpdateFryingPanUpDelayTime")
 {
-	Requires(GearManagementSubsystem.get());
-
+	Requires(Robot::GearManagementSubsystem.get());
 }
 
 UpdateFryingPanUpDelayTime::~UpdateFryingPanUpDelayTime()
 {
-
 }
 
 void UpdateFryingPanUpDelayTime::Initialize()
 {
-	double fryingPanUpDelayTime = frc::SmartDashboard::GetNumber("Frying Pan Up Delay Time", DefaultClearTime);
-			GearManagementSubsystem->SetGearGateTime(fryingPanUpDelayTime);
+	double fryingPanUpDelayTime = SmartDashboard::GetNumber("Frying Pan Up Delay Time", DefaultClearTime);
+	Robot::GearManagementSubsystem->SetGearGateTime(fryingPanUpDelayTime);
 }
 
 bool UpdateFryingPanUpDelayTime::IsFinished()

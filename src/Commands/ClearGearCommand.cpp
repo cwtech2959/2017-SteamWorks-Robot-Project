@@ -6,11 +6,12 @@
  */
 
 #include <Commands/ClearGearCommand.h>
+#include <Robot.h>
 
 ClearGearCommand::ClearGearCommand() :
-	CommandBase("ClearGearCommand")
+	Command("ClearGearCommand")
 {
-	Requires(LoaderSubsystem.get());
+	Requires(Robot::LoaderSubsystem.get());
 	m_gearGone = false;
 }
 
@@ -20,12 +21,12 @@ ClearGearCommand::~ClearGearCommand()
 
 void ClearGearCommand::Initialize()
 {
-	LoaderSubsystem->ReverseLoaderConveyor();
+	Robot::LoaderSubsystem->ReverseLoaderConveyor();
 }
 
 void ClearGearCommand::Execute()
 {
-	if (m_gearGone == false && GearManagementSubsystem->GearLoadReady.Get() == false)
+	if (m_gearGone == false && Robot::GearManagementSubsystem->GetGearLoadReady() == false)
 	{
 		SetTimeout(0.5);
 		m_gearGone = true;
@@ -39,7 +40,7 @@ bool ClearGearCommand::IsFinished()
 
 void ClearGearCommand::End()
 {
-	LoaderSubsystem->LoaderConveyorForward();
+	Robot::LoaderSubsystem->LoaderConveyorForward();
 }
 
 void ClearGearCommand::Interrupted()

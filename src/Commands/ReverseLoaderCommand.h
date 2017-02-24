@@ -8,9 +8,9 @@
 #ifndef SRC_COMMANDS_REVERSELOADERCOMMAND_H_
 #define SRC_COMMANDS_REVERSELOADERCOMMAND_H_
 
-#include <CommandBase.h>
+#include "WPILib.h"
 
-class ReverseLoaderCommand: public CommandBase
+class ReverseLoaderCommand: public Command
 {
 public:
 	ReverseLoaderCommand();

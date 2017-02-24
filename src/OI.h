@@ -1,26 +1,27 @@
 #ifndef OI_H
 #define OI_H
 
-#include <Joystick.h>
-#include "Buttons/JoystickButton.h"
+#include "WPILib.h"
 #include <Triggers/ClearGearTrigger.h>
 
 class OI
 {
 private:
-	frc::JoystickButton FireButton { &DriverJoystick, 0 };
-	frc::JoystickButton ReverseFireButton { &DriverJoystick, 3 };
-	frc::JoystickButton ReverseLoadButton { &DriverJoystick, 1 };
-	frc::JoystickButton PhotonCannonButton { &DriverJoystick, 4 };
-	frc::JoystickButton GearDropOffButton { &DriverJoystick, 5 };
-	frc::JoystickButton FryingPanUpButton { &DriverJoystick, 6 };
-	frc::JoystickButton FryingPanDownButton { &DriverJoystick, 7 };
-	ClearGearTrigger m_clearGearTrigger;
+	std::shared_ptr<Joystick> DriverJoystick;
+
+	std::shared_ptr<JoystickButton> FireButton;
+	std::shared_ptr<JoystickButton> ReverseFireButton;
+	std::shared_ptr<JoystickButton> ReverseLoadButton;
+	std::shared_ptr<JoystickButton> PhotonCannonButton;
+	std::shared_ptr<JoystickButton> GearDropOffButton;
+	std::shared_ptr<JoystickButton> FryingPanUpButton;
+	std::shared_ptr<JoystickButton> FryingPanDownButton;
+	std::shared_ptr<ClearGearTrigger> m_clearGearTrigger;
 
 public:
 	OI();
 
-	frc::Joystick DriverJoystick { 0 };
+	std::shared_ptr<Joystick> GetDriverJoystick();
 };
 
 #endif  // OI_H

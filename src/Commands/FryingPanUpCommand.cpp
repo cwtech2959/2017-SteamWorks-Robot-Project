@@ -6,11 +6,12 @@
  */
 
 #include <Commands/FryingPanUpCommand.h>
+#include <Robot.h>
 
 FryingPanUpCommand::FryingPanUpCommand(bool up) :
-		CommandBase("FryingPanUpCommand")
+		Command("FryingPanUpCommand")
 {
-	Requires(GearManagementSubsystem.get());
+	Requires(Robot::GearManagementSubsystem.get());
 	m_up = up;
 }
 
@@ -20,9 +21,9 @@ FryingPanUpCommand::~FryingPanUpCommand()
 
 void FryingPanUpCommand::Initialize()
 {
-	GearManagementSubsystem->StartFryingPanMotor(m_up);
+	Robot::GearManagementSubsystem->StartFryingPanMotor(m_up);
 
-	int time = GearManagementSubsystem->GetFryingPanStallTime();
+	int time = Robot::GearManagementSubsystem->GetFryingPanStallTime();
 	SetTimeout(time * 0.001);
 }
 
@@ -30,17 +31,17 @@ bool FryingPanUpCommand::IsFinished()
 {
 	if (m_up)
 	{
-		return IsTimedOut() || GearManagementSubsystem->GetFryingPanUpSwitch();
+		return IsTimedOut() || Robot::GearManagementSubsystem->GetFryingPanUpSwitch();
 	}
 	else
 	{
-		return IsTimedOut() || GearManagementSubsystem->GetFryingPanDownSwitch();
+		return IsTimedOut() || Robot::GearManagementSubsystem->GetFryingPanDownSwitch();
 	}
 }
 
 void FryingPanUpCommand::End()
 {
-	GearManagementSubsystem->StopFryingPanMotor();
+	Robot::GearManagementSubsystem->StopFryingPanMotor();
 }
 
 void FryingPanUpCommand::Interrupted()

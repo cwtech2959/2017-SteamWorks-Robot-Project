@@ -1,16 +1,16 @@
 /*
  * DriveWithJoystick.h
  *
- *  Created on: Jan 21, 2017
- *      Author: Kevin
+ *  Created on: Jan 28, 2017
+ *      Author: mriri
  */
 
 #ifndef SRC_COMMANDS_DRIVEWITHJOYSTICK_H_
 #define SRC_COMMANDS_DRIVEWITHJOYSTICK_H_
 
-#include <CommandBase.h>
+#include "WPILib.h"
 
-class DriveWithJoystick: public CommandBase
+class DriveWithJoystick: public Command
 {
 public:
 	DriveWithJoystick();

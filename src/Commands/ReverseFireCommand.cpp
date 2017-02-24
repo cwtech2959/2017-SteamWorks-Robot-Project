@@ -7,11 +7,12 @@
 
 #include <Commands/ReverseFireCommand.h>
 #include <Subsystems/Shooter.h>
+#include <Robot.h>
 
 ReverseFireCommand::ReverseFireCommand() :
-		CommandBase("ReverseFireCommand")
+		Command("ReverseFireCommand")
 {
-	Requires(ShooterSubsystem.get());
+	Requires(Robot::ShooterSubsystem.get());
 }
 
 ReverseFireCommand::~ReverseFireCommand()
@@ -20,9 +21,9 @@ ReverseFireCommand::~ReverseFireCommand()
 
 void ReverseFireCommand::Execute()
 {
-	if (ShooterSubsystem->GetShooting() == false)
+	if (Robot::ShooterSubsystem->GetShooting() == false)
 	{
-		ShooterSubsystem->ReverseShooterConveyors();
+		Robot::ShooterSubsystem->ReverseShooterConveyors();
 	}
 }
 
@@ -33,9 +34,9 @@ bool ReverseFireCommand::IsFinished()
 
 void ReverseFireCommand::End()
 {
-	if (ShooterSubsystem->GetShooting() == false)
+	if (Robot::ShooterSubsystem->GetShooting() == false)
 	{
-		ShooterSubsystem->ShooterConveyorsOff();
+		Robot::ShooterSubsystem->ShooterConveyorsOff();
 	}
 }
 

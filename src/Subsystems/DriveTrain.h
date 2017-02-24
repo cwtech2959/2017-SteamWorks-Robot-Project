@@ -1,5 +1,5 @@
 /*
- * DriveTrain.h
+2 * DriveTrain.h
  *
  *  Created on: Jan 28, 2017
  *      Author: mriri
@@ -8,30 +8,21 @@
 #ifndef SRC_SUBSYSTEMS_DRIVETRAIN_H_
 #define SRC_SUBSYSTEMS_DRIVETRAIN_H_
 
+#include "WPILib.h"
 #include <Commands/Subsystem.h>
-#include <Joystick.h>
 #include <CANTalon.h>
-#include <RobotDrive.h>
 
-class DriveTrain: public frc::Subsystem
+class DriveTrain: public Subsystem
 {
 private:
-	CANTalon Left1MotorController
-	{ 5 };
-	CANTalon Left2MotorController
-	{ 6 };
-	CANTalon Right1MotorController
-	{ 1 };
-	CANTalon Right2MotorController
-	{ 2 };
+	std::shared_ptr<CANTalon> Left1MotorController;
+	std::shared_ptr<CANTalon> Left2MotorController;
+	std::shared_ptr<CANTalon> Right1MotorController;
+	std::shared_ptr<CANTalon> Right2MotorController;
 
-	frc::RobotDrive DriveTank
-	{
-		&Left1MotorController,
-		&Left2MotorController,
-		&Right1MotorController,
-		&Right2MotorController
-	};
+	std::unique_ptr<RobotDrive> DriveTank;
+
+	void InitHardware();
 
 public:
 	DriveTrain();
@@ -40,7 +31,7 @@ public:
 	void InitDefaultCommand() override;
 
 	void TankDrive(double leftSide, double rightSide);
-	void TankDrive(frc::Joystick * pJoyStick);
+	void TankDrive(std::shared_ptr<Joystick> JoyStick);
 	void Stop();
 };
 
