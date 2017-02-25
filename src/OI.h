@@ -9,6 +9,8 @@ class OI
 {
 private:
 	std::shared_ptr<Joystick> DriverJoystick;
+	std::shared_ptr<Joystick> CopilotJoystick;
+	std::shared_ptr<Joystick> ButtonBox;
 
 	std::shared_ptr<JoystickButton> FireButton;
 	std::shared_ptr<JoystickButton> ReverseFireButton;

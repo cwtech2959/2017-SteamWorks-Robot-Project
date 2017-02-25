@@ -15,14 +15,19 @@
 OI::OI()
 {
 	DriverJoystick.reset(new Joystick(0));
+	CopilotJoystick.reset(new Joystick(1));
+	ButtonBox.reset(new Joystick(2));
 
-	FireButton.reset(new JoystickButton(DriverJoystick.get(), 1));
-	ReverseFireButton.reset(new JoystickButton(DriverJoystick.get(), 4));
-	ReverseLoadButton.reset(new JoystickButton(DriverJoystick.get(), 2));
 	PhotonCannonButton.reset(new JoystickButton(DriverJoystick.get(), 5));
-	GearDropOffButton.reset(new JoystickButton(DriverJoystick.get(), 6));
-	FryingPanUpButton.reset(new JoystickButton(DriverJoystick.get(), 7));
-	FryingPanDownButton.reset(new JoystickButton(DriverJoystick.get(), 8));
+
+	FireButton.reset(new JoystickButton(CopilotJoystick.get(), 5));
+	GearDropOffButton.reset(new JoystickButton(CopilotJoystick.get(), 2));
+	FryingPanUpButton.reset(new JoystickButton(CopilotJoystick.get(), 3));
+	FryingPanDownButton.reset(new JoystickButton(CopilotJoystick.get(), 1));
+
+	ReverseFireButton.reset(new JoystickButton(ButtonBox.get(), 1));
+	ReverseLoadButton.reset(new JoystickButton(ButtonBox.get(), 2));
+
 	m_clearGearTrigger.reset(new ClearGearTrigger());
 
 	// Process operator interface input here.
