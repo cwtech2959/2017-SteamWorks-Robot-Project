@@ -7,17 +7,17 @@
 
 #include <Subsystems/GearManagement.h>
 #include "RobotMap.h"
+#include "WPILib.h"
+
 
 GearManagement::GearManagement() : Subsystem("GearManagement")
 {
 	GearGateTime = DefaultGearGateTime;
 	FryingPanStallTime = DefaultFryingPanStallTime;
-	GearClearTime = DefaultClearTime;
 	FryingPanUpDelay = DefaultFryingPanUpDelayTime;
 
 	FryingPanDownSwitch.reset(new DigitalInput(FRYING_PAN_DOWN_DIO));
 	FryingPanUpSwitch.reset(new DigitalInput(FRYING_PAN_UP_DIO));
-	GearLoadReady.reset(new DigitalInput(GEAR_LOAD_READY_DIO));
 	GearOnFryingPan.reset(new DigitalInput(GEAR_ON_FRYING_PAN_DIO));
 	FryingPanMotor.reset(new Spark(FRYING_PAN_MOTOR_PWM));
 	GearDropOffMotors.reset(new Spark(GEAR_DROP_OFF_MOTORS_PWM));
@@ -63,11 +63,6 @@ void GearManagement::StopFryingPanMotor()
 	FryingPanMotor->Set(0);
 }
 
-void GearManagement::SetGearGateTime(int time)
-{
-	GearGateTime = time;
-}
-
 int GearManagement::GetGearGateTime()
 {
 	return GearGateTime;
@@ -93,17 +88,13 @@ bool GearManagement::GetFryingPanDownSwitch()
 	return FryingPanDownSwitch->Get();
 }
 
-bool GearManagement::GetGearLoadReady()
-{
-	return GearLoadReady->Get();
-}
 
 bool GearManagement::GetGearOnFryingPan()
 {
 	return GearOnFryingPan->Get();
 }
 
-void GearManagement::SetGearClearTime(int time)
+void GearManagement::SetGearGateTime(int time)
 {
-	GearClearTime = time;
+	GearGateTime = time;
 }

@@ -26,7 +26,7 @@ void ClearGearCommand::Initialize()
 
 void ClearGearCommand::Execute()
 {
-	if (m_gearGone == false && Robot::GearManagementSubsystem->GetGearLoadReady() == false)
+	if (m_gearGone == false && Robot::GearLoadSubsystem->GetGearLoadReady() == false)
 	{
 		SetTimeout(0.5);
 		m_gearGone = true;

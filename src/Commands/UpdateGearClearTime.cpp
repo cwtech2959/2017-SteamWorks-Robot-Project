@@ -10,6 +10,7 @@
 
 UpdateGearClearTime::UpdateGearClearTime() : Command("UpdateGearClearTime")
 {
+	Requires(Robot::GearLoadSubsystem.get());
 	Requires(Robot::GearManagementSubsystem.get());
 }
 
