@@ -51,12 +51,12 @@ void Shooter::ReverseBallFeeders()
 
 void Shooter::BallFeederOff(ShooterSide side)
 {
-	SetBallFeedersSpeed(side, 0);
+	SetBallFeederSpeed(side, 0);
 }
 
 void Shooter::BallFeederOn(ShooterSide side)
 {
-	SetBallFeedersSpeed(side, 1);
+	SetBallFeederSpeed(side, 1);
 }
 
 // Member Access
@@ -131,11 +131,11 @@ int Shooter::LimitOffsetTime(int time)
 
 void Shooter::SetBallFeedersSpeed(double speed)
 {
-	SetBallFeedersSpeed(leftShooter, speed);
-	SetBallFeedersSpeed(rightShooter, speed);
+	SetBallFeederSpeed(leftShooter, speed);
+	SetBallFeederSpeed(rightShooter, speed);
 }
 
-void Shooter::SetBallFeedersSpeed(ShooterSide side, double speed)
+void Shooter::SetBallFeederSpeed(ShooterSide side, double speed)
 {
 	if (side == leftShooter)
 	{

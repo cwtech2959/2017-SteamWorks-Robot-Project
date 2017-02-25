@@ -66,6 +66,6 @@ public:
 private:
 	int LimitOffsetTime(int time);
 	void SetBallFeedersSpeed(double speed);
-	void SetBallFeedersSpeed(ShooterSide side, double speed);
+	void SetBallFeederSpeed(ShooterSide side, double speed);
 };
 #endif /* SRC_SUBSYSTEMS_SHOOTER_H_ */
