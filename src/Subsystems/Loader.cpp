@@ -10,6 +10,8 @@
 
 Loader::Loader() : Subsystem("Loader")
 {
+	GearClearTime = DefaultClearTime;
+
 	BallPickupAndAgitator.reset(new Spark(BALL_PICKUP_PWM));
 
 	LiveWindow::GetInstance()->AddActuator("Loader", "Ball Pickup and Agitation", BallPickupAndAgitator.get());
@@ -34,4 +36,14 @@ void Loader::BallLoaderForward()
 {
 	StopBallLoader();
 	BallPickupAndAgitator->Set(1);
+}
+
+int Loader::GetGearClearTime()
+{
+	return GearClearTime;
+}
+
+void Loader::SetGearClearTime(int time)
+{
+	GearClearTime = time;
 }

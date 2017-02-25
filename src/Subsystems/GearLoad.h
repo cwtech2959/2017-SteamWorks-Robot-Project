@@ -12,15 +12,12 @@
 #include "WPILib.h"
 #include <CANTalon.h>
 
-constexpr int DefaultClearTime = 500;
-
-class GearLoad: public frc::Subsystem {
+class GearLoad: public Subsystem
+{
 private:
 	std::shared_ptr<DigitalInput> GearLoadReady;
 
 	std::shared_ptr<CANTalon> GearPickup;
-
-	int GearClearTime;
 
 public:
 	GearLoad();
@@ -30,10 +27,6 @@ public:
 
 	void Stop();
 	void LoadGear();
-	void ClearGear();
-
-	int GetGearClearTime();
-	void SetGearClearTime(int time);
 };
 
 #endif /* SRC_SUBSYSTEMS_GEARLOAD_H_ */

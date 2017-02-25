@@ -51,7 +51,9 @@ void Robot::RobotInit()
 	SmartDashboard::SetDefaultNumber("Gear Gate Time", DefaultGearGateTime);
 	SmartDashboard::SetDefaultNumber("Gear Clear Time", DefaultClearTime);
 	SmartDashboard::SetDefaultNumber("Frying Pan Up Delay Time", DefaultFryingPanUpDelayTime);
-	SmartDashboard::SetDefaultNumber("Frying Pan Stall Time", DefaultFryingPanStallTime);
+	SmartDashboard::SetDefaultNumber("Frying Pan Drive Speed", DefaultFryingPanDriveSpeed);
+	SmartDashboard::SetDefaultNumber("Gear Release Drive Speed", DefaultGearReleaseDriveSpeed);
+
 }
 
 /**

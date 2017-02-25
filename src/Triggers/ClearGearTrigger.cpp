@@ -20,7 +20,6 @@ ClearGearTrigger::~ClearGearTrigger()
 
 bool ClearGearTrigger::Get()
 {
-	return (Robot::GearLoadSubsystem->GetGearLoadReady() == true
-			&& (Robot::GearManagementSubsystem->GetGearOnFryingPan() == true
-					|| Robot::GearManagementSubsystem->GetFryingPanUpSwitch() == true));
+	return (Robot::GearLoadSubsystem->GetGearLoadReady() == true &&
+			Robot::GearManagementSubsystem->GetDrvingFryingPan() == GearManagement::Down);
 }

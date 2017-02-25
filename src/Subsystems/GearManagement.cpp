@@ -12,8 +12,10 @@
 GearManagement::GearManagement() : Subsystem("GearManagement")
 {
 	GearGateTime = DefaultGearGateTime;
-	FryingPanStallTime = DefaultFryingPanStallTime;
 	FryingPanUpDelay = DefaultFryingPanUpDelayTime;
+	FryingPanDriveSpeed = DefaultFryingPanDriveSpeed;
+	GearReleaseDriveSpeed = DefaultGearReleaseDriveSpeed;
+
 
 	FryingPanDownSwitch.reset(new DigitalInput(FRYING_PAN_DOWN_DIO));
 	FryingPanUpSwitch.reset(new DigitalInput(FRYING_PAN_UP_DIO));
@@ -89,16 +91,6 @@ int GearManagement::GetFryingPanUpDelayTime()
 	return FryingPanUpDelay;
 }
 
-void GearManagement::SetFryingPanStallTime(int time)
-{
-	FryingPanStallTime = time;
-}
-
-int GearManagement::GetFryingPanStallTime()
-{
-	return FryingPanStallTime;
-}
-
 bool GearManagement::GetFryingPanUpSwitch()
 {
 	return FryingPanUpSwitch->Get();
@@ -111,7 +103,7 @@ bool GearManagement::GetFryingPanDownSwitch()
 
 bool GearManagement::GetGearOnFryingPan()
 {
-	return GearOnFryingPan->Get();
+	return !GearOnFryingPan->Get();
 }
 
 void GearManagement::SetDrivingFryingPan(DrivingFryingPan state)
@@ -122,4 +114,24 @@ void GearManagement::SetDrivingFryingPan(DrivingFryingPan state)
 GearManagement::DrivingFryingPan GearManagement::GetDrvingFryingPan()
 {
 	return FryingPanState;
+}
+
+double GearManagement::GetFryingPanDriveSpeed()
+{
+	return FryingPanDriveSpeed;
+}
+
+void GearManagement::SetFryingPanDriveSpeed(double speed)
+{
+	FryingPanDriveSpeed = speed;
+}
+
+double GearManagement::GetGearReleaseDriveSpeed()
+{
+	return GearReleaseDriveSpeed;
+}
+
+void GearManagement::SetGearReleaseDriveSpeed(double speed)
+{
+	GearReleaseDriveSpeed = speed;
 }

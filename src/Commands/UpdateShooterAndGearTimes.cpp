@@ -13,7 +13,7 @@ UpdateShooterAndGearTimes::UpdateShooterAndGearTimes() :
 {
 	Requires(Robot::ShooterSubsystem.get());
 	Requires(Robot::GearManagementSubsystem.get());
-	Requires(Robot::GearLoadSubsystem.get());
+	Requires(Robot::LoaderSubsystem.get());
 }
 
 UpdateShooterAndGearTimes::~UpdateShooterAndGearTimes()
@@ -25,7 +25,7 @@ void UpdateShooterAndGearTimes::Initialize()
 	double gearGateTime = SmartDashboard::GetNumber("Gear Gate Time", DefaultGearGateTime);
 	Robot::GearManagementSubsystem->SetGearGateTime(gearGateTime);
 	double gearClearTime = SmartDashboard::GetNumber("Gear Clear Time", DefaultClearTime);
-	Robot::GearLoadSubsystem->SetGearClearTime(gearClearTime);
+	Robot::LoaderSubsystem->SetGearClearTime(gearClearTime);
 	double startOffsetRightTime = SmartDashboard::GetNumber("Ball Feeder Right Start Offset", DefaultStartOffsetRightTime);
 	Robot::ShooterSubsystem->SetOffsetRight(startOffsetRightTime);
 	double startOffsetLeft = SmartDashboard::GetNumber("Ball Feeder Left Start Offset", DefaultStartOffsetLeftTime);
@@ -36,8 +36,10 @@ void UpdateShooterAndGearTimes::Initialize()
 	Robot::ShooterSubsystem->SetOffTime(offTime);
 	double fryingPanUpDelayTime = SmartDashboard::GetNumber("Frying Pan Up Delay Time", DefaultFryingPanUpDelayTime);
 	Robot::GearManagementSubsystem->SetFryingPanUpDelayTime(fryingPanUpDelayTime);
-	double fryingPanStallTime = SmartDashboard::GetNumber("Frying Pan Stall Time", DefaultFryingPanStallTime);
-	Robot::GearManagementSubsystem->SetFryingPanStallTime(fryingPanStallTime);
+	double fryingPanDriveSpeed = SmartDashboard::GetNumber("Frying Pan Drive Speed", DefaultFryingPanDriveSpeed);
+	Robot::GearManagementSubsystem->SetFryingPanDriveSpeed(fryingPanDriveSpeed);
+	double gearReleaseDriveSpeed = SmartDashboard::GetNumber("Gear Release Drive Speed", DefaultGearReleaseDriveSpeed);
+		Robot::GearManagementSubsystem->SetGearReleaseDriveSpeed(gearReleaseDriveSpeed);
 }
 
 bool UpdateShooterAndGearTimes::IsFinished()
