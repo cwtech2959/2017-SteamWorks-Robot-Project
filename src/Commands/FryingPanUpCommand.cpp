@@ -7,6 +7,7 @@
 
 #include <Commands/FryingPanUpCommand.h>
 #include <Robot.h>
+#include <Utilities.h>
 
 FryingPanUpCommand::FryingPanUpCommand(bool up) :
 		Command("FryingPanUpCommand")
@@ -24,7 +25,7 @@ void FryingPanUpCommand::Initialize()
 	Robot::GearManagementSubsystem->StartFryingPanMotor(m_up);
 
 	int time = Robot::GearManagementSubsystem->GetFryingPanStallTime();
-	SetTimeout(time * 0.001);
+	SetTimeout(SecondsFromMilliSeconds(time));
 }
 
 bool FryingPanUpCommand::IsFinished()

@@ -23,6 +23,21 @@ GearLoad::~GearLoad()
 {
 }
 
+void GearLoad::Stop()
+{
+	GearPickup->Set(0.0);
+}
+
+void GearLoad::LoadGear()
+{
+	GearPickup->Set(-1.0);
+}
+
+void GearLoad::ClearGear()
+{
+	GearPickup->Set(1.0);
+}
+
 bool GearLoad::GetGearLoadReady()
 {
 	return GearLoadReady->Get();

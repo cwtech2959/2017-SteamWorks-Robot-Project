@@ -28,6 +28,10 @@ public:
 
 	bool GetGearLoadReady();
 
+	void Stop();
+	void LoadGear();
+	void ClearGear();
+
 	int GetGearClearTime();
 	void SetGearClearTime(int time);
 };
