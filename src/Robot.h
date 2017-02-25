@@ -16,6 +16,7 @@
 #include <Subsystems/Shooter.h>
 #include <OI.h>
 #include <Subsystems/RopeClimb.h>
+#include <Subsystems/ShooterMotors.h>
 
 class Robot: public IterativeRobot
 {
@@ -26,6 +27,7 @@ public:
 	static std::unique_ptr<Loader> LoaderSubsystem;
 	static std::unique_ptr<PhotonCannon> PhotonCannonSubsystem;
 	static std::unique_ptr<Shooter> ShooterSubsystem;
+	static std::unique_ptr<ShooterMotors> ShooterMotorsSubsystem;
 	static std::unique_ptr<OI> oi;
 
 public:

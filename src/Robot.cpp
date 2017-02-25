@@ -1,4 +1,5 @@
 #include <Robot.h>
+#include "WPILib.h"
 
 std::unique_ptr<RopeClimb> Robot::ClimbSubsystem;
 std::unique_ptr<DriveTrain> Robot::DriveTrainSubsystem;
@@ -6,6 +7,7 @@ std::unique_ptr<GearManagement> Robot::GearManagementSubsystem;
 std::unique_ptr<Loader> Robot::LoaderSubsystem;
 std::unique_ptr<PhotonCannon> Robot::PhotonCannonSubsystem;
 std::unique_ptr<Shooter> Robot::ShooterSubsystem;
+std::unique_ptr<ShooterMotors> Robot::ShooterMotorsSubsystem;
 std::unique_ptr<OI> Robot::oi;
 
 void Robot::RobotInit()
@@ -17,6 +19,8 @@ void Robot::RobotInit()
 	LoaderSubsystem.reset(new Loader());
 	PhotonCannonSubsystem.reset(new PhotonCannon());
 	ShooterSubsystem.reset(new Shooter());
+	ShooterMotorsSubsystem.reset(new ShooterMotors());
+
 	// This MUST be here. If the OI creates Commands (which it very likely
 	// will), constructing it during the construction of CommandBase (from
 	// which commands extend), subsystems are not guaranteed to be
@@ -30,7 +34,7 @@ void Robot::RobotInit()
 	SmartDashboard::PutData(LoaderSubsystem.get());
 	SmartDashboard::PutData(PhotonCannonSubsystem.get());
 	SmartDashboard::PutData(ShooterSubsystem.get());
-
+	SmartDashboard::PutData(ShooterMotorsSubsystem.get());
 	// chooser.AddDefault("Default Auto", new ExampleCommand());
 	// chooser.AddObject("My Auto", new MyAutoCommand());
 	SmartDashboard::PutData("Auto Modes", &chooser);
@@ -89,7 +93,7 @@ void Robot::AutonomousInit()
 	}
 
 	double speed = SmartDashboard::GetNumber("Shooter Speed", DefaultShooterSpeed);
-	ShooterSubsystem->SetBallShootersSpeed(speed);
+	ShooterMotorsSubsystem->SetBallShootersSpeed(speed);
 
 }
 
@@ -110,7 +114,7 @@ void Robot::TeleopInit()
 	}
 
 	double speed = SmartDashboard::GetNumber("Shooter Speed", DefaultShooterSpeed);
-	ShooterSubsystem->SetBallShootersSpeed(speed);
+	ShooterMotorsSubsystem->SetBallShootersSpeed(speed);
 }
 
 void Robot::TeleopPeriodic()

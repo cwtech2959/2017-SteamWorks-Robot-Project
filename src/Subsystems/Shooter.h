@@ -10,13 +10,11 @@
 
 #include "WPILib.h"
 #include <Commands/Subsystem.h>
-#include <CanTalon.h>
 
 constexpr int StartOffSetRightTime = 100;
 constexpr int StartOffSetLeftTime = 100;
 constexpr int DefaultOnTime = 10;
 constexpr int DefaultOffTime = 10;
-constexpr double DefaultShooterSpeed = 0.65;
 
 class Shooter : public Subsystem
 {
@@ -24,9 +22,6 @@ class Shooter : public Subsystem
 private:
 	std::shared_ptr<Spark> ShooterConveyorRight;
 	std::shared_ptr<Spark> ShooterConveyorLeft;
-
-	std::shared_ptr<CANTalon> BallShooterLeft;
-	std::shared_ptr<CANTalon> BallShooterRight;
 
 	int StartOffSetRight;
 	int StartOffSetLeft;
@@ -41,17 +36,11 @@ public:
 		leftShooter,
 		rightShooter
 	};
-
 public:
 	Shooter();
 	virtual ~Shooter();
 
 	void StopAllConveyors();
-
-	void SetBallShootersSpeed(double speed);
-
-	// Loader conveyor manipulation
-
 
 	// Shooter feeder manipulation
 	void StartShooterConveyors();

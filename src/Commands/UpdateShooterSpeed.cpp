@@ -11,7 +11,7 @@
 UpdateShooterSpeed::UpdateShooterSpeed() :
 	Command("UpdateShooterSpeedCommand")
 {
-	Requires(Robot::ShooterSubsystem.get());
+	Requires(Robot::ShooterMotorsSubsystem.get());
 }
 
 UpdateShooterSpeed::~UpdateShooterSpeed()
@@ -21,7 +21,7 @@ UpdateShooterSpeed::~UpdateShooterSpeed()
 void UpdateShooterSpeed::Initialize()
 {
 	double speed = SmartDashboard::GetNumber("Shooter Speed", DefaultShooterSpeed);
-	Robot::ShooterSubsystem->SetBallShootersSpeed(speed);
+	Robot::ShooterMotorsSubsystem->SetBallShootersSpeed(speed);
 }
 
 bool UpdateShooterSpeed::IsFinished()
