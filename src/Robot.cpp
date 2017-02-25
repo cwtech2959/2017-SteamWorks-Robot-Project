@@ -33,17 +33,17 @@ void Robot::RobotInit()
 
 	// chooser.AddDefault("Default Auto", new ExampleCommand());
 	// chooser.AddObject("My Auto", new MyAutoCommand());
-	frc::SmartDashboard::PutData("Auto Modes", &chooser);
+	SmartDashboard::PutData("Auto Modes", &chooser);
 
-	frc::SmartDashboard::SetDefaultNumber("Shooter Speed", DefaultShooterSpeed);
-	frc::SmartDashboard::SetDefaultNumber("Gear Gate Time", DefaultGearGateTime);
-	frc::SmartDashboard::SetDefaultNumber("Frying Pan Stall Time", DefaultFryingPanStallTime);
-	frc::SmartDashboard::SetDefaultNumber("Start OffSet Right", StartOffSetRightTime);
-	frc::SmartDashboard::SetDefaultNumber("Start OffSet Left", StartOffSetLeftTime);
-	frc::SmartDashboard::SetDefaultNumber("On Time", DefaultOnTime);
-	frc::SmartDashboard::SetDefaultNumber("Off Time", DefaultOffTime);
-	frc::SmartDashboard::SetDefaultNumber("Gear Clear Time", DefaultClearTime);
-	frc::SmartDashboard::SetDefaultNumber("Frying Pan Up Delay Time", DefaultFryingPanUpDelayTime);
+	SmartDashboard::SetDefaultNumber("Shooter Speed", DefaultShooterSpeed);
+	SmartDashboard::SetDefaultNumber("Gear Gate Time", DefaultGearGateTime);
+	SmartDashboard::SetDefaultNumber("Frying Pan Stall Time", DefaultFryingPanStallTime);
+	SmartDashboard::SetDefaultNumber("Start OffSet Right", StartOffSetRightTime);
+	SmartDashboard::SetDefaultNumber("Start OffSet Left", StartOffSetLeftTime);
+	SmartDashboard::SetDefaultNumber("On Time", DefaultOnTime);
+	SmartDashboard::SetDefaultNumber("Off Time", DefaultOffTime);
+	SmartDashboard::SetDefaultNumber("Gear Clear Time", DefaultClearTime);
+	SmartDashboard::SetDefaultNumber("Frying Pan Up Delay Time", DefaultFryingPanUpDelayTime);
 }
 
 /**

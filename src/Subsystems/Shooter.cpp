@@ -21,8 +21,8 @@ Shooter::Shooter() : Subsystem("ShooterAndLoader")
 
 	Shooting = false;
 
-	ShooterConveyorRight.reset(new Spark(SHOOTER_CONVEYOR_RIGHT_PWM));
-	ShooterConveyorLeft.reset(new Spark(SHOOTER_CONVEYOR_LEFT_PWM));
+	ShooterConveyorRight.reset(new Spark(BALL_FEEDER_RIGHT_PWM));
+	ShooterConveyorLeft.reset(new Spark(BALL_FEEDER_LEFT_PWM));
 	BallShooterLeft.reset(new CANTalon(BALL_SHOOTER_LEFT_CAN));
 	BallShooterRight.reset(new CANTalon(BALL_SHOOTER_RIGHT_CAN));
 }

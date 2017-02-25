@@ -10,7 +10,7 @@
 
 Loader::Loader() : Subsystem("Loader")
 {
-	LoaderConveyor.reset(new Spark(LOADER_CONVEYOR_PWM));
+	LoaderConveyor.reset(new Spark(BALL_PICKUP_PWM));
 }
 
 Loader::~Loader()

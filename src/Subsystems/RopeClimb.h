@@ -14,6 +14,7 @@
 class RopeClimb: public Subsystem
 {
 private:
+	std::shared_ptr<Spark> ClimbMotor;
 
 public:
 	RopeClimb();

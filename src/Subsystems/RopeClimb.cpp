@@ -10,6 +10,7 @@
 
 RopeClimb::RopeClimb() : Subsystem("Climb")
 {
+	ClimbMotor.reset(new Spark(CLIMB_PWM));
 }
 
 RopeClimb::~RopeClimb()
