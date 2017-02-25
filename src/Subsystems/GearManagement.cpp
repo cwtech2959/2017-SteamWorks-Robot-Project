@@ -21,6 +21,8 @@ GearManagement::GearManagement() : Subsystem("GearManagement")
 	GearOnFryingPan.reset(new DigitalInput(GEAR_ON_FRYING_PAN_DIO));
 	FryingPanMotor.reset(new Spark(FRYING_PAN_MOTOR_PWM));
 	GearDropOffMotors.reset(new Spark(GEAR_DROP_OFF_MOTORS_PWM));
+
+	DrvingFryingPan = false;
 }
 
 GearManagement::~GearManagement()
@@ -50,11 +52,11 @@ void GearManagement::StartFryingPanMotor(bool up)
 {
 	if (up == true)
 	{
-		FryingPanMotor->Set(1);
+		FryingPanMotor->Set(-1);
 	}
 	else
 	{
-		FryingPanMotor->Set(-1);
+		FryingPanMotor->Set(1);
 	}
 }
 
@@ -97,4 +99,14 @@ bool GearManagement::GetGearOnFryingPan()
 void GearManagement::SetGearGateTime(int time)
 {
 	GearGateTime = time;
+}
+
+void GearManagement::SetDrivingFryingPan(bool state)
+{
+	DrvingFryingPan = state;
+}
+
+bool GearManagement::GetDrvingFryingPan()
+{
+	return DrvingFryingPan;
 }

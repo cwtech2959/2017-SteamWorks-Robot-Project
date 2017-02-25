@@ -29,6 +29,8 @@ private:
 	int FryingPanStallTime;
 	int FryingPanUpDelay;
 
+	bool DrvingFryingPan;
+
 	enum DrivingFryingPan
 	{
 		Up, Down, DrivingUp, DrivingDown
@@ -53,6 +55,9 @@ public:
 	bool GetFryingPanUpSwitch();
 	bool GetFryingPanDownSwitch();
 	bool GetGearOnFryingPan();
+
+	void SetDrivingFryingPan(bool state);
+		bool GetDrvingFryingPan();
 };
 
 #endif /* SRC_SUBSYSTEMS_GEARMANAGEMENT_H_ */
