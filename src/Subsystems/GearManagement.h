@@ -18,6 +18,16 @@ constexpr double DefaultFryingPanDriveSpeed = 1;
 
 class GearManagement : public Subsystem
 {
+public:
+	enum DrivingFryingPan
+	{
+		Up,
+		Down,
+		DrivingUp,
+		DrivingDown,
+		Unknown
+	};
+
 private:
 	std::shared_ptr<DigitalInput> FryingPanDownSwitch;
 	std::shared_ptr<DigitalInput> FryingPanUpSwitch;
@@ -30,15 +40,6 @@ private:
 	int FryingPanUpDelay;
 	double FryingPanDriveSpeed;
 	double GearReleaseDriveSpeed;
-
-	enum DrivingFryingPan
-	{
-		Up,
-		Down,
-		DrivingUp,
-		DrivingDown,
-		Unknown
-	};
 
 	DrivingFryingPan FryingPanState;
 

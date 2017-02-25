@@ -3,6 +3,7 @@
 
 #include "WPILib.h"
 #include <Triggers/ClearGearTrigger.h>
+#include <Triggers/FryingPanUpTrigger.h>
 
 class OI
 {
@@ -17,6 +18,7 @@ private:
 	std::shared_ptr<JoystickButton> FryingPanUpButton;
 	std::shared_ptr<JoystickButton> FryingPanDownButton;
 	std::shared_ptr<ClearGearTrigger> m_clearGearTrigger;
+	std::shared_ptr<FryingPanUpTrigger> m_FryingPanUpTrigger;
 
 public:
 	OI();
