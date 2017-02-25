@@ -13,66 +13,62 @@ const int MaxTimeLimit = 5000;
 
 Shooter::Shooter() : Subsystem("Shooter")
 {
-	StartOffSetRight = StartOffSetRightTime;
-	StartOffSetLeft = StartOffSetLeftTime;
+	StartOffsetRight = DefaultStartOffsetRightTime;
+	StartOffsetLeft = DefaultStartOffsetLeftTime;
 
 	OnTime = DefaultOnTime;
 	OffTime = DefaultOffTime;
 
 	Shooting = false;
 
-	ShooterConveyorRight.reset(new Spark(BALL_FEEDER_RIGHT_PWM));
-	ShooterConveyorLeft.reset(new Spark(BALL_FEEDER_LEFT_PWM));
+	BallFeederRight.reset(new Spark(BALL_FEEDER_RIGHT_PWM));
+	BallFeederLeft.reset(new Spark(BALL_FEEDER_LEFT_PWM));
+
+	LiveWindow * lw = LiveWindow::GetInstance();
+    lw->AddActuator("Shooter", "Ball Feeder Right Motor", BallFeederRight.get());
+    lw->AddActuator("Shooter", "Ball Feeder Left Motor", BallFeederLeft.get());
 }
 
 Shooter::~Shooter()
 {
 }
 
-void Shooter::StopAllConveyors()
+// Shooter feeder manipulation
+void Shooter::StopBallFeeders()
 {
-	SetShooterConveyorsSpeed(0);
+	SetBallFeedersSpeed(0);
 }
 
-// Loader Conveyor manipulation
-
-
-// Shooter feeder manipulation
-void Shooter::StartShooterConveyors()
+void Shooter::StartBallFeeders()
 {
 	// Need to add the shooting feeder sequencing!!!
 }
 
-void Shooter::ShooterConveyorsOff()
+void Shooter::ReverseBallFeeders()
 {
-	SetShooterConveyorsSpeed(0);
+	SetBallFeedersSpeed(-1);
 }
 
-void Shooter::ReverseShooterConveyors()
+void Shooter::BallFeederOff(ShooterSide side)
 {
-	SetShooterConveyorsSpeed(-1);
+	SetBallFeedersSpeed(side, 0);
 }
 
-void Shooter::ShooterConveyorOff(ShooterSide side)
+void Shooter::BallFeederOn(ShooterSide side)
 {
-	SetShooterConveyorSpeed(side, 0);
-}
-
-void Shooter::ShooterConveyorOn(ShooterSide side)
-{
-	SetShooterConveyorSpeed(side, 1);
+	SetBallFeedersSpeed(side, 1);
 }
 
 // Member Access
 
-void Shooter::SetOffSetRight(int offsetTime)
+void Shooter::SetOffsetRight(int offsetTime)
 {
-	StartOffSetRight = LimitOffsetTime(offsetTime);
+	StartOffsetRight = LimitOffsetTime(offsetTime);
 }
 
-void Shooter::SetOffSetLeft(int offsetTime)
+void Shooter::SetOffsetLeft(int offsetTime)
 {
-	StartOffSetLeft = LimitOffsetTime(offsetTime);
+	StartOffsetLeft = LimitOffsetTime(offsetTime);
 }
 
 void Shooter::SetOnTime(int time)
@@ -99,11 +95,11 @@ int Shooter::GetOffsetTime(ShooterSide side)
 {
 	if (side == leftShooter)
 	{
-		return StartOffSetLeft;
+		return StartOffsetLeft;
 	}
 	else
 	{
-		return StartOffSetRight;
+		return StartOffsetRight;
 	}
 }
 
@@ -133,22 +129,20 @@ int Shooter::LimitOffsetTime(int time)
 	return time;
 }
 
-void Shooter::SetShooterConveyorsSpeed(double speed)
+void Shooter::SetBallFeedersSpeed(double speed)
 {
-	SetShooterConveyorSpeed(leftShooter, speed);
-	SetShooterConveyorSpeed(rightShooter, speed);
+	SetBallFeedersSpeed(leftShooter, speed);
+	SetBallFeedersSpeed(rightShooter, speed);
 }
 
-void Shooter::SetShooterConveyorSpeed(ShooterSide side, double speed)
+void Shooter::SetBallFeedersSpeed(ShooterSide side, double speed)
 {
 	if (side == leftShooter)
 	{
-		ShooterConveyorLeft->Set(speed);
+		BallFeederLeft->Set(speed);
 	}
 	else
 	{
-		ShooterConveyorRight->Set(speed);
+		BallFeederRight->Set(speed);
 	}
 }
-
-

@@ -27,6 +27,8 @@ public:
 	virtual ~GearLoad();
 
 	bool GetGearLoadReady();
+
+	int GetGearClearTime();
 	void SetGearClearTime(int time);
 };
 

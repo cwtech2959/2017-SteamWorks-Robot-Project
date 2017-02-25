@@ -23,7 +23,7 @@ StartShooterConveyorCommand::~StartShooterConveyorCommand()
 void StartShooterConveyorCommand::Initialize()
 {
 	SetTimeout(Robot::ShooterSubsystem->GetOnTime() * 0.001);
-	Robot::ShooterSubsystem->ShooterConveyorOn(m_shooterSide);
+	Robot::ShooterSubsystem->BallFeederOn(m_shooterSide);
 }
 
 bool StartShooterConveyorCommand::IsFinished()
@@ -33,7 +33,7 @@ bool StartShooterConveyorCommand::IsFinished()
 
 void StartShooterConveyorCommand::End()
 {
-	Robot::ShooterSubsystem->ShooterConveyorOff(m_shooterSide);
+	Robot::ShooterSubsystem->BallFeederOff(m_shooterSide);
 }
 
 void StartShooterConveyorCommand::Interrupted()

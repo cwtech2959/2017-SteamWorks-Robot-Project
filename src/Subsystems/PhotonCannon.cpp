@@ -10,7 +10,9 @@
 
 PhotonCannon::PhotonCannon() : Subsystem("PhotonCannon")
 {
-	LightController.reset(new Spark(PHOTON_CANNON_PWM));
+	LightController.reset(new Spark(AIM_LIGHT_PWM));
+
+	LiveWindow::GetInstance()->AddActuator("PhotonCannon", "Aim Light", LightController.get());
 }
 
 PhotonCannon::~PhotonCannon()

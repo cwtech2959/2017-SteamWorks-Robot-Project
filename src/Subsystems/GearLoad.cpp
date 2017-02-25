@@ -14,7 +14,9 @@ GearLoad::GearLoad() : Subsystem("GearLoad")
 	GearClearTime = DefaultClearTime;
 
 	GearLoadReady.reset(new DigitalInput(GEAR_LOAD_READY_DIO));
-	GearPickup.reset(new CANTalon(3));
+	GearPickup.reset(new CANTalon(GEAR_PICK_UP_ROLLER_CAN));
+
+	LiveWindow::GetInstance()->AddActuator("GearLoad", "Gear Pickup Roller CIM", GearPickup.get());
 }
 
 GearLoad::~GearLoad()
@@ -24,6 +26,11 @@ GearLoad::~GearLoad()
 bool GearLoad::GetGearLoadReady()
 {
 	return GearLoadReady->Get();
+}
+
+int GearLoad::GetGearClearTime()
+{
+	return GearClearTime;
 }
 
 void GearLoad::SetGearClearTime(int time)

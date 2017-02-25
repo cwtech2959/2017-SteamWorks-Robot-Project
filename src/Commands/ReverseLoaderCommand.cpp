@@ -20,7 +20,7 @@ ReverseLoaderCommand::~ReverseLoaderCommand()
 
 void ReverseLoaderCommand::Initialize()
 {
-	Robot::LoaderSubsystem->ReverseLoaderConveyor();
+	Robot::LoaderSubsystem->ReverseBallLoader();
 }
 
 bool ReverseLoaderCommand::IsFinished()
@@ -30,7 +30,7 @@ bool ReverseLoaderCommand::IsFinished()
 
 void ReverseLoaderCommand::End()
 {
-	Robot::LoaderSubsystem->LoaderConveyorForward();
+	Robot::LoaderSubsystem->BallLoaderForward();
 }
 
 void ReverseLoaderCommand::Interrupted()

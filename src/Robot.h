@@ -14,10 +14,10 @@
 #include <Subsystems/Loader.h>
 #include <Subsystems/PhotonCannon.h>
 #include <Subsystems/Shooter.h>
-#include <OI.h>
 #include <Subsystems/RopeClimb.h>
 #include <Subsystems/ShooterMotors.h>
 #include <Subsystems/GearLoad.h>
+#include <OI.h>
 
 class Robot: public IterativeRobot
 {

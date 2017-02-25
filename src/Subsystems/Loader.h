@@ -14,16 +14,16 @@
 class Loader: public Subsystem
 {
 private:
-	std::shared_ptr<Spark> LoaderConveyor;
+	std::shared_ptr<Spark> BallPickupAndAgitator;
 
 public:
 	Loader();
 	virtual ~Loader();
 
-	void StopLoaderConveyor();
+	void StopBallLoader();
 
-	void ReverseLoaderConveyor();
-	void LoaderConveyorForward();
+	void ReverseBallLoader();
+	void BallLoaderForward();
 };
 
 #endif /* SRC_SUBSYSTEMS_LOADER_H_ */

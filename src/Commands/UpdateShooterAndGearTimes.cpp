@@ -13,6 +13,7 @@ UpdateShooterAndGearTimes::UpdateShooterAndGearTimes() :
 {
 	Requires(Robot::ShooterSubsystem.get());
 	Requires(Robot::GearManagementSubsystem.get());
+	Requires(Robot::GearLoadSubsystem.get());
 }
 
 UpdateShooterAndGearTimes::~UpdateShooterAndGearTimes()
@@ -23,14 +24,20 @@ void UpdateShooterAndGearTimes::Initialize()
 {
 	double gearGateTime = SmartDashboard::GetNumber("Gear Gate Time", DefaultGearGateTime);
 	Robot::GearManagementSubsystem->SetGearGateTime(gearGateTime);
-	double startOffSetRightTime = SmartDashboard::GetNumber("Start OffSet Right", StartOffSetRightTime);
-	Robot::ShooterSubsystem->SetOffSetRight(startOffSetRightTime);
-	double startOffSetLeft = SmartDashboard::GetNumber("Start OffSet Left", StartOffSetLeftTime);
-	Robot::ShooterSubsystem->SetOffSetLeft(startOffSetLeft);
-	double onTime = SmartDashboard::GetNumber("On Time", DefaultOnTime);
+	double gearClearTime = SmartDashboard::GetNumber("Gear Clear Time", DefaultClearTime);
+	Robot::GearLoadSubsystem->SetGearClearTime(gearClearTime);
+	double startOffsetRightTime = SmartDashboard::GetNumber("Ball Feeder Right Start Offset", DefaultStartOffsetRightTime);
+	Robot::ShooterSubsystem->SetOffsetRight(startOffsetRightTime);
+	double startOffsetLeft = SmartDashboard::GetNumber("Ball Feeder Left Start Offset", DefaultStartOffsetLeftTime);
+	Robot::ShooterSubsystem->SetOffsetLeft(startOffsetLeft);
+	double onTime = SmartDashboard::GetNumber("Ball Feeder On Time", DefaultOnTime);
 	Robot::ShooterSubsystem->SetOnTime(onTime);
-	double offTime = SmartDashboard::GetNumber("Off Time", DefaultOffTime);
+	double offTime = SmartDashboard::GetNumber("Ball Feeder Off Time", DefaultOffTime);
 	Robot::ShooterSubsystem->SetOffTime(offTime);
+	double fryingPanUpDelayTime = SmartDashboard::GetNumber("Frying Pan Up Delay Time", DefaultFryingPanUpDelayTime);
+	Robot::GearManagementSubsystem->SetFryingPanUpDelayTime(fryingPanUpDelayTime);
+	double fryingPanStallTime = SmartDashboard::GetNumber("Frying Pan Stall Time", DefaultFryingPanStallTime);
+	Robot::GearManagementSubsystem->SetFryingPanStallTime(fryingPanStallTime);
 }
 
 bool UpdateShooterAndGearTimes::IsFinished()

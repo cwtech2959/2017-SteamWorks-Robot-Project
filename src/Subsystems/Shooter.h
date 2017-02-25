@@ -11,8 +11,8 @@
 #include "WPILib.h"
 #include <Commands/Subsystem.h>
 
-constexpr int StartOffSetRightTime = 100;
-constexpr int StartOffSetLeftTime = 100;
+constexpr int DefaultStartOffsetRightTime = 100;
+constexpr int DefaultStartOffsetLeftTime = 100;
 constexpr int DefaultOnTime = 10;
 constexpr int DefaultOffTime = 10;
 
@@ -20,11 +20,11 @@ class Shooter : public Subsystem
 {
 	// private members
 private:
-	std::shared_ptr<Spark> ShooterConveyorRight;
-	std::shared_ptr<Spark> ShooterConveyorLeft;
+	std::shared_ptr<Spark> BallFeederRight;
+	std::shared_ptr<Spark> BallFeederLeft;
 
-	int StartOffSetRight;
-	int StartOffSetLeft;
+	int StartOffsetRight;
+	int StartOffsetLeft;
 	int OnTime;
 	int OffTime;
 
@@ -36,24 +36,23 @@ public:
 		leftShooter,
 		rightShooter
 	};
+
 public:
 	Shooter();
 	virtual ~Shooter();
 
-	void StopAllConveyors();
-
 	// Shooter feeder manipulation
-	void StartShooterConveyors();
-	void ShooterConveyorsOff();
-	void ReverseShooterConveyors();
-	void ShooterConveyorOff(ShooterSide side);
-	void ShooterConveyorOn(ShooterSide side);
+	void StartBallFeeders();
+	void StopBallFeeders();
+	void ReverseBallFeeders();
+	void BallFeederOff(ShooterSide side);
+	void BallFeederOn(ShooterSide side);
 
 	// member access
 
 	// Shooter timing control
-	void SetOffSetRight(int offsetTime);
-	void SetOffSetLeft(int offsetTime);
+	void SetOffsetRight(int offsetTime);
+	void SetOffsetLeft(int offsetTime);
 	void SetOnTime(int time);
 	void SetOffTime(int time);
 
@@ -66,7 +65,7 @@ public:
 
 private:
 	int LimitOffsetTime(int time);
-	void SetShooterConveyorsSpeed(double speed);
-	void SetShooterConveyorSpeed(ShooterSide side, double speed);
+	void SetBallFeedersSpeed(double speed);
+	void SetBallFeedersSpeed(ShooterSide side, double speed);
 };
 #endif /* SRC_SUBSYSTEMS_SHOOTER_H_ */

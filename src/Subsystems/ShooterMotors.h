@@ -12,7 +12,7 @@
 #include <Commands/Subsystem.h>
 #include <CANTalon.h>
 
-constexpr double DefaultShooterSpeed = 0.65;
+constexpr double DefaultShooterSpeed = 1.0;
 
 class ShooterMotors: public Subsystem
 {

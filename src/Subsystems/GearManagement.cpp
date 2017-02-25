@@ -9,7 +9,6 @@
 #include "RobotMap.h"
 #include "WPILib.h"
 
-
 GearManagement::GearManagement() : Subsystem("GearManagement")
 {
 	GearGateTime = DefaultGearGateTime;
@@ -19,10 +18,15 @@ GearManagement::GearManagement() : Subsystem("GearManagement")
 	FryingPanDownSwitch.reset(new DigitalInput(FRYING_PAN_DOWN_DIO));
 	FryingPanUpSwitch.reset(new DigitalInput(FRYING_PAN_UP_DIO));
 	GearOnFryingPan.reset(new DigitalInput(GEAR_ON_FRYING_PAN_DIO));
+
 	FryingPanMotor.reset(new Spark(FRYING_PAN_MOTOR_PWM));
 	GearDropOffMotors.reset(new Spark(GEAR_DROP_OFF_MOTORS_PWM));
 
-	DrvingFryingPan = false;
+	FryingPanState = Unknown;
+
+	LiveWindow * lw = LiveWindow::GetInstance();
+    lw->AddActuator("GearManagement", "Frying Pan Motor", FryingPanMotor.get());
+    lw->AddActuator("GearManagement", "Gear Drop Off Motors", GearDropOffMotors.get());
 }
 
 GearManagement::~GearManagement()
@@ -70,6 +74,21 @@ int GearManagement::GetGearGateTime()
 	return GearGateTime;
 }
 
+void GearManagement::SetGearGateTime(int time)
+{
+	GearGateTime = time;
+}
+
+void GearManagement::SetFryingPanUpDelayTime(int time)
+{
+	FryingPanUpDelay = time;
+}
+
+int GearManagement::GetFryingPanUpDelayTime()
+{
+	return FryingPanUpDelay;
+}
+
 void GearManagement::SetFryingPanStallTime(int time)
 {
 	FryingPanStallTime = time;
@@ -90,23 +109,17 @@ bool GearManagement::GetFryingPanDownSwitch()
 	return FryingPanDownSwitch->Get();
 }
 
-
 bool GearManagement::GetGearOnFryingPan()
 {
 	return GearOnFryingPan->Get();
 }
 
-void GearManagement::SetGearGateTime(int time)
+void GearManagement::SetDrivingFryingPan(DrivingFryingPan state)
 {
-	GearGateTime = time;
+	FryingPanState = state;
 }
 
-void GearManagement::SetDrivingFryingPan(bool state)
+GearManagement::DrivingFryingPan GearManagement::GetDrvingFryingPan()
 {
-	DrvingFryingPan = state;
-}
-
-bool GearManagement::GetDrvingFryingPan()
-{
-	return DrvingFryingPan;
+	return FryingPanState;
 }

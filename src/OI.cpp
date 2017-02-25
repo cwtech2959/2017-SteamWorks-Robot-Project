@@ -39,8 +39,11 @@ OI::OI()
 	SmartDashboard::PutData("Reverse Loader Command", new ReverseLoaderCommand());
 	SmartDashboard::PutData("Photon Cannon Off Command", new PhotonCannonOnCommand());
 	SmartDashboard::PutData("Photon Cannon On Command", new PhotonCannonOffCommand());
-	SmartDashboard::PutData("Gear Drop Off Command", new GearDropOffCommand(true));
+	SmartDashboard::PutData("Gear Drop Off Open Command", new GearDropOffCommand(true));
+	SmartDashboard::PutData("Gear Drop Off Close Command", new GearDropOffCommand(false));
 	SmartDashboard::PutData("Frying Pan Up Command", new FryingPanUpCommand(true));
+	SmartDashboard::PutData("Frying Pan Down Command", new FryingPanUpCommand(false));
+	SmartDashboard::PutData("Clear Gear Command", new ClearGearCommand());
 
 	SmartDashboard::PutData("Update Shooter Speed", new UpdateShooterSpeed());
 	SmartDashboard::PutData("Update Shooter And Gear Times", new UpdateShooterAndGearTimes());

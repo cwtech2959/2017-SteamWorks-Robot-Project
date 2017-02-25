@@ -7,6 +7,7 @@
 
 #include <Subsystems/DriveTrain.h>
 #include <Commands/DriveWithJoystick.h>
+#include <RobotMap.h>
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain")
 {
@@ -19,10 +20,10 @@ DriveTrain::~DriveTrain()
 
 void DriveTrain::InitHardware()
 {
-	Left1MotorController.reset(new CANTalon(5));
-	Left2MotorController.reset(new CANTalon(6));
-	Right1MotorController.reset(new CANTalon(1));
-	Right2MotorController.reset(new CANTalon(2));
+	Left1MotorController.reset(new CANTalon(LEFT_DRIVE_MOTOR_1_CAN));
+	Left2MotorController.reset(new CANTalon(LEFT_DRIVE_MOTOR_2_CAN));
+	Right1MotorController.reset(new CANTalon(RIGHT_DRIVE_MOTOR_1_CAN));
+	Right2MotorController.reset(new CANTalon(RIGHT_DRIVE_MOTOR_2_CAN));
 
 	DriveTank.reset(new RobotDrive(
 			Left1MotorController,

@@ -26,15 +26,19 @@ private:
 	std::shared_ptr<Spark> GearDropOffMotors;
 
 	int GearGateTime;
-	int FryingPanStallTime;
 	int FryingPanUpDelay;
-
-	bool DrvingFryingPan;
+	int FryingPanStallTime;
 
 	enum DrivingFryingPan
 	{
-		Up, Down, DrivingUp, DrivingDown
+		Up,
+		Down,
+		DrivingUp,
+		DrivingDown,
+		Unknown
 	};
+
+	DrivingFryingPan FryingPanState;
 
 public:
 	GearManagement();
@@ -47,7 +51,10 @@ public:
 	void StopFryingPanMotor();
 
 	void SetGearGateTime(int time);
-		int GetGearGateTime();
+	int GetGearGateTime();
+
+	void SetFryingPanUpDelayTime(int time);
+	int GetFryingPanUpDelayTime();
 
 	void SetFryingPanStallTime(int time);
 	int GetFryingPanStallTime();
@@ -56,8 +63,8 @@ public:
 	bool GetFryingPanDownSwitch();
 	bool GetGearOnFryingPan();
 
-	void SetDrivingFryingPan(bool state);
-		bool GetDrvingFryingPan();
+	void SetDrivingFryingPan(DrivingFryingPan state);
+	DrivingFryingPan GetDrvingFryingPan();
 };
 
 #endif /* SRC_SUBSYSTEMS_GEARMANAGEMENT_H_ */

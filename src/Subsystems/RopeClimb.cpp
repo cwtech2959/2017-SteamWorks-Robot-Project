@@ -11,6 +11,8 @@
 RopeClimb::RopeClimb() : Subsystem("Climb")
 {
 	ClimbMotor.reset(new Spark(CLIMB_PWM));
+
+	LiveWindow::GetInstance()->AddActuator("Climb", "Climb Motor", ClimbMotor.get());
 }
 
 RopeClimb::~RopeClimb()

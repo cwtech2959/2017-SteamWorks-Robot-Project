@@ -14,20 +14,20 @@ constexpr int GEAR_DROP_OFF_MOTORS_PWM = 1;
 constexpr int BALL_FEEDER_LEFT_PWM = 2;
 constexpr int BALL_FEEDER_RIGHT_PWM = 3;
 constexpr int CLIMB_PWM = 4;
-constexpr int PHOTON_CANNON_PWM = 5;
+constexpr int AIM_LIGHT_PWM = 5;
 constexpr int FRYING_PAN_MOTOR_PWM = 6;
 
 // DIO Mapping
-constexpr int FRYING_PAN_UP_DIO = 0;
-constexpr int FRYING_PAN_DOWN_DIO = 1;
-constexpr int GEAR_ON_FRYING_PAN_DIO = 2;
-constexpr int GEAR_LOAD_READY_DIO = 3;
+constexpr int GEAR_LOAD_READY_DIO = 0;
+constexpr int GEAR_ON_FRYING_PAN_DIO = 1;
+constexpr int FRYING_PAN_DOWN_DIO = 2;
+constexpr int FRYING_PAN_UP_DIO = 3;
 
 // CAN Mapping( Missing- Drive and Ball Shooter's)
 
 constexpr int LEFT_DRIVE_MOTOR_1_CAN = 1;
 constexpr int LEFT_DRIVE_MOTOR_2_CAN = 2;
-constexpr int GEAR_PICK_UP_CAN = 3;
+constexpr int GEAR_PICK_UP_ROLLER_CAN = 3;
 constexpr int RIGHT_DRIVE_MOTOR_1_CAN = 4;
 constexpr int RIGHT_DRIVE_MOTOR_2_CAN = 5;
 constexpr int BALL_SHOOTER_RIGHT_CAN = 6;

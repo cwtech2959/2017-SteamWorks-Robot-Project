@@ -21,7 +21,7 @@ ClearGearCommand::~ClearGearCommand()
 
 void ClearGearCommand::Initialize()
 {
-	Robot::LoaderSubsystem->ReverseLoaderConveyor();
+	Robot::LoaderSubsystem->ReverseBallLoader();
 }
 
 void ClearGearCommand::Execute()
@@ -40,7 +40,7 @@ bool ClearGearCommand::IsFinished()
 
 void ClearGearCommand::End()
 {
-	Robot::LoaderSubsystem->LoaderConveyorForward();
+	Robot::LoaderSubsystem->BallLoaderForward();
 }
 
 void ClearGearCommand::Interrupted()

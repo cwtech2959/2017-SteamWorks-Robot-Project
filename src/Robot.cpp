@@ -13,7 +13,7 @@ std::unique_ptr<OI> Robot::oi;
 
 void Robot::RobotInit()
 {
-	// Init subsystems!
+	// Initialize subsystems!
 	ClimbSubsystem.reset(new RopeClimb());
 	DriveTrainSubsystem.reset(new DriveTrain());
 	GearManagementSubsystem.reset(new GearManagement());
@@ -38,19 +38,20 @@ void Robot::RobotInit()
 	SmartDashboard::PutData(PhotonCannonSubsystem.get());
 	SmartDashboard::PutData(ShooterSubsystem.get());
 	SmartDashboard::PutData(ShooterMotorsSubsystem.get());
+
 	// chooser.AddDefault("Default Auto", new ExampleCommand());
 	// chooser.AddObject("My Auto", new MyAutoCommand());
 	SmartDashboard::PutData("Auto Modes", &chooser);
 
 	SmartDashboard::SetDefaultNumber("Shooter Speed", DefaultShooterSpeed);
+	SmartDashboard::SetDefaultNumber("Ball Feeder Right Start Offset", DefaultStartOffsetRightTime);
+	SmartDashboard::SetDefaultNumber("Ball Feeder Left Start Offset", DefaultStartOffsetLeftTime);
+	SmartDashboard::SetDefaultNumber("Ball Feeder On Time", DefaultOnTime);
+	SmartDashboard::SetDefaultNumber("Ball Feeder Off Time", DefaultOffTime);
 	SmartDashboard::SetDefaultNumber("Gear Gate Time", DefaultGearGateTime);
-	SmartDashboard::SetDefaultNumber("Frying Pan Stall Time", DefaultFryingPanStallTime);
-	SmartDashboard::SetDefaultNumber("Start OffSet Right", StartOffSetRightTime);
-	SmartDashboard::SetDefaultNumber("Start OffSet Left", StartOffSetLeftTime);
-	SmartDashboard::SetDefaultNumber("On Time", DefaultOnTime);
-	SmartDashboard::SetDefaultNumber("Off Time", DefaultOffTime);
 	SmartDashboard::SetDefaultNumber("Gear Clear Time", DefaultClearTime);
 	SmartDashboard::SetDefaultNumber("Frying Pan Up Delay Time", DefaultFryingPanUpDelayTime);
+	SmartDashboard::SetDefaultNumber("Frying Pan Stall Time", DefaultFryingPanStallTime);
 }
 
 /**

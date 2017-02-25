@@ -10,26 +10,28 @@
 
 Loader::Loader() : Subsystem("Loader")
 {
-	LoaderConveyor.reset(new Spark(BALL_PICKUP_PWM));
+	BallPickupAndAgitator.reset(new Spark(BALL_PICKUP_PWM));
+
+	LiveWindow::GetInstance()->AddActuator("Loader", "Ball Pickup and Agitation", BallPickupAndAgitator.get());
 }
 
 Loader::~Loader()
 {
 }
 
-void Loader::StopLoaderConveyor()
+void Loader::StopBallLoader()
 {
-	LoaderConveyor->Set(0);
+	BallPickupAndAgitator->Set(0);
 }
 
-void Loader::ReverseLoaderConveyor()
+void Loader::ReverseBallLoader()
 {
-	StopLoaderConveyor();
-	LoaderConveyor->Set(-1);
+	StopBallLoader();
+	BallPickupAndAgitator->Set(-1);
 }
 
-void Loader::LoaderConveyorForward()
+void Loader::BallLoaderForward()
 {
-	StopLoaderConveyor();
-	LoaderConveyor->Set(1);
+	StopBallLoader();
+	BallPickupAndAgitator->Set(1);
 }

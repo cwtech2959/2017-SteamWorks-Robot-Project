@@ -23,7 +23,7 @@ void ReverseFireCommand::Execute()
 {
 	if (Robot::ShooterSubsystem->GetShooting() == false)
 	{
-		Robot::ShooterSubsystem->ReverseShooterConveyors();
+		Robot::ShooterSubsystem->ReverseBallFeeders();
 	}
 }
 
@@ -36,7 +36,7 @@ void ReverseFireCommand::End()
 {
 	if (Robot::ShooterSubsystem->GetShooting() == false)
 	{
-		Robot::ShooterSubsystem->ShooterConveyorsOff();
+		Robot::ShooterSubsystem->StopBallFeeders();
 	}
 }
 
