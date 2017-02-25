@@ -13,7 +13,6 @@
 
 constexpr int DefaultGearGateTime = 500;
 constexpr int DefaultFryingPanStallTime = 500;
-constexpr int DefaultClearTime = 500;
 constexpr int DefaultFryingPanUpDelayTime = 500;
 
 class GearManagement : public Subsystem
@@ -21,7 +20,6 @@ class GearManagement : public Subsystem
 private:
 	std::shared_ptr<DigitalInput> FryingPanDownSwitch;
 	std::shared_ptr<DigitalInput> FryingPanUpSwitch;
-	std::shared_ptr<DigitalInput> GearLoadReady;
 	std::shared_ptr<DigitalInput> GearOnFryingPan;
 
 	std::shared_ptr<Spark> FryingPanMotor;
@@ -31,8 +29,10 @@ private:
 	int FryingPanStallTime;
 	int FryingPanUpDelay;
 
-public:
-	int GearClearTime;
+	enum DrivingFryingPan
+	{
+		Up, Down, DrivingUp, DrivingDown
+	};
 
 public:
 	GearManagement();
@@ -45,17 +45,14 @@ public:
 	void StopFryingPanMotor();
 
 	void SetGearGateTime(int time);
-	int GetGearGateTime();
+		int GetGearGateTime();
 
 	void SetFryingPanStallTime(int time);
 	int GetFryingPanStallTime();
 
 	bool GetFryingPanUpSwitch();
 	bool GetFryingPanDownSwitch();
-	bool GetGearLoadReady();
 	bool GetGearOnFryingPan();
-
-	void SetGearClearTime(int time);
 };
 
 #endif /* SRC_SUBSYSTEMS_GEARMANAGEMENT_H_ */

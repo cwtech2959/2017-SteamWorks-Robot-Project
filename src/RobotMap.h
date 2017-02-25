@@ -27,6 +27,7 @@ constexpr int GEAR_LOAD_READY_DIO = 3;
 
 constexpr int LEFT_DRIVE_MOTOR_1_CAN = 1;
 constexpr int LEFT_DRIVE_MOTOR_2_CAN = 2;
+constexpr int GEAR_PICK_UP_CAN = 3;
 constexpr int RIGHT_DRIVE_MOTOR_1_CAN = 4;
 constexpr int RIGHT_DRIVE_MOTOR_2_CAN = 5;
 constexpr int BALL_SHOOTER_LEFT_CAN = 7;

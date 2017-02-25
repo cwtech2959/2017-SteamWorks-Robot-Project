@@ -6,8 +6,9 @@
  */
 
 #include <Triggers/ClearGearTrigger.h>
-#include <Subsystems/GearManagement.h>
+#include <Subsystems/GearLoad.h>
 #include <Robot.h>
+#include <Subsystems/GearManagement.h>
 
 ClearGearTrigger::ClearGearTrigger()
 {
@@ -19,7 +20,7 @@ ClearGearTrigger::~ClearGearTrigger()
 
 bool ClearGearTrigger::Get()
 {
-	return (Robot::GearManagementSubsystem->GetGearLoadReady() == true
+	return (Robot::GearLoadSubsystem->GetGearLoadReady() == true
 			&& (Robot::GearManagementSubsystem->GetGearOnFryingPan() == true
 					|| Robot::GearManagementSubsystem->GetFryingPanUpSwitch() == true));
 }

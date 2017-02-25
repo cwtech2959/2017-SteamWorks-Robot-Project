@@ -3,6 +3,7 @@
 std::unique_ptr<RopeClimb> Robot::ClimbSubsystem;
 std::unique_ptr<DriveTrain> Robot::DriveTrainSubsystem;
 std::unique_ptr<GearManagement> Robot::GearManagementSubsystem;
+std::unique_ptr<GearLoad> Robot::GearLoadSubsystem;
 std::unique_ptr<Loader> Robot::LoaderSubsystem;
 std::unique_ptr<PhotonCannon> Robot::PhotonCannonSubsystem;
 std::unique_ptr<Shooter> Robot::ShooterSubsystem;
@@ -14,6 +15,7 @@ void Robot::RobotInit()
 	ClimbSubsystem.reset(new RopeClimb());
 	DriveTrainSubsystem.reset(new DriveTrain());
 	GearManagementSubsystem.reset(new GearManagement());
+	GearLoadSubsystem.reset(new GearLoad());
 	LoaderSubsystem.reset(new Loader());
 	PhotonCannonSubsystem.reset(new PhotonCannon());
 	ShooterSubsystem.reset(new Shooter());
@@ -27,6 +29,7 @@ void Robot::RobotInit()
 	SmartDashboard::PutData(ClimbSubsystem.get());
 	SmartDashboard::PutData(DriveTrainSubsystem.get());
 	SmartDashboard::PutData(GearManagementSubsystem.get());
+	SmartDashboard::PutData(GearLoadSubsystem.get());
 	SmartDashboard::PutData(LoaderSubsystem.get());
 	SmartDashboard::PutData(PhotonCannonSubsystem.get());
 	SmartDashboard::PutData(ShooterSubsystem.get());
