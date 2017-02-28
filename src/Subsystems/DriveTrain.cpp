@@ -39,8 +39,8 @@ void DriveTrain::InitHardware()
 
 	DriveTank->SetInvertedMotor(RobotDrive::kFrontLeftMotor, false);
 	DriveTank->SetInvertedMotor(RobotDrive::kRearLeftMotor, false);
-	DriveTank->SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
-	DriveTank->SetInvertedMotor(RobotDrive::kRearRightMotor, true);
+	DriveTank->SetInvertedMotor(RobotDrive::kFrontRightMotor, false);
+	DriveTank->SetInvertedMotor(RobotDrive::kRearRightMotor, false);
 }
 
 void DriveTrain::InitDefaultCommand()

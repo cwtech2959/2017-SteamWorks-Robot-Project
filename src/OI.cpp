@@ -29,6 +29,7 @@ OI::OI()
 	ReverseLoadButton.reset(new JoystickButton(ButtonBox.get(), 2));
 
 	m_clearGearTrigger.reset(new ClearGearTrigger());
+	m_FryingPanUpTrigger.reset(new FryingPanUpTrigger());
 
 	// Process operator interface input here.
 	FireButton->WhileHeld(new ParallelShootingCommandGroup());

@@ -41,11 +41,11 @@ void GearManagement::StartGearDropOffMotors(bool open)
 {
 	if (open == true)
 	{
-		GearDropOffMotors->Set(GearReleaseDriveSpeed);
+		GearDropOffMotors->Set(-GearReleaseDriveSpeed);
 	}
 	else
 	{
-		GearDropOffMotors->Set(-GearReleaseDriveSpeed);
+		GearDropOffMotors->Set(GearReleaseDriveSpeed);
 	}
 }
 
@@ -58,11 +58,11 @@ void GearManagement::StartFryingPanMotor(bool up)
 {
 	if (up == true)
 	{
-		FryingPanMotor->Set(-FryingPanDriveSpeed);
+		FryingPanMotor->Set(FryingPanDriveSpeed);
 	}
 	else
 	{
-		FryingPanMotor->Set(FryingPanDriveSpeed);
+		FryingPanMotor->Set(-FryingPanDriveSpeed);
 	}
 }
 
@@ -138,15 +138,15 @@ void GearManagement::SetGearReleaseDriveSpeed(double speed)
 
 void GearManagement::PrepareGearInit()
 {
-	if (FryingPanUpSwitch == true)
+	if (FryingPanUpSwitch->Get() == true)
 	{
 
 	}
-	else if (FryingPanDownSwitch == true)
+	else if (FryingPanDownSwitch->Get() == true)
 	{
 
 	}
-	else if (FryingPanUpSwitch && FryingPanDownSwitch == false)
+	else
 	{
 
 	}
