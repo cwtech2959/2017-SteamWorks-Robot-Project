@@ -71,6 +71,8 @@ public:
 
 	void SetDrivingFryingPan(DrivingFryingPan state);
 	DrivingFryingPan GetDrvingFryingPan();
+
+	void PrepareGearInit ();
 };
 
 #endif /* SRC_SUBSYSTEMS_GEARMANAGEMENT_H_ */

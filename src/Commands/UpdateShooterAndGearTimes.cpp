@@ -18,6 +18,7 @@ UpdateShooterAndGearTimes::UpdateShooterAndGearTimes() :
 
 UpdateShooterAndGearTimes::~UpdateShooterAndGearTimes()
 {
+
 }
 
 void UpdateShooterAndGearTimes::Initialize()

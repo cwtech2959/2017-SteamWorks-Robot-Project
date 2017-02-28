@@ -12,6 +12,7 @@
 MoveFryingPanCommand::MoveFryingPanCommand(bool up, int delayTime) :
 		Command("FryingPanUpCommand")
 {
+	Requires(Robot::GearLoadSubsystem.get());
 	Requires(Robot::GearManagementSubsystem.get());
 	m_up = up;
 	m_delayTime = delayTime;
@@ -47,11 +48,13 @@ bool MoveFryingPanCommand::IsFinished()
 	if (m_up && Robot::GearManagementSubsystem->GetFryingPanUpSwitch())
 	{
 		Robot::GearManagementSubsystem->SetDrivingFryingPan(GearManagement::Up);
+		Robot::GearLoadSubsystem->Stop();
 		return true;
 	}
 	else if (!m_up && Robot::GearManagementSubsystem->GetFryingPanDownSwitch())
 	{
 		Robot::GearManagementSubsystem->SetDrivingFryingPan(GearManagement::Down);
+		Robot::GearLoadSubsystem->LoadGear();
 		return true;
 	}
 

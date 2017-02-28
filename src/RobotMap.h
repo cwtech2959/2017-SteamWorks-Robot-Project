@@ -8,7 +8,7 @@
  * floating around.
  */
 
-// PWM channel mapping( Missing- Climb )
+// PWM channel mapping
 constexpr int BALL_PICKUP_PWM = 0;
 constexpr int GEAR_DROP_OFF_MOTORS_PWM = 1;
 constexpr int BALL_FEEDER_LEFT_PWM = 2;
@@ -23,7 +23,7 @@ constexpr int GEAR_ON_FRYING_PAN_DIO = 1;
 constexpr int FRYING_PAN_DOWN_DIO = 2;
 constexpr int FRYING_PAN_UP_DIO = 3;
 
-// CAN Mapping( Missing- Drive and Ball Shooter's)
+// CAN Mapping
 
 constexpr int LEFT_DRIVE_MOTOR_1_CAN = 1;
 constexpr int LEFT_DRIVE_MOTOR_2_CAN = 2;

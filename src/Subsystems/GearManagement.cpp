@@ -135,3 +135,19 @@ void GearManagement::SetGearReleaseDriveSpeed(double speed)
 {
 	GearReleaseDriveSpeed = speed;
 }
+
+void GearManagement::PrepareGearInit()
+{
+	if (FryingPanUpSwitch == true)
+	{
+
+	}
+	else if (FryingPanDownSwitch == true)
+	{
+
+	}
+	else if (FryingPanUpSwitch && FryingPanDownSwitch == false)
+	{
+
+	}
+}
