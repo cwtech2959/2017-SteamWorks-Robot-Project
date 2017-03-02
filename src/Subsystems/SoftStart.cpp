@@ -6,34 +6,37 @@
  */
 
 #include <Subsystems/SoftStart.h>
+#include <cmath>
 
-SoftStart::SoftStart(double rampTimeMs)
+SoftStart::SoftStart(double rampTimeMs, double loopTimeMs)
 {
 	m_rampTime = rampTimeMs;
+	m_loopTime = loopTimeMs;
 	m_targetSpeed = 0;
 	m_rampRate = 0;
+	m_currentSpeed = 0;
 }
 
 SoftStart::~SoftStart()
 {
-
 }
 
-void SoftStart::SetTargetSpeed(double targetSpeed)
+void SoftStart::SetTargetSpeed(double targetSpeed, double currentSpeed)
 {
+	m_currentSpeed = currentSpeed;
 	m_targetSpeed = targetSpeed;
-	double ramps = (m_rampTime/20);
-	m_rampRate = (m_targetSpeed/ramps);
+	double ramps = m_rampTime / m_loopTime;
+	m_rampRate = fabs(targetSpeed - currentSpeed) / ramps;
 }
 
-double SoftStart::SoftStartedSpeed(double currentSpeed)
+double SoftStart::NextSpeed()
 {
-	if (currentSpeed > m_targetSpeed)
+	if (m_currentSpeed > m_targetSpeed)
 	{
-		currentSpeed -= m_rampRate;
-		if (currentSpeed > m_targetSpeed)
+		m_currentSpeed -= m_rampRate;
+		if (m_currentSpeed > m_targetSpeed)
 		{
-			return currentSpeed;
+			return m_currentSpeed;
 		}
 		else
 		{
@@ -42,10 +45,10 @@ double SoftStart::SoftStartedSpeed(double currentSpeed)
 	}
 	else
 	{
-		currentSpeed += m_rampRate;
-		if (currentSpeed < m_targetSpeed)
+		m_currentSpeed += m_rampRate;
+		if (m_currentSpeed < m_targetSpeed)
 		{
-			return currentSpeed;
+			return m_currentSpeed;
 		}
 		else
 		{

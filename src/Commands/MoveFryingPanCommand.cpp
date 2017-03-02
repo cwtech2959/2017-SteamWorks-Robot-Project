@@ -23,6 +23,7 @@ MoveFryingPanCommand::~MoveFryingPanCommand()
 
 void MoveFryingPanCommand::Initialize()
 {
+	ramp.SetTargetSpeed(Robot::GearManagementSubsystem->GetFryingPanDriveSpeed() , 0);
 	if (m_up)
 	{
 		SetTimeout(SecondsFromMilliSeconds(Robot::GearManagementSubsystem->GetFryingPanUpDelayTime()));
@@ -39,7 +40,7 @@ void MoveFryingPanCommand::Execute()
 {
 	if (IsTimedOut())
 	{
-		Robot::GearManagementSubsystem->StartFryingPanMotor(m_up);
+		Robot::GearManagementSubsystem->MoveFryingPan(m_up, ramp.NextSpeed());
 	}
 }
 

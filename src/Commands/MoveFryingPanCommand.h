@@ -9,6 +9,7 @@
 #define SRC_COMMANDS_MOVEFRYINGPANCOMMAND_H_
 
 #include "WPILib.h"
+#include <Subsystems/SoftStart.h>
 
 class MoveFryingPanCommand: public Command
 {
@@ -25,6 +26,8 @@ public:
 
 private:
 	bool m_up;
+
+	SoftStart ramp { 300 };
 };
 
 #endif /* SRC_COMMANDS_MOVEFRYINGPANCOMMAND_H_ */

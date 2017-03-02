@@ -54,15 +54,15 @@ void GearManagement::StopGearDropOffMotors()
 	GearDropOffMotors->Set(0);
 }
 
-void GearManagement::StartFryingPanMotor(bool up)
+void GearManagement::MoveFryingPan(bool up, double speed)
 {
 	if (up == true)
 	{
-		FryingPanMotor->Set(FryingPanDriveSpeed);
+		FryingPanMotor->Set(speed);
 	}
 	else
 	{
-		FryingPanMotor->Set(-FryingPanDriveSpeed);
+		FryingPanMotor->Set(-speed);
 	}
 }
 

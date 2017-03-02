@@ -50,7 +50,7 @@ public:
 	void StartGearDropOffMotors(bool open);
 	void StopGearDropOffMotors();
 
-	void StartFryingPanMotor(bool up);
+	void MoveFryingPan(bool up, double speed);
 	void StopFryingPanMotor();
 
 	void SetGearGateTime(double time);
