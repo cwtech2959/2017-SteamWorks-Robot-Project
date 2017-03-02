@@ -11,14 +11,14 @@
 #include "WPILib.h"
 #include <Commands/Subsystem.h>
 
-constexpr int DefaultClearTime = 100;
+constexpr double DefaultClearTime = 100;
 
 class Loader: public Subsystem
 {
 private:
 	std::shared_ptr<Spark> BallPickupAndAgitator;
 
-	int GearClearTime;
+	double GearClearTime;
 
 public:
 	Loader();
@@ -29,8 +29,8 @@ public:
 	void ReverseBallLoader();
 	void BallLoaderForward();
 
-	int GetGearClearTime();
-	void SetGearClearTime(int time);
+	double GetGearClearTime();
+	void SetGearClearTime(double time);
 };
 
 #endif /* SRC_SUBSYSTEMS_LOADER_H_ */

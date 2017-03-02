@@ -28,7 +28,7 @@ void GearLoad::Stop()
 
 void GearLoad::LoadGear()
 {
-	GearPickup->Set(-1.0);
+	GearPickup->Set(1.0);
 }
 
 bool GearLoad::GetGearLoadReady()

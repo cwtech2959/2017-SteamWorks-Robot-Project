@@ -53,7 +53,6 @@ void Robot::RobotInit()
 	SmartDashboard::SetDefaultNumber("Frying Pan Up Delay Time", DefaultFryingPanUpDelayTime);
 	SmartDashboard::SetDefaultNumber("Frying Pan Drive Speed", DefaultFryingPanDriveSpeed);
 	SmartDashboard::SetDefaultNumber("Gear Release Drive Speed", DefaultGearReleaseDriveSpeed);
-
 }
 
 /**
@@ -101,6 +100,7 @@ void Robot::AutonomousInit()
 	double speed = SmartDashboard::GetNumber("Shooter Speed", DefaultShooterSpeed);
 	ShooterMotorsSubsystem->SetBallShootersSpeed(speed);
 
+	LoaderSubsystem->BallLoaderForward();
 }
 
 void Robot::AutonomousPeriodic()
@@ -121,6 +121,8 @@ void Robot::TeleopInit()
 
 	double speed = SmartDashboard::GetNumber("Shooter Speed", DefaultShooterSpeed);
 	ShooterMotorsSubsystem->SetBallShootersSpeed(speed);
+
+	LoaderSubsystem->BallLoaderForward();
 }
 
 void Robot::TeleopPeriodic()

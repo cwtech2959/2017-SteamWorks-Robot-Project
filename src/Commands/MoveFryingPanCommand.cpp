@@ -9,13 +9,12 @@
 #include <Robot.h>
 #include <Utilities.h>
 
-MoveFryingPanCommand::MoveFryingPanCommand(bool up, int delayTime) :
+MoveFryingPanCommand::MoveFryingPanCommand(bool up) :
 		Command("FryingPanUpCommand")
 {
 	Requires(Robot::GearLoadSubsystem.get());
 	Requires(Robot::GearManagementSubsystem.get());
 	m_up = up;
-	m_delayTime = delayTime;
 }
 
 MoveFryingPanCommand::~MoveFryingPanCommand()
@@ -24,13 +23,14 @@ MoveFryingPanCommand::~MoveFryingPanCommand()
 
 void MoveFryingPanCommand::Initialize()
 {
-	SetTimeout(SecondsFromMilliSeconds(m_delayTime));
 	if (m_up)
 	{
+		SetTimeout(SecondsFromMilliSeconds(Robot::GearManagementSubsystem->GetFryingPanUpDelayTime()));
 		Robot::GearManagementSubsystem->SetDrivingFryingPan(GearManagement::DrivingUp);
 	}
 	else
 	{
+		SetTimeout(0);
 		Robot::GearManagementSubsystem->SetDrivingFryingPan(GearManagement::DrivingDown);
 	}
 }

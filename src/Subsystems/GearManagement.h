@@ -11,10 +11,10 @@
 #include <Commands/Subsystem.h>
 #include "WPILib.h"
 
-constexpr int DefaultGearGateTime = 500;
-constexpr int DefaultFryingPanUpDelayTime = 500;
+constexpr double DefaultGearGateTime = 1000;
+constexpr double DefaultFryingPanUpDelayTime = 2000;
 constexpr double DefaultGearReleaseDriveSpeed = 1;
-constexpr double DefaultFryingPanDriveSpeed = 1;
+constexpr double DefaultFryingPanDriveSpeed = 0.55;
 
 class GearManagement : public Subsystem
 {
@@ -36,8 +36,8 @@ private:
 	std::shared_ptr<Spark> FryingPanMotor;
 	std::shared_ptr<Spark> GearDropOffMotors;
 
-	int GearGateTime;
-	int FryingPanUpDelay;
+	double GearGateTime;
+	double FryingPanUpDelay;
 	double FryingPanDriveSpeed;
 	double GearReleaseDriveSpeed;
 
@@ -53,11 +53,11 @@ public:
 	void StartFryingPanMotor(bool up);
 	void StopFryingPanMotor();
 
-	void SetGearGateTime(int time);
-	int GetGearGateTime();
+	void SetGearGateTime(double time);
+	double GetGearGateTime();
 
-	void SetFryingPanUpDelayTime(int time);
-	int GetFryingPanUpDelayTime();
+	void SetFryingPanUpDelayTime(double time);
+	double GetFryingPanUpDelayTime();
 
 	void SetFryingPanDriveSpeed(double speed);
 	double GetFryingPanDriveSpeed();

@@ -7,6 +7,7 @@
 
 #include <Subsystems/Loader.h>
 #include "RobotMap.h"
+#include <WPILib.h>
 
 Loader::Loader() : Subsystem("Loader")
 {
@@ -29,21 +30,21 @@ void Loader::StopBallLoader()
 void Loader::ReverseBallLoader()
 {
 	StopBallLoader();
-	BallPickupAndAgitator->Set(-1);
+	BallPickupAndAgitator->Set(1);
 }
 
 void Loader::BallLoaderForward()
 {
 	StopBallLoader();
-	BallPickupAndAgitator->Set(1);
+	BallPickupAndAgitator->Set(-1);
 }
 
-int Loader::GetGearClearTime()
+double Loader::GetGearClearTime()
 {
 	return GearClearTime;
 }
 
-void Loader::SetGearClearTime(int time)
+void Loader::SetGearClearTime(double time)
 {
 	GearClearTime = time;
 }

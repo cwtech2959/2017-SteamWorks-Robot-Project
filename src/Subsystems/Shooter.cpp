@@ -7,6 +7,7 @@
 
 #include <Subsystems/Shooter.h>
 #include "RobotMap.h"
+#include "WPILib.h"
 
 const int MinTimeLimit = 0;
 const int MaxTimeLimit = 5000;
@@ -61,37 +62,37 @@ void Shooter::BallFeederOn(ShooterSide side)
 
 // Member Access
 
-void Shooter::SetOffsetRight(int offsetTime)
+void Shooter::SetOffsetRight(double offsetTime)
 {
 	StartOffsetRight = LimitOffsetTime(offsetTime);
 }
 
-void Shooter::SetOffsetLeft(int offsetTime)
+void Shooter::SetOffsetLeft(double offsetTime)
 {
 	StartOffsetLeft = LimitOffsetTime(offsetTime);
 }
 
-void Shooter::SetOnTime(int time)
+void Shooter::SetOnTime(double time)
 {
 	OnTime = LimitOffsetTime(time);
 }
 
-void Shooter::SetOffTime(int time)
+void Shooter::SetOffTime(double time)
 {
 	OffTime = LimitOffsetTime(time);
 }
 
-int Shooter::GetOnTime()
+double Shooter::GetOnTime()
 {
 	return OnTime;
 }
 
-int Shooter::GetOffTime()
+double Shooter::GetOffTime()
 {
 	return OffTime;
 }
 
-int Shooter::GetOffsetTime(ShooterSide side)
+double Shooter::GetOffsetTime(ShooterSide side)
 {
 	if (side == leftShooter)
 	{
@@ -115,7 +116,7 @@ bool Shooter::GetShooting()
 
 // Private Methods
 
-int Shooter::LimitOffsetTime(int time)
+double Shooter::LimitOffsetTime(double time)
 {
 	if (time < MinTimeLimit)
 	{

@@ -8,6 +8,6 @@
 #ifndef SRC_UTILITIES_H_
 #define SRC_UTILITIES_H_
 
-int SecondsFromMilliSeconds(int timeInMilliSeconds);
+double SecondsFromMilliSeconds(double timeInMilliSeconds);
 
 #endif /* SRC_UTILITIES_H_ */

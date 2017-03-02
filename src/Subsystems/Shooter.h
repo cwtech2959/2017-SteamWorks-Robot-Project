@@ -11,10 +11,10 @@
 #include "WPILib.h"
 #include <Commands/Subsystem.h>
 
-constexpr int DefaultStartOffsetRightTime = 100;
-constexpr int DefaultStartOffsetLeftTime = 100;
-constexpr int DefaultOnTime = 10;
-constexpr int DefaultOffTime = 10;
+constexpr double DefaultStartOffsetRightTime = 100;
+constexpr double DefaultStartOffsetLeftTime = 100;
+constexpr double DefaultOnTime = 10;
+constexpr double DefaultOffTime = 10;
 
 class Shooter : public Subsystem
 {
@@ -23,10 +23,10 @@ private:
 	std::shared_ptr<Spark> BallFeederRight;
 	std::shared_ptr<Spark> BallFeederLeft;
 
-	int StartOffsetRight;
-	int StartOffsetLeft;
-	int OnTime;
-	int OffTime;
+	double StartOffsetRight;
+	double StartOffsetLeft;
+	double OnTime;
+	double OffTime;
 
 	bool Shooting;
 
@@ -51,20 +51,20 @@ public:
 	// member access
 
 	// Shooter timing control
-	void SetOffsetRight(int offsetTime);
-	void SetOffsetLeft(int offsetTime);
-	void SetOnTime(int time);
-	void SetOffTime(int time);
+	void SetOffsetRight(double offsetTime);
+	void SetOffsetLeft(double offsetTime);
+	void SetOnTime(double time);
+	void SetOffTime(double time);
 
-	int GetOnTime();
-	int GetOffTime();
-	int GetOffsetTime(ShooterSide side);
+	double GetOnTime();
+	double GetOffTime();
+	double GetOffsetTime(ShooterSide side);
 
 	void SetShooting(bool state);
 	bool GetShooting();
 
 private:
-	int LimitOffsetTime(int time);
+	double LimitOffsetTime(double time);
 	void SetBallFeedersSpeed(double speed);
 	void SetBallFeederSpeed(ShooterSide side, double speed);
 };

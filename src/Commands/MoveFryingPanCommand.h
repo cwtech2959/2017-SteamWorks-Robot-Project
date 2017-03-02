@@ -13,7 +13,7 @@
 class MoveFryingPanCommand: public Command
 {
 public:
-	MoveFryingPanCommand(bool up, int delayTime);
+	MoveFryingPanCommand(bool up);
 	virtual ~MoveFryingPanCommand();
 
 public:
@@ -25,7 +25,6 @@ public:
 
 private:
 	bool m_up;
-	int m_delayTime;
 };
 
 #endif /* SRC_COMMANDS_MOVEFRYINGPANCOMMAND_H_ */

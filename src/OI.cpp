@@ -15,18 +15,20 @@
 OI::OI()
 {
 	DriverJoystick.reset(new Joystick(0));
-	CopilotJoystick.reset(new Joystick(1));
-	ButtonBox.reset(new Joystick(2));
+	ButtonBox.reset(new Joystick(1));
 
-	PhotonCannonButton.reset(new JoystickButton(DriverJoystick.get(), 5));
+	PhotonCannonButton.reset(new JoystickButton(DriverJoystick.get(), 4));
+	//InvertTankDirectionButton.reset(new JoystickButton(DriverJoystick.get(), 5));
+	//DriveStraightButton.reset(new JoystickButton(DriverJoystick.get(), 6));
+	//PowerReduceButton.reset(new JoystickButton(DriverJoystick.get(), 7));
 
-	FireButton.reset(new JoystickButton(CopilotJoystick.get(), 5));
-	GearDropOffButton.reset(new JoystickButton(CopilotJoystick.get(), 2));
-	FryingPanUpButton.reset(new JoystickButton(CopilotJoystick.get(), 3));
-	FryingPanDownButton.reset(new JoystickButton(CopilotJoystick.get(), 1));
-
-	ReverseFireButton.reset(new JoystickButton(ButtonBox.get(), 1));
-	ReverseLoadButton.reset(new JoystickButton(ButtonBox.get(), 2));
+	ReverseLoadButton.reset(new JoystickButton(ButtonBox.get(), 1));
+	ReverseFireButton.reset(new JoystickButton(ButtonBox.get(), 2));
+	//ClimbButton.reset(new JoystickButton(ButtonBox.get(), 3));
+	FireButton.reset(new JoystickButton(ButtonBox.get(), 4));
+	GearDropOffButton.reset(new JoystickButton(ButtonBox.get(), 5));
+	FryingPanUpButton.reset(new JoystickButton(ButtonBox.get(), 6));
+	FryingPanDownButton.reset(new JoystickButton(ButtonBox.get(), 7));
 
 	m_clearGearTrigger.reset(new ClearGearTrigger());
 	m_FryingPanUpTrigger.reset(new FryingPanUpTrigger());
@@ -39,11 +41,10 @@ OI::OI()
 	PhotonCannonButton->WhenReleased(new PhotonCannonOffCommand());
 	GearDropOffButton->WhenPressed(new GearDropOffCommand(true));
 	GearDropOffButton->WhenReleased(new GearDropOffCommand(false));
-	FryingPanUpButton->WhenPressed(new MoveFryingPanCommand(true, 0));
-	FryingPanDownButton->WhenPressed(new MoveFryingPanCommand(false, 0));
+	FryingPanUpButton->WhenPressed(new MoveFryingPanCommand(true));
+	FryingPanDownButton->WhenPressed(new MoveFryingPanCommand(false));
 	m_clearGearTrigger->WhenActive(new ClearGearCommand());
-	int delayTime = Robot::GearManagementSubsystem->GetFryingPanUpDelayTime();
-	m_FryingPanUpTrigger->WhenActive(new MoveFryingPanCommand(true, delayTime));
+	m_FryingPanUpTrigger->WhenActive(new MoveFryingPanCommand(true));
 
 	SmartDashboard::PutData("Reverse Fire Command", new ReverseFireCommand());
 	SmartDashboard::PutData("Reverse Loader Command", new ReverseLoaderCommand());
@@ -51,8 +52,8 @@ OI::OI()
 	SmartDashboard::PutData("Photon Cannon On Command", new PhotonCannonOffCommand());
 	SmartDashboard::PutData("Gear Drop Off Open Command", new GearDropOffCommand(true));
 	SmartDashboard::PutData("Gear Drop Off Close Command", new GearDropOffCommand(false));
-	SmartDashboard::PutData("Frying Pan Up Command", new MoveFryingPanCommand(true, 0));
-	SmartDashboard::PutData("Frying Pan Down Command", new MoveFryingPanCommand(false, 0));
+	SmartDashboard::PutData("Frying Pan Up Command", new MoveFryingPanCommand(true));
+	SmartDashboard::PutData("Frying Pan Down Command", new MoveFryingPanCommand(false));
 	SmartDashboard::PutData("Clear Gear Command", new ClearGearCommand());
 
 	SmartDashboard::PutData("Update Shooter Speed", new UpdateShooterSpeed());

@@ -18,7 +18,6 @@ UpdateShooterAndGearTimes::UpdateShooterAndGearTimes() :
 
 UpdateShooterAndGearTimes::~UpdateShooterAndGearTimes()
 {
-
 }
 
 void UpdateShooterAndGearTimes::Initialize()
@@ -40,7 +39,7 @@ void UpdateShooterAndGearTimes::Initialize()
 	double fryingPanDriveSpeed = SmartDashboard::GetNumber("Frying Pan Drive Speed", DefaultFryingPanDriveSpeed);
 	Robot::GearManagementSubsystem->SetFryingPanDriveSpeed(fryingPanDriveSpeed);
 	double gearReleaseDriveSpeed = SmartDashboard::GetNumber("Gear Release Drive Speed", DefaultGearReleaseDriveSpeed);
-		Robot::GearManagementSubsystem->SetGearReleaseDriveSpeed(gearReleaseDriveSpeed);
+	Robot::GearManagementSubsystem->SetGearReleaseDriveSpeed(gearReleaseDriveSpeed);
 }
 
 bool UpdateShooterAndGearTimes::IsFinished()

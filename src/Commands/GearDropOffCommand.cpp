@@ -22,10 +22,13 @@ GearDropOffCommand::~GearDropOffCommand()
 
 void GearDropOffCommand::Initialize()
 {
-	Robot::GearManagementSubsystem->StartGearDropOffMotors(m_open);
-
 	int time = Robot::GearManagementSubsystem->GetGearGateTime();
 	SetTimeout(SecondsFromMilliSeconds(time));
+}
+
+void GearDropOffCommand::Execute()
+{
+	Robot::GearManagementSubsystem->StartGearDropOffMotors(m_open);
 }
 
 bool GearDropOffCommand::IsFinished()

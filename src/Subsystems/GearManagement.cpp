@@ -71,22 +71,22 @@ void GearManagement::StopFryingPanMotor()
 	FryingPanMotor->Set(0);
 }
 
-int GearManagement::GetGearGateTime()
+double GearManagement::GetGearGateTime()
 {
 	return GearGateTime;
 }
 
-void GearManagement::SetGearGateTime(int time)
+void GearManagement::SetGearGateTime(double time)
 {
 	GearGateTime = time;
 }
 
-void GearManagement::SetFryingPanUpDelayTime(int time)
+void GearManagement::SetFryingPanUpDelayTime(double time)
 {
 	FryingPanUpDelay = time;
 }
 
-int GearManagement::GetFryingPanUpDelayTime()
+double GearManagement::GetFryingPanUpDelayTime()
 {
 	return FryingPanUpDelay;
 }

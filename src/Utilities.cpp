@@ -5,7 +5,7 @@
  *      Author: Kevin
  */
 
-int SecondsFromMilliSeconds(int timeInMilliSeconds)
+double SecondsFromMilliSeconds(double timeInMilliSeconds)
 {
 	return timeInMilliSeconds * 0.001;
 }
