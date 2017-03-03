@@ -2,7 +2,7 @@
  * PhotonCannonCommand2.h
  *
  *  Created on: Jan 30, 2017
- *      Author: Kevin
+ *      Author: jlsch
  */
 
 #ifndef SRC_COMMANDS_PHOTONCANNONOFFCOMMAND_H_

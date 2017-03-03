@@ -2,7 +2,6 @@
  * Utilities.h
  *
  *  Created on: Feb 25, 2017
- *      Author: Kevin
  */
 
 #ifndef SRC_UTILITIES_H_

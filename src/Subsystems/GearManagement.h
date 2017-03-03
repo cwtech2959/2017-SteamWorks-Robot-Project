@@ -51,7 +51,6 @@ public:
 	void StopGearDropOffMotors();
 
 	void MoveFryingPan(bool up, double speed);
-	void StopFryingPanMotor();
 
 	void SetGearGateTime(double time);
 	double GetGearGateTime();

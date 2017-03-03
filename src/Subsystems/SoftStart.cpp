@@ -20,30 +20,31 @@ SoftStart::~SoftStart()
 {
 }
 
+double SoftStart::CurrentSpeed() const
+{
+	return m_currentSpeed;
+}
+
 double SoftStart::NextSpeed(double targetSpeed)
 {
-	if (m_currentSpeed > targetSpeed)
+	double nextSpeed = m_currentSpeed;
+	if (nextSpeed > targetSpeed)
 	{
-		m_currentSpeed -= m_rampDownRate;
-		if (m_currentSpeed > targetSpeed)
+		nextSpeed -= m_rampDownRate;
+		if (nextSpeed < targetSpeed)
 		{
-			return m_currentSpeed;
-		}
-		else
-		{
-			return targetSpeed;
+			nextSpeed = targetSpeed;
 		}
 	}
 	else
 	{
-		m_currentSpeed += m_rampUpRate;
-		if (m_currentSpeed < targetSpeed)
+		nextSpeed += m_rampUpRate;
+		if (nextSpeed > targetSpeed)
 		{
-			return m_currentSpeed;
-		}
-		else
-		{
-			return targetSpeed;
+			nextSpeed = m_currentSpeed;
 		}
 	}
+
+	m_currentSpeed = nextSpeed;
+	return nextSpeed;
 }

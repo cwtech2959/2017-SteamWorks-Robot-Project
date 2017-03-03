@@ -66,11 +66,6 @@ void GearManagement::MoveFryingPan(bool up, double speed)
 	}
 }
 
-void GearManagement::StopFryingPanMotor()
-{
-	FryingPanMotor->Set(0);
-}
-
 double GearManagement::GetGearGateTime()
 {
 	return GearGateTime;

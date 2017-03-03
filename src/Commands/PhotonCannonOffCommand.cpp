@@ -2,7 +2,7 @@
  * PhotonCannonCommand2.cpp
  *
  *  Created on: Jan 30, 2017
- *      Author: Kevin
+ *      Author: jlsch
  */
 
 #include <Commands/PhotonCannonOffCommand.h>

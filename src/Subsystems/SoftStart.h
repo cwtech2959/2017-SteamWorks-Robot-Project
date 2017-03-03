@@ -14,6 +14,7 @@ public:
 	SoftStart(double rampUpTimeMs, double rampDownTimeMs, double loopTimeMs = 20);
 	virtual ~SoftStart();
 
+	double CurrentSpeed() const;
 	double NextSpeed(double targetSpeed);
 
 private:

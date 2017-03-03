@@ -63,7 +63,7 @@ bool MoveFryingPanCommand::IsFinished()
 
 void MoveFryingPanCommand::End()
 {
-	Robot::GearManagementSubsystem->StopFryingPanMotor();
+	Robot::GearManagementSubsystem->MoveFryingPan(m_up, ramp.NextSpeed(0));
 }
 
 void MoveFryingPanCommand::Interrupted()

@@ -2,7 +2,7 @@
  * Robot.h
  *
  *  Created on: Feb 21, 2017
- *      Author: Kevin
+ *      Author: CW
  */
 
 #ifndef SRC_ROBOT_H_

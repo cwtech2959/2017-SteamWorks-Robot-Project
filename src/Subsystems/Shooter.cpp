@@ -8,6 +8,7 @@
 #include <Subsystems/Shooter.h>
 #include "RobotMap.h"
 #include "WPILib.h"
+#include <Commands/MaintainBallFeedersSpeed.h>
 
 const int MinTimeLimit = 0;
 const int MaxTimeLimit = 5000;
@@ -34,15 +35,15 @@ Shooter::~Shooter()
 {
 }
 
+void Shooter::InitDefaultCommand()
+{
+	SetDefaultCommand(new MaintainBallFeedersSpeed());
+}
+
 // Shooter feeder manipulation
 void Shooter::StopBallFeeders()
 {
 	SetBallFeedersSpeed(0);
-}
-
-void Shooter::StartBallFeeders()
-{
-	// Need to add the shooting feeder sequencing!!!
 }
 
 void Shooter::ReverseBallFeeders()
@@ -58,6 +59,12 @@ void Shooter::BallFeederOff(ShooterSide side)
 void Shooter::BallFeederOn(ShooterSide side)
 {
 	SetBallFeederSpeed(side, 1);
+}
+
+void Shooter::MaintainBallFeeders()
+{
+	SetBallFeederSpeed(leftShooter, rampLeft.CurrentSpeed());
+	SetBallFeederSpeed(rightShooter, rampRight.CurrentSpeed());
 }
 
 // Member Access
@@ -140,10 +147,12 @@ void Shooter::SetBallFeederSpeed(ShooterSide side, double speed)
 {
 	if (side == leftShooter)
 	{
+		speed = rampLeft.NextSpeed(speed);
 		BallFeederLeft->Set(speed);
 	}
 	else
 	{
+		speed = rampRight.NextSpeed(speed);
 		BallFeederRight->Set(speed);
 	}
 }

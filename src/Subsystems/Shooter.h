@@ -10,6 +10,7 @@
 
 #include "WPILib.h"
 #include <Commands/Subsystem.h>
+#include <Subsystems/SoftStart.h>
 
 constexpr double DefaultStartOffsetRightTime = 100;
 constexpr double DefaultStartOffsetLeftTime = 100;
@@ -41,12 +42,14 @@ public:
 	Shooter();
 	virtual ~Shooter();
 
+	void InitDefaultCommand() override;
+
 	// Shooter feeder manipulation
-	void StartBallFeeders();
 	void StopBallFeeders();
 	void ReverseBallFeeders();
 	void BallFeederOff(ShooterSide side);
 	void BallFeederOn(ShooterSide side);
+	void MaintainBallFeeders();
 
 	// member access
 
@@ -67,5 +70,8 @@ private:
 	double LimitOffsetTime(double time);
 	void SetBallFeedersSpeed(double speed);
 	void SetBallFeederSpeed(ShooterSide side, double speed);
+
+	SoftStart rampLeft {300, 300};
+	SoftStart rampRight {300, 300};
 };
 #endif /* SRC_SUBSYSTEMS_SHOOTER_H_ */
