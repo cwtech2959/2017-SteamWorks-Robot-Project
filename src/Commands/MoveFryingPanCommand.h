@@ -27,7 +27,7 @@ public:
 private:
 	bool m_up;
 
-	SoftStart ramp { 300 };
+	SoftStart ramp { 300, 20 };
 };
 
 #endif /* SRC_COMMANDS_MOVEFRYINGPANCOMMAND_H_ */

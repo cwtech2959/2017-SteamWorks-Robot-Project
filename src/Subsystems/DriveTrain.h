@@ -11,6 +11,7 @@
 #include "WPILib.h"
 #include <Commands/Subsystem.h>
 #include <CANTalon.h>
+#include <Subsystems/SoftStart.h>
 
 class DriveTrain: public Subsystem
 {
@@ -21,6 +22,13 @@ private:
 	std::shared_ptr<CANTalon> Right2MotorController;
 
 	std::unique_ptr<RobotDrive> DriveTank;
+
+	SoftStart LeftSideSpeedRamping { 200, 200 };
+	SoftStart RightSideSpeedRamping { 200, 200 };
+
+	bool m_DriveStraight;
+	bool m_PowerReduction;
+	bool m_InvertTank;
 
 	void InitHardware();
 

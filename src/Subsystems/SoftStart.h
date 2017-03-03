@@ -11,17 +11,14 @@
 class SoftStart
 {
 public:
-	SoftStart(double rampTimeMs, double loopTimeMs = 20);
+	SoftStart(double rampUpTimeMs, double rampDownTimeMs, double loopTimeMs = 20);
 	virtual ~SoftStart();
 
-	void SetTargetSpeed(double targetSpeed, double currentSpeed);
-	double NextSpeed();
+	double NextSpeed(double targetSpeed);
 
 private:
-	double m_targetSpeed;
-	double m_rampRate;
-	double m_rampTime;
-	double m_loopTime;
+	double m_rampUpRate;
+	double m_rampDownRate;
 	double m_currentSpeed;
 };
 

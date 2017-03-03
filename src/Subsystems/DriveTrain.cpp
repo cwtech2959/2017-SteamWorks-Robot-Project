@@ -11,6 +11,10 @@
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain")
 {
+	m_DriveStraight = false;
+	m_PowerReduction = false;
+	m_InvertTank = false;
+
 	InitHardware();
 }
 
@@ -50,7 +54,20 @@ void DriveTrain::InitDefaultCommand()
 
 void DriveTrain::TankDrive(std::shared_ptr<Joystick> JoyStick)
 {
-	TankDrive(JoyStick->GetY(), JoyStick->GetRawAxis(3));
+	double leftSide = JoyStick->GetY();
+	double rightSide = JoyStick->GetRawAxis(3);
+
+	// Need to limit output, if power reduce
+	if (m_PowerReduction == true)
+	{
+	}
+
+	// Force invert tank direction, if needed
+
+	// Force drive straight, if needed
+	// Mirror rightSide input to equal left side input
+
+	TankDrive(leftSide, rightSide);
 }
 
 void DriveTrain::Stop()
@@ -60,5 +77,9 @@ void DriveTrain::Stop()
 
 void DriveTrain::TankDrive(double leftSide, double rightSide)
 {
+	// soft start to drive motors
+	leftSide = LeftSideSpeedRamping.NextSpeed(leftSide);
+	rightSide = RightSideSpeedRamping.NextSpeed(rightSide);
+
 	DriveTank->TankDrive(leftSide, rightSide, false);
 }
