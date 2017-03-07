@@ -20,6 +20,8 @@ Shooter::Shooter() : Subsystem("Shooter")
 
 	OnTime = DefaultOnTime;
 	OffTime = DefaultOffTime;
+	m_leftTargetSpeed = 0;
+	m_rightTargetSpeed = 0;
 
 	Shooting = false;
 
@@ -63,8 +65,8 @@ void Shooter::BallFeederOn(ShooterSide side)
 
 void Shooter::MaintainBallFeeders()
 {
-	SetBallFeederSpeed(leftShooter, rampLeft.CurrentSpeed());
-	SetBallFeederSpeed(rightShooter, rampRight.CurrentSpeed());
+	SetBallFeederSpeed(leftShooter, m_leftTargetSpeed);
+	SetBallFeederSpeed(rightShooter, m_rightTargetSpeed);
 }
 
 // Member Access
@@ -147,11 +149,15 @@ void Shooter::SetBallFeederSpeed(ShooterSide side, double speed)
 {
 	if (side == leftShooter)
 	{
+		m_leftTargetSpeed = speed;
+
 		speed = rampLeft.NextSpeed(speed);
 		BallFeederLeft->Set(speed);
 	}
 	else
 	{
+		m_rightTargetSpeed = speed;
+
 		speed = rampRight.NextSpeed(speed);
 		BallFeederRight->Set(speed);
 	}

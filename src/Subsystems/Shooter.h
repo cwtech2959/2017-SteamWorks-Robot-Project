@@ -28,6 +28,8 @@ private:
 	double StartOffsetLeft;
 	double OnTime;
 	double OffTime;
+	double m_leftTargetSpeed;
+	double m_rightTargetSpeed;
 
 	bool Shooting;
 

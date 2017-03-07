@@ -16,7 +16,6 @@ public:
 	ClearGearCommand();
 	virtual ~ClearGearCommand();
 
-	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;
 	void End() override;

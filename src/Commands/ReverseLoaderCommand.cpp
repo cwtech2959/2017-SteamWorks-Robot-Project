@@ -18,7 +18,7 @@ ReverseLoaderCommand::~ReverseLoaderCommand()
 {
 }
 
-void ReverseLoaderCommand::Initialize()
+void ReverseLoaderCommand::Execute()
 {
 	Robot::LoaderSubsystem->ReverseBallLoader();
 }

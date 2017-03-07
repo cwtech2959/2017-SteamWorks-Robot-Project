@@ -5,6 +5,7 @@
  *      Author: CW
  */
 
+#include <Commands/MaintainLoaderSpeed.h>
 #include <Subsystems/Loader.h>
 #include "RobotMap.h"
 #include <WPILib.h>
@@ -12,6 +13,7 @@
 Loader::Loader() : Subsystem("Loader")
 {
 	GearClearTime = DefaultClearTime;
+	m_loaderTargetSpeed = 0;
 
 	BallPickupAndAgitator.reset(new Spark(BALL_PICKUP_PWM));
 
@@ -22,21 +24,19 @@ Loader::~Loader()
 {
 }
 
-void Loader::StopBallLoader()
+void Loader::InitDefaultCommand()
 {
-	BallPickupAndAgitator->Set(0);
+	SetDefaultCommand(new MaintainLoaderSpeed());
 }
 
 void Loader::ReverseBallLoader()
 {
-	StopBallLoader();
-	BallPickupAndAgitator->Set(1);
+	SetBallLoadersSpeed(1);
 }
 
 void Loader::BallLoaderForward()
 {
-	StopBallLoader();
-	BallPickupAndAgitator->Set(-1);
+	SetBallLoadersSpeed(-1);
 }
 
 double Loader::GetGearClearTime()
@@ -47,4 +47,17 @@ double Loader::GetGearClearTime()
 void Loader::SetGearClearTime(double time)
 {
 	GearClearTime = time;
+}
+
+void Loader::SetBallLoadersSpeed(double speed)
+{
+	m_loaderTargetSpeed = speed;
+
+	speed = rampPickup.NextSpeed(speed);
+	BallPickupAndAgitator->Set(speed);
+}
+
+void Loader::MaintainLoader()
+{
+	SetBallLoadersSpeed(m_loaderTargetSpeed);
 }

@@ -20,13 +20,9 @@ ClearGearCommand::~ClearGearCommand()
 {
 }
 
-void ClearGearCommand::Initialize()
-{
-	Robot::LoaderSubsystem->ReverseBallLoader();
-}
-
 void ClearGearCommand::Execute()
 {
+	Robot::LoaderSubsystem->ReverseBallLoader();
 	if (m_gearGone == false && Robot::GearLoadSubsystem->GetGearLoadReady() == false)
 	{
 		SetTimeout(SecondsFromMilliSeconds(Robot::LoaderSubsystem->GetGearClearTime()));
