@@ -47,8 +47,7 @@ public:
 	GearManagement();
 	virtual ~GearManagement();
 
-	void StartGearDropOffMotors(bool open);
-	void StopGearDropOffMotors();
+	void MoveGearDropOff(bool open, double speed);
 
 	void MoveFryingPan(bool up, double speed);
 
@@ -71,7 +70,7 @@ public:
 	void SetDrivingFryingPan(DrivingFryingPan state);
 	DrivingFryingPan GetDrvingFryingPan();
 
-	void PrepareGearInit ();
+	void PrepareGearInit();
 };
 
 #endif /* SRC_SUBSYSTEMS_GEARMANAGEMENT_H_ */

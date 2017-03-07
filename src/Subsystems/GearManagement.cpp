@@ -16,7 +16,6 @@ GearManagement::GearManagement() : Subsystem("GearManagement")
 	FryingPanDriveSpeed = DefaultFryingPanDriveSpeed;
 	GearReleaseDriveSpeed = DefaultGearReleaseDriveSpeed;
 
-
 	FryingPanDownSwitch.reset(new DigitalInput(FRYING_PAN_DOWN_DIO));
 	FryingPanUpSwitch.reset(new DigitalInput(FRYING_PAN_UP_DIO));
 	GearOnFryingPan.reset(new DigitalInput(GEAR_ON_FRYING_PAN_DIO));
@@ -37,21 +36,16 @@ GearManagement::~GearManagement()
 
 // Public Methods Here
 
-void GearManagement::StartGearDropOffMotors(bool open)
+void GearManagement::MoveGearDropOff(bool open, double speed)
 {
 	if (open == true)
 	{
-		GearDropOffMotors->Set(-GearReleaseDriveSpeed);
+		GearDropOffMotors->Set(-speed);
 	}
 	else
 	{
-		GearDropOffMotors->Set(GearReleaseDriveSpeed);
+		GearDropOffMotors->Set(speed);
 	}
-}
-
-void GearManagement::StopGearDropOffMotors()
-{
-	GearDropOffMotors->Set(0);
 }
 
 void GearManagement::MoveFryingPan(bool up, double speed)
@@ -135,14 +129,14 @@ void GearManagement::PrepareGearInit()
 {
 	if (FryingPanUpSwitch->Get() == true)
 	{
-
+		SetDrivingFryingPan(Up);
 	}
 	else if (FryingPanDownSwitch->Get() == true)
 	{
-
+		SetDrivingFryingPan(Down);
 	}
 	else
 	{
-
+		// Drive frying pan up
 	}
 }

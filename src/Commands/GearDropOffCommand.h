@@ -24,6 +24,8 @@ public:
 
 private:
 	bool m_open;
+
+	SoftStart ramp { 300, 20 };
 };
 
 #endif /* SRC_COMMANDS_GEARDROPOFFCOMMAND_H_ */

@@ -28,7 +28,7 @@ void GearDropOffCommand::Initialize()
 
 void GearDropOffCommand::Execute()
 {
-	Robot::GearManagementSubsystem->StartGearDropOffMotors(m_open);
+	Robot::GearManagementSubsystem->MoveGearDropOff(m_open, ramp.NextSpeed(Robot::GearManagementSubsystem->GetGearReleaseDriveSpeed()));
 }
 
 bool GearDropOffCommand::IsFinished()
@@ -38,7 +38,7 @@ bool GearDropOffCommand::IsFinished()
 
 void GearDropOffCommand::End()
 {
-	Robot::GearManagementSubsystem->StopGearDropOffMotors();
+	Robot::GearManagementSubsystem->MoveGearDropOff(m_open, ramp.NextSpeed(0));
 }
 
 void GearDropOffCommand::Interrupted()

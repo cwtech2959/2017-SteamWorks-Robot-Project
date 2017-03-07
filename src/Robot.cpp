@@ -101,6 +101,7 @@ void Robot::AutonomousInit()
 	ShooterMotorsSubsystem->SetBallShootersSpeed(speed);
 
 	LoaderSubsystem->BallLoaderForward();
+	GearManagementSubsystem->PrepareGearInit();
 }
 
 void Robot::AutonomousPeriodic()
