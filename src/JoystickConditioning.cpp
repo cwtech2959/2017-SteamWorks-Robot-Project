@@ -11,6 +11,19 @@ JoystickConditioning::JoystickConditioning(double negativeDeadBand, double posit
 		double negativeOffset, double positiveOffset,
 		double lowInputGain, double scalar)
 {
+	UpdateConstants( negativeDeadBand, positiveDeadband,
+			negativeOffset, positiveOffset,
+			lowInputGain, scalar);
+}
+
+JoystickConditioning::~JoystickConditioning()
+{
+}
+
+void JoystickConditioning::UpdateConstants(double negativeDeadBand, double positiveDeadband,
+		double negativeOffset, double positiveOffset,
+		double lowInputGain, double scalar)
+{
 	m_negativeDeadband = negativeDeadBand;
 	m_positiveDeadband = positiveDeadband;
 	m_negativeOffset = negativeOffset;
@@ -20,9 +33,19 @@ JoystickConditioning::JoystickConditioning(double negativeDeadBand, double posit
 	PreCalculations();
 }
 
-JoystickConditioning::~JoystickConditioning()
-{
-}
+//
+// Calculation, frpm 2013 spec
+//	g(z)=
+//		{0,
+//		c<z<a f*[b/f-ea3-a+ea1-ea3-a+ea+ [1-b/f-ea3-a+ae1-ea3-a+ae]*[ez3 + (1-e)z]],
+//		z≥a f*[d/f-ec3-c+ec1+ec3+c-ec+ [1+d/f-ec3-c+ec1+ec3+c-ec]*[ez3 + (1-e)z]],
+//		z≤c
+//
+//  z = input
+//  p = if z > deadband then 1 else -1
+//	g = deadband * ( -gain * deadband * deadband -1 + gain)
+//  partial pre-calculation h = (offset / scalar + g) / (1 + g * p)
+//  output = scalar * (h + (1 - p * h) * (gain * z**3 + (1 - gain) * z))
 
 void JoystickConditioning::PreCalculations()
 {

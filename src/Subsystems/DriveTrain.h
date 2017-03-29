@@ -12,6 +12,7 @@
 #include <Commands/Subsystem.h>
 #include <CANTalon.h>
 #include <Subsystems/SoftStart.h>
+#include <JoystickConditioning.h>
 
 class DriveTrain: public Subsystem
 {
@@ -25,6 +26,9 @@ private:
 
 	SoftStart LeftSideSpeedRamping { 200, 200 };
 	SoftStart RightSideSpeedRamping { 200, 200 };
+
+	JoystickConditioning LeftConditioning { -0.1, 0.1, -0.2, 0.2 };
+	JoystickConditioning RightConditioning { -0.1, 0.1, -0.2, 0.2 };
 
 	bool m_DriveStraight;
 	bool m_PowerReduction;

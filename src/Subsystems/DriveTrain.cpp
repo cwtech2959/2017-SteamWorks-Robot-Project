@@ -54,8 +54,8 @@ void DriveTrain::InitDefaultCommand()
 
 void DriveTrain::TankDrive(std::shared_ptr<Joystick> JoyStick)
 {
-	double leftSide = JoyStick->GetY();
-	double rightSide = JoyStick->GetRawAxis(3);
+	double leftSide = LeftConditioning.Conditioned(JoyStick->GetY());
+	double rightSide = RightConditioning.Conditioned(JoyStick->GetRawAxis(3));
 
 	// Need to limit output, if power reduce
 	if (m_PowerReduction == true)

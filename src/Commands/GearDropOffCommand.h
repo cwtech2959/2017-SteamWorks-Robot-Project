@@ -9,6 +9,7 @@
 #define SRC_COMMANDS_GEARDROPOFFCOMMAND_H_
 
 #include "WPILib.h"
+#include <Subsystems/SoftStart.h>
 
 class GearDropOffCommand: public Command
 {

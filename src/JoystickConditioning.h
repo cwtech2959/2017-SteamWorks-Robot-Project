@@ -29,6 +29,10 @@ public:
 			double lowInputGain = 1.0, double scalar = 1.0);
 	virtual ~JoystickConditioning();
 
+	void UpdateConstants(double negativeDeadBand = -0.1, double positiveDeadband = 0.1,
+			double negativeOffset = -0.1, double positiveOffset = 0.1,
+			double lowInputGain = 1.0, double scalar = 1.0);
+
 	double Conditioned(double input) const;
 };
 
