@@ -18,6 +18,9 @@ private:
 	std::shared_ptr<JoystickButton> GearDropOffButton;
 	std::shared_ptr<JoystickButton> FryingPanUpButton;
 	std::shared_ptr<JoystickButton> FryingPanDownButton;
+	std::shared_ptr<JoystickButton> InvertTankDirectionButton;
+	std::shared_ptr<JoystickButton> DriveStraightButton;
+	std::shared_ptr<JoystickButton> PowerReduceButton;
 	std::shared_ptr<ClearGearTrigger> m_clearGearTrigger;
 	std::shared_ptr<FryingPanUpTrigger> m_FryingPanUpTrigger;
 

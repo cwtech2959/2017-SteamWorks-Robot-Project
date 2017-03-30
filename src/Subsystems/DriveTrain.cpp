@@ -8,6 +8,7 @@
 #include <Subsystems/DriveTrain.h>
 #include <Commands/DriveWithJoystick.h>
 #include <RobotMap.h>
+#include <Utilities.h>
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain")
 {
@@ -60,12 +61,24 @@ void DriveTrain::TankDrive(std::shared_ptr<Joystick> JoyStick)
 	// Need to limit output, if power reduce
 	if (m_PowerReduction == true)
 	{
+		leftSide = Limit(leftSide, -MaxReducedPower, MaxReducedPower);
+		rightSide = Limit(rightSide, -MaxReducedPower, MaxReducedPower);
 	}
 
 	// Force invert tank direction, if needed
+	if (m_InvertTank == true)
+	{
+		double temp = leftSide;
+		leftSide = -1 * rightSide;
+		rightSide = -1 * temp;
+	}
 
 	// Force drive straight, if needed
 	// Mirror rightSide input to equal left side input
+	if (m_DriveStraight == true)
+	{
+		rightSide = leftSide;
+	}
 
 	TankDrive(leftSide, rightSide);
 }
@@ -82,4 +95,19 @@ void DriveTrain::TankDrive(double leftSide, double rightSide)
 	rightSide = RightSideSpeedRamping.NextSpeed(rightSide);
 
 	DriveTank->TankDrive(leftSide, rightSide, false);
+}
+
+void DriveTrain::SetInvertTank(bool invert)
+{
+	m_InvertTank = invert;
+}
+
+void DriveTrain::SetDriveStraight(bool straight)
+{
+	m_DriveStraight = straight;
+}
+
+void DriveTrain::SetPowerReduction(bool reduce)
+{
+	m_PowerReduction = reduce;
 }

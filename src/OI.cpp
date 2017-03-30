@@ -9,6 +9,9 @@
 #include <Commands/UpdateShooterSpeed.h>
 #include <Commands/ClearGearCommand.h>
 #include <Commands/MoveFryingPanCommand.h>
+#include <Commands/InvertTankCommand.h>
+#include <Commands/DriveStraightCommand.h>
+#include <Commands/PowerReduceCommand.h>
 #include <Subsystems/GearManagement.h>
 #include <Robot.h>
 
@@ -18,9 +21,9 @@ OI::OI()
 	ButtonBox.reset(new Joystick(1));
 
 	PhotonCannonButton.reset(new JoystickButton(DriverJoystick.get(), 4));
-	//InvertTankDirectionButton.reset(new JoystickButton(DriverJoystick.get(), 5));
-	//DriveStraightButton.reset(new JoystickButton(DriverJoystick.get(), 6));
-	//PowerReduceButton.reset(new JoystickButton(DriverJoystick.get(), 7));
+	InvertTankDirectionButton.reset(new JoystickButton(DriverJoystick.get(), 5));
+	DriveStraightButton.reset(new JoystickButton(DriverJoystick.get(), 6));
+	PowerReduceButton.reset(new JoystickButton(DriverJoystick.get(), 7));
 
 	ReverseLoadButton.reset(new JoystickButton(ButtonBox.get(), 1));
 	ReverseFireButton.reset(new JoystickButton(ButtonBox.get(), 2));
@@ -43,6 +46,9 @@ OI::OI()
 	GearDropOffButton->WhenReleased(new GearDropOffCommand(false));
 	FryingPanUpButton->WhenPressed(new MoveFryingPanCommand(true));
 	FryingPanDownButton->WhenPressed(new MoveFryingPanCommand(false));
+	InvertTankDirectionButton->WhileHeld(new InvertTankCommand());
+	DriveStraightButton->WhileHeld(new DriveStraightCommand());
+	PowerReduceButton->WhileHeld(new PowerReduceCommand());
 	m_clearGearTrigger->WhenActive(new ClearGearCommand());
 	m_FryingPanUpTrigger->WhenActive(new MoveFryingPanCommand(true));
 
@@ -55,6 +61,9 @@ OI::OI()
 	SmartDashboard::PutData("Frying Pan Up Command", new MoveFryingPanCommand(true));
 	SmartDashboard::PutData("Frying Pan Down Command", new MoveFryingPanCommand(false));
 	SmartDashboard::PutData("Clear Gear Command", new ClearGearCommand());
+	SmartDashboard::PutData("Invert Tank Command", new InvertTankCommand());
+	SmartDashboard::PutData("Drive Straight Command", new DriveStraightCommand());
+	SmartDashboard::PutData("Power Reduce Command", new PowerReduceCommand());
 
 	SmartDashboard::PutData("Update Shooter Speed", new UpdateShooterSpeed());
 	SmartDashboard::PutData("Update Shooter And Gear Times", new UpdateShooterAndGearTimes());

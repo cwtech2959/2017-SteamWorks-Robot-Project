@@ -34,6 +34,8 @@ private:
 	bool m_PowerReduction;
 	bool m_InvertTank;
 
+	const double MaxReducedPower = 0.75;
+
 	void InitHardware();
 
 public:
@@ -45,6 +47,10 @@ public:
 	void TankDrive(double leftSide, double rightSide);
 	void TankDrive(std::shared_ptr<Joystick> JoyStick);
 	void Stop();
+
+	void SetInvertTank(bool invert);
+	void SetDriveStraight(bool straight);
+	void SetPowerReduction(bool reduce);
 };
 
 #endif /* SRC_SUBSYSTEMS_DRIVETRAIN_H_ */
