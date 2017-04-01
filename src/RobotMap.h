@@ -13,7 +13,7 @@ constexpr int BALL_PICKUP_PWM = 0;
 constexpr int GEAR_DROP_OFF_MOTORS_PWM = 1;
 constexpr int BALL_FEEDER_LEFT_PWM = 2;
 constexpr int BALL_FEEDER_RIGHT_PWM = 3;
-constexpr int CLIMB_PWM = 4;
+constexpr int GEAR_PICK_UP_ROLLER_PWM = 4;
 constexpr int AIM_LIGHT_PWM = 5;
 constexpr int FRYING_PAN_MOTOR_PWM = 6;
 
@@ -27,11 +27,12 @@ constexpr int FRYING_PAN_UP_DIO = 3;
 
 constexpr int LEFT_DRIVE_MOTOR_1_CAN = 1;
 constexpr int LEFT_DRIVE_MOTOR_2_CAN = 2;
-constexpr int GEAR_PICK_UP_ROLLER_CAN = 3;
+constexpr int CLIMB_RIGHT_CAN = 3;
 constexpr int RIGHT_DRIVE_MOTOR_1_CAN = 4;
 constexpr int RIGHT_DRIVE_MOTOR_2_CAN = 5;
-constexpr int BALL_SHOOTER_RIGHT_CAN = 6;
+constexpr int BALL_SHOOTER_RIGHT_CAN = 9; //6;
 constexpr int BALL_SHOOTER_LEFT_CAN = 7;
+constexpr int CLIMB_LEFT_CAN = 8;
 
 
 // If you are using multiple modules, make sure to define both the port

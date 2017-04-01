@@ -58,11 +58,11 @@ void DriveTrain::TankDrive(std::shared_ptr<Joystick> JoyStick)
 	double leftSide = LeftConditioning.Conditioned(JoyStick->GetY());
 	double rightSide = RightConditioning.Conditioned(JoyStick->GetRawAxis(3));
 
-	// Need to limit output, if power reduce
-	if (m_PowerReduction == true)
+	// Force drive straight, if needed
+	// Mirror rightSide input to equal left side input
+	if (m_DriveStraight == true)
 	{
-		leftSide = Limit(leftSide, -MaxReducedPower, MaxReducedPower);
-		rightSide = Limit(rightSide, -MaxReducedPower, MaxReducedPower);
+		rightSide = leftSide;
 	}
 
 	// Force invert tank direction, if needed
@@ -73,11 +73,11 @@ void DriveTrain::TankDrive(std::shared_ptr<Joystick> JoyStick)
 		rightSide = -1 * temp;
 	}
 
-	// Force drive straight, if needed
-	// Mirror rightSide input to equal left side input
-	if (m_DriveStraight == true)
+	// Need to limit output, if power reduce
+	if (m_PowerReduction == true)
 	{
-		rightSide = leftSide;
+		leftSide *= MaxReducedPower;
+		rightSide *= MaxReducedPower;
 	}
 
 	TankDrive(leftSide, rightSide);

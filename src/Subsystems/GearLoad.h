@@ -10,14 +10,13 @@
 
 #include <Commands/Subsystem.h>
 #include "WPILib.h"
-#include <CANTalon.h>
 
 class GearLoad: public Subsystem
 {
 private:
 	std::shared_ptr<DigitalInput> GearLoadReady;
 
-	std::shared_ptr<CANTalon> GearPickup;
+	std::shared_ptr<Spark> GearPickup;
 
 public:
 	GearLoad();

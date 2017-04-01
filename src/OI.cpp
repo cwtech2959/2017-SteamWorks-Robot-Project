@@ -19,6 +19,7 @@ OI::OI()
 {
 	DriverJoystick.reset(new Joystick(0));
 	ButtonBox.reset(new Joystick(1));
+	ClimbJoystick.reset(new Joystick(2));
 
 	PhotonCannonButton.reset(new JoystickButton(DriverJoystick.get(), 4));
 	InvertTankDirectionButton.reset(new JoystickButton(DriverJoystick.get(), 5));
@@ -72,4 +73,9 @@ OI::OI()
 std::shared_ptr<Joystick> OI::GetDriverJoystick()
 {
 	return DriverJoystick;
+}
+
+std::shared_ptr<Joystick> OI::GetClimbJoystick()
+{
+	return ClimbJoystick;
 }

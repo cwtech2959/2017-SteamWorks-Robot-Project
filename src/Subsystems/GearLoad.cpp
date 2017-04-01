@@ -12,7 +12,7 @@
 GearLoad::GearLoad() : Subsystem("GearLoad")
 {
 	GearLoadReady.reset(new DigitalInput(GEAR_LOAD_READY_DIO));
-	GearPickup.reset(new CANTalon(GEAR_PICK_UP_ROLLER_CAN));
+	GearPickup.reset(new Spark(GEAR_PICK_UP_ROLLER_PWM));
 
 	LiveWindow::GetInstance()->AddActuator("GearLoad", "Gear Pickup Roller CIM", GearPickup.get());
 }
